@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         appBar: _topBar(context),
         body: Container(
-          child: Text("Hola mundo cruel", style: estiloTexto),
+          child: Text("Términos y condiciones", style: estiloTexto),
         ),
         //bottomNavigationBar: BottomNavigationBar(items: null),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -68,7 +68,7 @@ class HomePage extends StatelessWidget {
             backgroundColor: (Colors.pinkAccent),
             elevation: 50.0,
             child: Icon(
-              Icons.videocam_off,
+              Icons.videocam,
               color: Colors.white,
             ),
             onPressed: null),
