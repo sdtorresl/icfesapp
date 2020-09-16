@@ -13,6 +13,7 @@ class HomePage extends StatelessWidget {
         body: Container(
           child: Text("Términos y condiciones", style: estiloTexto),
         ),
+
         //bottomNavigationBar: BottomNavigationBar(items: null),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: _crearBotones());
