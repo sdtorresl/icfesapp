@@ -13,7 +13,9 @@ class HomePage extends StatelessWidget {
           padding: EdgeInsets.all(10.0),
           children: <Widget>[
             _cardTipo1(),
-            SizedBox(height: 200.0),
+            SizedBox(height: 5.0),
+            _reloj(),
+            SizedBox(height: 50.0),
             _cardTipo2(),
             SizedBox(height: 1.0),
             _cardTipo3()
@@ -77,7 +79,7 @@ Widget _crearBotones() {
       ),
       FloatingActionButton(
           backgroundColor: (Colors.pinkAccent),
-          elevation: 50.0,
+          elevation: 10.0,
           child: Icon(
             Icons.videocam,
             color: Colors.white,
@@ -122,10 +124,123 @@ Widget _cardTipo1() {
   );
 }
 
+Widget _reloj() {
+  Container(
+      child: Column(
+    children: <Widget>[
+      Text('Empieza nuestro conteo para el evento'),
+      Container(
+          padding: EdgeInsets.all(0),
+          child: Text(
+            'uuu',
+          ))
+    ],
+  ));
+  return Container(
+      child: Row(
+    children: <Widget>[
+      Positioned(
+        child: Container(
+          height: 100.0,
+          width: 150.0,
+          child: Stack(
+            children: <Widget>[
+              Positioned(
+                top: 25.0,
+                child: Container(
+                  height: 70.0,
+                  width: 100.0,
+                  decoration: BoxDecoration(
+                      border: Border.all(width: 4, color: Colors.blueGrey),
+                      shape: BoxShape.circle,
+                      color: Colors.blue),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        '03',
+                        style: estiloTexto,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      Positioned(
+        child: Container(
+          height: 100.0,
+          width: 130.0,
+          child: Stack(
+            children: <Widget>[
+              Positioned(
+                top: 25.0,
+                child: Container(
+                  height: 70.0,
+                  width: 100.0,
+                  decoration: BoxDecoration(
+                      border: Border.all(width: 4, color: Colors.blueGrey),
+                      shape: BoxShape.circle,
+                      color: Colors.blue),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        '72',
+                        style: estiloTexto,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      Positioned(
+        child: Container(
+          height: 100.0,
+          width: 100.0,
+          child: Stack(
+            children: <Widget>[
+              Positioned(
+                top: 25.0,
+                child: Container(
+                  height: 70.0,
+                  width: 100.0,
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 4, color: Colors.blueGrey),
+                    shape: BoxShape.circle,
+                    color: Colors.blue,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        '00',
+                        style: estiloTexto,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      )
+    ],
+  ));
+}
+
 Widget _cardTipo2() {
   return Card(
     elevation: 1.0,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(1.0)),
     child: Column(
       children: <Widget>[
         ListTile(
