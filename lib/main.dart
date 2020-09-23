@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:icfesapp/pages/home.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:icfesapp/page/home_page.dart';
 
 void main() {
   runApp(IcfesApp());
@@ -11,6 +12,7 @@ class IcfesApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ICFES App',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
