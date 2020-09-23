@@ -19,8 +19,27 @@ class HomePage extends StatelessWidget {
             _cardTipo3()
           ],
         ),
-
-        //bottomNavigationBar: BottomNavigationBar(items: null),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: 0,
+          items: [
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.home, color: Colors.pink),
+              title: new Text('Home'),
+            ),
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.people_outline, color: Colors.pink),
+              title: new Text('Salas'),
+            ),
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.calendar_view_day, color: Colors.pink),
+              title: new Text('Seciones'),
+            ),
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.more_horiz, color: Colors.pink),
+              title: new Text('Mas'),
+            ),
+          ],
+        ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: _crearBotones());
   }
