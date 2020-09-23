@@ -13,9 +13,9 @@ class HomePage extends StatelessWidget {
           padding: EdgeInsets.all(10.0),
           children: <Widget>[
             _cardTipo1(),
-            SizedBox(height: 40.0),
+            SizedBox(height: 200.0),
             _cardTipo2(),
-            SizedBox(height: 5.0),
+            SizedBox(height: 1.0),
             _cardTipo3()
           ],
         ),
