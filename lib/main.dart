@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:icfesapp/page/documents.dart';
 import 'package:icfesapp/page/home_page.dart';
 
 void main() {
@@ -29,7 +30,7 @@ class IcfesApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(),
+      home: Documents(),
     );
   }
 }

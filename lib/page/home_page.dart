@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 final estiloTexto = new TextStyle(fontSize: 25);
+final estiloTexto2 = new TextStyle(fontSize: 18);
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
@@ -84,7 +85,7 @@ Widget _crearBotones() {
           backgroundColor: (Colors.pinkAccent),
           elevation: 10.0,
           child: Icon(
-            Icons.videocam,
+            Icons.video_call,
             color: Colors.white,
           ),
           onPressed: () {}),
@@ -101,12 +102,20 @@ Widget _cardTipo1() {
   final card = Container(
     child: Column(
       children: <Widget>[
-        Center(child: Text('Titulo')),
+        Center(
+            child: Text(
+          'Titulo',
+          style: estiloTexto,
+        )),
+        Container(
+          padding: EdgeInsets.all(10),
+        ),
         new Image.asset('assets/img/Group 6.png'),
         Container(
             padding: EdgeInsets.all(20),
             child: Text(
               'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
+              style: estiloTexto2,
             ))
       ],
     ),
@@ -115,13 +124,13 @@ Widget _cardTipo1() {
   return Container(
     decoration: new BoxDecoration(
         image: new DecorationImage(
-      fit: BoxFit.fill,
+      fit: BoxFit.fitHeight,
       image: AssetImage(
         "assets/img/Group 194.png",
       ),
     )),
     child: ClipRRect(
-      borderRadius: BorderRadius.circular(40.0),
+      borderRadius: BorderRadius.circular(40),
       child: card,
     ),
   );
