@@ -33,7 +33,10 @@ class HomePage extends StatelessWidget {
               title: new Text('Salas'),
             ),
             BottomNavigationBarItem(
-              icon: new Icon(Icons.calendar_view_day, color: Colors.pink),
+              icon: new Icon(
+                Icons.calendar_view_day,
+                color: Colors.pink,
+              ),
               title: new Text('Seciones'),
             ),
             BottomNavigationBarItem(
@@ -108,15 +111,15 @@ Widget _cardTipo1() {
       ],
     ),
   );
+
   return Container(
-    decoration: BoxDecoration(color: Colors.white, boxShadow: <BoxShadow>[
-      BoxShadow(
-        color: Colors.black26,
-        blurRadius: 0,
-        spreadRadius: 0,
-        offset: Offset(0, 0),
-      )
-    ]),
+    decoration: new BoxDecoration(
+        image: new DecorationImage(
+      fit: BoxFit.fill,
+      image: AssetImage(
+        "assets/img/Group 194.png",
+      ),
+    )),
     child: ClipRRect(
       borderRadius: BorderRadius.circular(40.0),
       child: card,
