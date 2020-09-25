@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-final estiloTexto = new TextStyle(fontSize: 25);
-final estiloTexto2 = new TextStyle(fontSize: 18);
+final textStyle = new TextStyle(fontSize: 25);
+final textStyle2 = new TextStyle(fontSize: 18);
 
 class Documents extends StatelessWidget {
   const Documents({Key key}) : super(key: key);
@@ -14,10 +14,6 @@ class Documents extends StatelessWidget {
           padding: EdgeInsets.all(10.0),
           children: <Widget>[
             _kit(),
-            SizedBox(height: 1.0),
-            _security(),
-            SizedBox(height: 5.0),
-            _document(),
             SizedBox(height: 1.0),
           ],
         ),
@@ -37,7 +33,7 @@ class Documents extends StatelessWidget {
                 Icons.calendar_view_day,
                 color: Colors.pink,
               ),
-              title: new Text('Seciones'),
+              title: new Text('Secciones'),
             ),
             BottomNavigationBarItem(
               icon: new Icon(Icons.more_horiz, color: Colors.pink),
@@ -108,41 +104,25 @@ Widget _kit() {
           onLongPress: () {},
           title: Text(
               'Descarga el kit de                                         Documentos',
-              style: estiloTexto2),
+              style: textStyle2),
         ),
-      ],
-    ),
-  );
-}
-
-Widget _security() {
-  return Card(
-    elevation: 1.0,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(1.0)),
-    child: Column(
-      children: <Widget>[
+        Divider(
+          color: Colors.black,
+        ),
         ListTile(
           leading: Icon(Icons.insert_drive_file, color: Colors.black26),
           onLongPress: () {},
           title: Text('Políticas de seguridad en                     Internet',
-              style: estiloTexto2),
+              style: textStyle2),
         ),
-      ],
-    ),
-  );
-}
-
-Widget _document() {
-  return Card(
-    elevation: 1.0,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(1.0)),
-    child: Column(
-      children: <Widget>[
+        Divider(
+          color: Colors.black,
+        ),
         ListTile(
           leading: Icon(Icons.insert_drive_file, color: Colors.black26),
           onLongPress: () {},
           title: Text('Políticas de seguridad en                     Internet',
-              style: estiloTexto2),
+              style: textStyle2),
         ),
       ],
     ),

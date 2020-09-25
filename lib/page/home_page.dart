@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-final estiloTexto = new TextStyle(fontSize: 25);
-final estiloTexto2 = new TextStyle(fontSize: 18);
+final textstyle = new TextStyle(fontSize: 25);
+final textstyle2 = new TextStyle(fontSize: 18);
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
@@ -13,13 +13,11 @@ class HomePage extends StatelessWidget {
         body: ListView(
           padding: EdgeInsets.all(10.0),
           children: <Widget>[
-            _cardTipo1(),
-            SizedBox(height: 5.0),
-            _reloj(),
+            _view(),
+            _watch(),
             SizedBox(height: 50.0),
-            _cardTipo2(),
+            _national(context),
             SizedBox(height: 1.0),
-            _cardTipo3()
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -47,13 +45,12 @@ class HomePage extends StatelessWidget {
           ],
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: _crearBotones());
+        floatingActionButton: _createButtons());
   }
 
   Widget _topBar(context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double barHeight = 100;
-
     return PreferredSize(
       preferredSize: Size(screenWidth, barHeight),
       child: Container(
@@ -74,7 +71,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
-Widget _crearBotones() {
+Widget _createButtons() {
   return Row(
     mainAxisAlignment: MainAxisAlignment.end,
     children: <Widget>[
@@ -93,20 +90,15 @@ Widget _crearBotones() {
           child: SizedBox(
         width: 20.0,
       )),
-      //SizedBox(width: 20.0),
     ],
   );
 }
 
-Widget _cardTipo1() {
+Widget _view() {
   final card = Container(
     child: Column(
       children: <Widget>[
-        Center(
-            child: Text(
-          'Titulo',
-          style: estiloTexto,
-        )),
+        Center(child: Text('Titulo', style: textstyle)),
         Container(
           padding: EdgeInsets.all(10),
         ),
@@ -115,19 +107,16 @@ Widget _cardTipo1() {
             padding: EdgeInsets.all(20),
             child: Text(
               'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
-              style: estiloTexto2,
+              style: textstyle2,
             ))
       ],
     ),
   );
-
   return Container(
     decoration: new BoxDecoration(
         image: new DecorationImage(
-      fit: BoxFit.fitHeight,
-      image: AssetImage(
-        "assets/img/Group 194.png",
-      ),
+      fit: BoxFit.cover,
+      image: AssetImage("assets/img/Group 194.png"),
     )),
     child: ClipRRect(
       borderRadius: BorderRadius.circular(40),
@@ -136,7 +125,7 @@ Widget _cardTipo1() {
   );
 }
 
-Widget _reloj() {
+Widget _watch() {
   Container(
       child: Column(
     children: <Widget>[
@@ -172,7 +161,7 @@ Widget _reloj() {
                     children: <Widget>[
                       Text(
                         '03',
-                        style: estiloTexto,
+                        style: textstyle,
                       ),
                     ],
                   ),
@@ -203,7 +192,7 @@ Widget _reloj() {
                     children: <Widget>[
                       Text(
                         '72',
-                        style: estiloTexto,
+                        style: textstyle,
                       ),
                     ],
                   ),
@@ -235,7 +224,7 @@ Widget _reloj() {
                     children: <Widget>[
                       Text(
                         '00',
-                        style: estiloTexto,
+                        style: textstyle,
                       ),
                     ],
                   ),
@@ -249,7 +238,7 @@ Widget _reloj() {
   ));
 }
 
-Widget _cardTipo2() {
+Widget _national(BuildContext context) {
   return Card(
     elevation: 1.0,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(1.0)),
@@ -257,31 +246,20 @@ Widget _cardTipo2() {
       children: <Widget>[
         ListTile(
           leading: Icon(Icons.add_circle_outline, color: Colors.pink),
-          onLongPress: () {},
           title: Text('Penalistas nacionales '),
           subtitle: Text('Transformación de la eduación'),
-        ),
-      ],
-    ),
-  );
-}
-
-Widget _cardTipo3() {
-  return Card(
-    elevation: 1.0,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-    child: Column(
-      children: <Widget>[
-        ListTile(
-          title: Text('Penalistas internacionales '),
-          subtitle: Text('transformación de la educación'),
-          leading: Icon(
-            Icons.remove_circle_outline,
-            color: Colors.pink,
-          ),
           onLongPress: () {},
         ),
-        new Image.asset('assets/img/sem2020.png'),
+        Divider(color: Colors.black),
+        ListTile(
+          leading: Icon(Icons.expand_less, color: Colors.pink),
+          title: Text('Penalistas nacionales '),
+          subtitle: Text('Transformación de la eduación'),
+          onLongPress: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Card()));
+          },
+        )
       ],
     ),
   );
