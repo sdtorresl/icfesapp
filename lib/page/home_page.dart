@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
-final textstyle = new TextStyle(fontSize: 25);
-final textstyle2 = new TextStyle(fontSize: 18);
+final textstyle = new TextStyle(fontSize: 25, color: Colors.white);
+final textstyle2 = new TextStyle(fontSize: 18, color: Colors.white);
+final textstyle3 = new TextStyle(fontSize: 18, color: Colors.black);
+final textstyle4 = new TextStyle(fontSize: 20, color: Colors.black);
+final textstyle5 = new TextStyle(fontSize: 16, color: Colors.black45);
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
@@ -13,34 +16,45 @@ class HomePage extends StatelessWidget {
         body: ListView(
           padding: EdgeInsets.all(10.0),
           children: <Widget>[
-            _view(),
+            _mainstart(),
+            _title(),
+            SizedBox(height: 30.0),
             _watch(),
-            SizedBox(height: 50.0),
+            _dateWatch(),
+            SizedBox(height: 30.0),
             _national(context),
             SizedBox(height: 1.0),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
-          currentIndex: 0,
           items: [
             BottomNavigationBarItem(
-              icon: new Icon(Icons.home, color: Colors.pink),
-              title: new Text('Home'),
-            ),
-            BottomNavigationBarItem(
-              icon: new Icon(Icons.people_outline, color: Colors.pink),
-              title: new Text('Salas'),
-            ),
-            BottomNavigationBarItem(
-              icon: new Icon(
-                Icons.calendar_view_day,
-                color: Colors.pink,
+              icon: Icon(Icons.home, color: Colors.pink[300]),
+              title: Text(
+                'Home',
+                style: textstyle3,
               ),
-              title: new Text('Seciones'),
             ),
             BottomNavigationBarItem(
-              icon: new Icon(Icons.more_horiz, color: Colors.pink),
-              title: new Text('Mas'),
+              icon: Icon(Icons.people_outline, color: Colors.black54),
+              title: Text(
+                'Salas',
+                style: textstyle3,
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.today, color: Colors.black54),
+              title: Text(
+                'Secciones',
+                style: textstyle3,
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.more_horiz, color: Colors.black54),
+              title: Text(
+                'Mas',
+                style: textstyle3,
+              ),
             ),
           ],
         ),
@@ -80,7 +94,7 @@ Widget _createButtons() {
       ),
       FloatingActionButton(
           backgroundColor: (Colors.pinkAccent),
-          elevation: 10.0,
+          elevation: 5.0,
           child: Icon(
             Icons.video_call,
             color: Colors.white,
@@ -88,16 +102,17 @@ Widget _createButtons() {
           onPressed: () {}),
       Expanded(
           child: SizedBox(
-        width: 20.0,
+        width: 40.0,
       )),
     ],
   );
 }
 
-Widget _view() {
+Widget _mainstart() {
   final card = Container(
     child: Column(
       children: <Widget>[
+        Container(padding: EdgeInsets.all(20)),
         Center(child: Text('Titulo', style: textstyle)),
         Container(
           padding: EdgeInsets.all(10),
@@ -125,29 +140,30 @@ Widget _view() {
   );
 }
 
-Widget _watch() {
-  Container(
+Widget _title() {
+  return Container(
       child: Column(
     children: <Widget>[
-      Text('Empieza nuestro conteo para el evento'),
-      Container(
-          padding: EdgeInsets.all(0),
-          child: Text(
-            'uuu',
-          ))
+      Container(padding: EdgeInsets.all(5)),
+      Text(
+        'Empieza nuestro conteo para el evento',
+        style: textstyle4,
+      ),
     ],
   ));
+}
+
+Widget _watch() {
   return Container(
       child: Row(
     children: <Widget>[
       Positioned(
         child: Container(
           height: 100.0,
-          width: 150.0,
+          width: 130.0,
           child: Stack(
             children: <Widget>[
               Positioned(
-                top: 25.0,
                 child: Container(
                   height: 70.0,
                   width: 100.0,
@@ -178,7 +194,6 @@ Widget _watch() {
           child: Stack(
             children: <Widget>[
               Positioned(
-                top: 25.0,
                 child: Container(
                   height: 70.0,
                   width: 100.0,
@@ -205,11 +220,10 @@ Widget _watch() {
       Positioned(
         child: Container(
           height: 100.0,
-          width: 100.0,
+          width: 130.0,
           child: Stack(
             children: <Widget>[
               Positioned(
-                top: 25.0,
                 child: Container(
                   height: 70.0,
                   width: 100.0,
@@ -238,6 +252,18 @@ Widget _watch() {
   ));
 }
 
+Widget _dateWatch() {
+  return Container(
+      child: Column(
+    children: <Widget>[
+      Text(
+        'Dias                     Horas                   Minutos',
+        style: textstyle3,
+      ),
+    ],
+  ));
+}
+
 Widget _national(BuildContext context) {
   return Card(
     elevation: 1.0,
@@ -246,18 +272,28 @@ Widget _national(BuildContext context) {
       children: <Widget>[
         ListTile(
           leading: Icon(Icons.add_circle_outline, color: Colors.pink),
-          title: Text('Penalistas nacionales '),
-          subtitle: Text('Transformación de la eduación'),
+          title: Text(
+            'Penalistas nacionales ',
+            style: textstyle3,
+          ),
+          subtitle: Text(
+            'Transformación de la eduación',
+            style: textstyle5,
+          ),
           onLongPress: () {},
         ),
         Divider(color: Colors.black),
         ListTile(
-          leading: Icon(Icons.expand_less, color: Colors.pink),
-          title: Text('Penalistas nacionales '),
-          subtitle: Text('Transformación de la eduación'),
+          leading: Icon(Icons.remove_circle_outline, color: Colors.pink),
+          title: Text('Penalistas nacionales ', style: textstyle3),
+          subtitle: Text(
+            'Transformación de la eduación',
+            style: textstyle5,
+          ),
           onLongPress: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Card()));
+            Container(
+              child: Image.asset('assets/img/Group 101.png'),
+            );
           },
         )
       ],
