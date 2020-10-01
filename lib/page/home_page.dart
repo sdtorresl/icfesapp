@@ -1,86 +1,72 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:icfesapp/common/expansion_card.dart';
+import 'package:icfesapp/page/documents_page.dart';
+import 'package:icfesapp/page/lobby_page.dart';
 
-final textstyle = new TextStyle(fontSize: 25, color: Colors.white);
-final textstyle2 = new TextStyle(fontSize: 18, color: Colors.white);
-final textstyle3 = new TextStyle(fontSize: 18, color: Colors.black);
-final textstyle4 = new TextStyle(fontSize: 20, color: Colors.black);
-final textstyle5 = new TextStyle(fontSize: 16, color: Colors.black45);
-
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+
+  static const List<Widget> _widgetOptions = <Widget>[
+    LobbyPage(),
+    DocumentsPage(),
+    LobbyPage(),
+    DocumentsPage()
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _topBar(context),
-      body: Container(
-        child: ListView(
-          padding: EdgeInsets.all(10.0),
-          children: <Widget>[
-            _mainstart(),
-            _mainTitle(),
-            _watch(),
-            _dateWatch(),
-            SizedBox(height: 30.0),
-            ExpansionCard(
-              title: "Ejemplo",
-              subtitle: "Ejemplo subtítulo",
-              picture: Image.asset('assets/img/sem2020.png'),
-            ),
-            ExpansionCard(
-              title: "Ejemplo",
-              subtitle: "Ejemplo subtítulo",
-              picture: Image.asset('assets/img/sem2020.png'),
-            ),
-            ExpansionCard(
-              title: "Ejemplo",
-              subtitle: "Ejemplo subtítulo",
-              picture: Image.asset('assets/img/sem2020.png'),
-            ),
-            ExpansionCard(
-              title: "Ejemplo",
-              subtitle: "Ejemplo subtítulo",
-              picture: Image.asset('assets/img/sem2020.png'),
-            ),
-          ],
-        ),
-      ),
+      body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.amber[800],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: Colors.pink[300]),
+            icon: Icon(
+              Icons.home,
+              color: Colors.black,
+            ),
             title: Text(
-              'Home',
-              style: textstyle3,
+              'Recepción',
             ),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.people_outline, color: Colors.black54),
+            icon: Icon(Icons.people_outline),
             title: Text(
               'Salas',
-              style: textstyle3,
             ),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.today, color: Colors.black54),
+            icon: Icon(Icons.today),
             title: Text(
-              'Secciones',
-              style: textstyle3,
+              'Agenda',
             ),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.more_horiz, color: Colors.black54),
+            icon: Icon(Icons.more_horiz),
             title: Text(
               'Mas',
-              style: textstyle3,
             ),
           ),
         ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: _createButtons(),
     );
   }
@@ -109,191 +95,15 @@ class HomePage extends StatelessWidget {
 }
 
 Widget _createButtons() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.end,
-    children: <Widget>[
-      SizedBox(
-        width: 180,
+  return Container(
+    margin: EdgeInsets.only(bottom: 10),
+    child: FloatingActionButton(
+      elevation: 5.0,
+      child: Icon(
+        Icons.video_call,
+        color: Colors.white,
       ),
-      FloatingActionButton(
-          backgroundColor: (Colors.pinkAccent),
-          elevation: 5.0,
-          child: Icon(
-            Icons.video_call,
-            color: Colors.white,
-          ),
-          onPressed: () {}),
-      Expanded(
-        child: SizedBox(
-          width: 40.0,
-        ),
-      ),
-    ],
-  );
-}
-
-Widget _mainstart() {
-  final card = Container(
-    child: Column(
-      children: <Widget>[
-        Container(padding: EdgeInsets.all(25)),
-        Center(child: Text('Titulo', style: textstyle)),
-        Container(
-          padding: EdgeInsets.all(16),
-        ),
-        new Image.asset('assets/img/Group 6.png'),
-        Container(
-            padding: EdgeInsets.all(10),
-            child: Text(
-              'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
-              style: textstyle2,
-            ))
-      ],
-    ),
-  );
-  return Container(
-    decoration: new BoxDecoration(
-      image: new DecorationImage(
-        fit: BoxFit.cover,
-        image: AssetImage("assets/img/Group 194.png"),
-      ),
-    ),
-    child: ClipRRect(
-      borderRadius: BorderRadius.circular(40),
-      child: card,
-    ),
-  );
-}
-
-Widget _mainTitle() {
-  return Container(
-    padding: EdgeInsets.all(24),
-    child: Text(
-      "Empieza nuestro conteo para el evento",
-      style: textstyle4,
-    ),
-  );
-}
-
-Widget _watch() {
-  return Container(
-    child: Row(
-      children: <Widget>[
-        Positioned(
-          child: Container(
-            height: 100.0,
-            width: 120.0,
-            child: Stack(
-              children: <Widget>[
-                Positioned(
-                  child: Container(
-                    height: 70.0,
-                    width: 100.0,
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 5, color: Colors.blue),
-                        shape: BoxShape.circle,
-                        color: Colors.lightBlue[900]),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          '03',
-                          style: textstyle,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        Positioned(
-          child: Container(
-            height: 100.0,
-            width: 120.0,
-            child: Stack(
-              children: <Widget>[
-                Positioned(
-                  child: Container(
-                    height: 70.0,
-                    width: 100.0,
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 5, color: Colors.blue),
-                        shape: BoxShape.circle,
-                        color: Colors.lightBlue[900]),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          '72',
-                          style: textstyle,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        Positioned(
-          child: Container(
-            height: 100.0,
-            width: 120.0,
-            child: Stack(
-              children: <Widget>[
-                Positioned(
-                  child: Container(
-                    height: 70.0,
-                    width: 100.0,
-                    decoration: BoxDecoration(
-                      border: Border.all(width: 5, color: Colors.blue),
-                      shape: BoxShape.circle,
-                      color: Colors.lightBlue[900],
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          '00',
-                          style: textstyle,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-Widget _dateWatch() {
-  return Container(
-    child: Row(
-      children: <Widget>[
-        Positioned(
-          child: Container(
-            height: 100.0,
-            width: 120.0,
-            child: Stack(
-              children: <Widget>[
-                Text(
-                  'dias',
-                  style: textstyle3,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
+      onPressed: () {},
     ),
   );
 }
