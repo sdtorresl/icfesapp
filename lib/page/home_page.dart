@@ -1,8 +1,7 @@
-import 'dart:html';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:icfesapp/common/expansion_card.dart';
 
 final textstyle = new TextStyle(fontSize: 25, color: Colors.white);
 final textstyle2 = new TextStyle(fontSize: 18, color: Colors.white);
@@ -26,9 +25,11 @@ class HomePage extends StatelessWidget {
             _watch(),
             _dateWatch(),
             SizedBox(height: 30.0),
-            Expanded(
-              child: _national(context),
-            ),
+            ExpansionCard(
+              title: "Ejemplo",
+              subtitle: "Ejemplo subtítulo",
+              picture: Image.asset('assets/img/sem2020.png'),
+            )
           ],
         ),
       ),
