@@ -15,9 +15,9 @@ class DocumentDownload extends StatelessWidget {
     return Card(
       elevation: 2.0,
       margin: EdgeInsets.only(bottom: 20),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: ListTile(
         contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         leading: Icon(this.icon, color: Colors.black26),
         onLongPress: () {},
         title: Text(this.title, style: textStyle2),
