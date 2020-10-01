@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:icfesapp/page/documents_page.dart';
 import 'package:icfesapp/page/lobby_page.dart';
+import 'package:icfesapp/page/rooms_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
@@ -16,7 +17,7 @@ class _HomePageState extends State<HomePage> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     LobbyPage(),
-    DocumentsPage(),
+    RoomsPage(),
     LobbyPage(),
     DocumentsPage()
   ];

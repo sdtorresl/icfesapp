@@ -48,6 +48,7 @@ class _ExpansionCardState extends State<ExpansionCard> {
             setState(() {
               _expanded = changed;
             });
+            widget.onChanged.call();
           },
           initiallyExpanded: _expanded,
         ),
