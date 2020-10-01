@@ -36,7 +36,7 @@ class _ExpansionCardState extends State<ExpansionCard> {
                 ),
           title: Text(
             widget.title,
-            //style: textstyle3,
+            style: Theme.of(context).textTheme.headline3,
           ),
           subtitle: Text(
             widget.subtitle, /*  style: textstyle5 */

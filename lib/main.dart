@@ -30,6 +30,19 @@ class IcfesApp extends StatelessWidget {
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        textTheme: TextTheme(
+          headline1: TextStyle(fontSize: 20.0, fontFamily: 'Poppins'),
+          headline2: TextStyle(fontSize: 19.0, fontFamily: 'Poppins'),
+          headline3: TextStyle(fontSize: 18.0, fontFamily: 'Poppins'),
+          headline4: TextStyle(fontSize: 17.0, fontFamily: 'Poppins'),
+          headline5: TextStyle(fontSize: 16.0, fontFamily: 'Poppins'),
+          bodyText1: TextStyle(fontSize: 14.0, fontFamily: 'MontserratLight'),
+          bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Montserrat'),
+          subtitle1: TextStyle(fontSize: 12.0, fontFamily: 'Montserrat'),
+          subtitle2: TextStyle(fontSize: 12.0, fontFamily: 'Montserrat'),
+          caption: TextStyle(fontSize: 14.0, fontFamily: 'Montserrat'),
+          button: TextStyle(fontSize: 14.0, fontFamily: 'Montserrat'),
+        ),
       ),
       home: HomePage(),
     );

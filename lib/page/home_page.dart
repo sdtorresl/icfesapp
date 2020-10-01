@@ -29,7 +29,22 @@ class HomePage extends StatelessWidget {
               title: "Ejemplo",
               subtitle: "Ejemplo subtítulo",
               picture: Image.asset('assets/img/sem2020.png'),
-            )
+            ),
+            ExpansionCard(
+              title: "Ejemplo",
+              subtitle: "Ejemplo subtítulo",
+              picture: Image.asset('assets/img/sem2020.png'),
+            ),
+            ExpansionCard(
+              title: "Ejemplo",
+              subtitle: "Ejemplo subtítulo",
+              picture: Image.asset('assets/img/sem2020.png'),
+            ),
+            ExpansionCard(
+              title: "Ejemplo",
+              subtitle: "Ejemplo subtítulo",
+              picture: Image.asset('assets/img/sem2020.png'),
+            ),
           ],
         ),
       ),
