@@ -297,35 +297,3 @@ Widget _dateWatch() {
     ),
   );
 }
-
-/* child: Text(
-      "Dias  Horas  Minutos",
-      style: textstyle3,
-    ),*/
-
-Widget _national(context) {
-  return Card(
-    child: Padding(
-      padding: EdgeInsets.only(
-        top: 25,
-        left: 26,
-        right: 27,
-        bottom: 1,
-      ),
-      child: ExpansionTile(
-        trailing: Icon(
-          Icons.add_circle_outline,
-          color: Colors.pink,
-        ),
-        title: Text(
-          'Penalistas nacionales',
-          style: textstyle3,
-        ),
-        subtitle: Text('Transformación de la eduacuón', style: textstyle5),
-        children: <Widget>[
-          Image.asset('assets/img/sem2020.png'),
-        ],
-      ),
-    ),
-  );
-}
