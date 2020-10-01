@@ -21,7 +21,7 @@ class DocumentsPage extends StatelessWidget {
               SizedBox(height: 20),
               Expanded(
                 child: _listDocuments(),
-              )
+              ),
             ],
           ),
         ),
