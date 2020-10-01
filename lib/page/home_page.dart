@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:icfesapp/common/fab_bottom_app_bar.dart';
 import 'package:icfesapp/page/documents_page.dart';
 import 'package:icfesapp/page/lobby_page.dart';
 import 'package:icfesapp/page/rooms_page.dart';
@@ -33,42 +34,19 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: _topBar(context),
       body: _widgetOptions.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.amber[800],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+      bottomNavigationBar: FABBottomAppBar(
+        onTabSelected: _onItemTapped,
+        selectedColor: Theme.of(context).accentColor,
+        color: Colors.grey,
         items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: Colors.black,
-            ),
-            title: Text(
-              'Recepción',
-            ),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.people_outline),
-            title: Text(
-              'Salas',
-            ),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.today),
-            title: Text(
-              'Agenda',
-            ),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.more_horiz),
-            title: Text(
-              'Mas',
-            ),
-          ),
+          FABBottomAppBarItem(iconData: Icons.home, text: 'Recepción'),
+          FABBottomAppBarItem(iconData: Icons.people_outline, text: 'Salas'),
+          FABBottomAppBarItem(iconData: Icons.today, text: 'Agenda'),
+          FABBottomAppBarItem(iconData: Icons.more_horiz, text: 'Más'),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: _createButtons(),
+      floatingActionButton: _transmisionButton(),
     );
   }
 
@@ -95,7 +73,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-Widget _createButtons() {
+Widget _transmisionButton() {
   return Container(
     margin: EdgeInsets.only(bottom: 10),
     child: FloatingActionButton(

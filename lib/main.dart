@@ -8,9 +8,13 @@ void main() {
 }
 
 class IcfesApp extends StatelessWidget {
-  final Color purple = Color(0xff9e2aa4);
-  final Color yellow = Color(0xffF6C500);
-  final Color red = Color(0xFFEA002B);
+  final Color accent = Color(0xffe7326e);
+  final Color accentLight = Color(0xffff6c9c);
+  final Color accentDark = Color(0xffaf0043);
+  final Color primary = Color(0xff0074ca);
+  final Color primaryLight = Color(0xff5ba2fe);
+  final Color primaryDark = Color(0xff004999);
+  final Color grey = Color(0xffcccccc);
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +24,14 @@ class IcfesApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'MontserratLight',
-        primaryColor: purple,
-        primaryColorLight: Color(0xffd25ed6),
-        primaryColorDark: Color(0xff570A5B),
-        accentColor: yellow,
-        hintColor: Color(0xFF797979),
-        buttonColor: red,
-        errorColor: red,
-        colorScheme: ColorScheme.light(primary: purple, secondary: yellow),
+        primaryColor: primary,
+        primaryColorLight: primaryLight,
+        primaryColorDark: primaryDark,
+        accentColor: accent,
+        colorScheme: ColorScheme.light(primary: primary, secondary: accent),
         buttonTheme: ButtonThemeData(
-          buttonColor: yellow,
-          disabledColor: Color(0x99fff84f),
+          buttonColor: accent,
+          disabledColor: grey,
           padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(3),
