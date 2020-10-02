@@ -18,10 +18,10 @@ class LobbyPage extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.all(10.0),
         children: <Widget>[
-          _mainstart(),
-          _mainTitle(),
-          _watch(),
-          _dateWatch(),
+          _mainstart(context),
+          _mainTitle(context),
+          _watch(context),
+          _dateWatch(context),
           SizedBox(height: 30.0),
           ExpansionCard(
             title: "Ejemplo",
@@ -49,12 +49,16 @@ class LobbyPage extends StatelessWidget {
   }
 }
 
-Widget _mainstart() {
+Widget _mainstart(context) {
   final card = Container(
     child: Column(
       children: <Widget>[
         Container(padding: EdgeInsets.all(25)),
-        Center(child: Text('Titulo', style: textstyle)),
+        Center(
+            child: Text(
+          'Titulo',
+          style: Theme.of(context).textTheme.headline1,
+        )),
         Container(
           padding: EdgeInsets.all(16),
         ),
@@ -63,7 +67,7 @@ Widget _mainstart() {
             padding: EdgeInsets.all(10),
             child: Text(
               'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
-              style: textstyle2,
+              style: Theme.of(context).textTheme.bodyText1,
             ))
       ],
     ),
@@ -82,17 +86,17 @@ Widget _mainstart() {
   );
 }
 
-Widget _mainTitle() {
+Widget _mainTitle(context) {
   return Container(
     padding: EdgeInsets.all(24),
     child: Text(
       "Empieza nuestro conteo para el evento",
-      style: textstyle4,
+      style: Theme.of(context).textTheme.headline2,
     ),
   );
 }
 
-Widget _watch() {
+Widget _watch(context) {
   return Container(
     child: Row(
       children: <Widget>[
@@ -116,7 +120,7 @@ Widget _watch() {
                       children: <Widget>[
                         Text(
                           '03',
-                          style: textstyle,
+                          style: Theme.of(context).textTheme.caption,
                         ),
                       ],
                     ),
@@ -146,7 +150,7 @@ Widget _watch() {
                       children: <Widget>[
                         Text(
                           '72',
-                          style: textstyle,
+                          style: Theme.of(context).textTheme.caption,
                         ),
                       ],
                     ),
@@ -177,7 +181,7 @@ Widget _watch() {
                       children: <Widget>[
                         Text(
                           '00',
-                          style: textstyle,
+                          style: Theme.of(context).textTheme.caption,
                         ),
                       ],
                     ),
@@ -192,7 +196,7 @@ Widget _watch() {
   );
 }
 
-Widget _dateWatch() {
+Widget _dateWatch(context) {
   return Container(
     child: Row(
       children: <Widget>[
