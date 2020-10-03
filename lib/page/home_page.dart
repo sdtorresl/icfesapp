@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:icfesapp/common/fab_bottom_app_bar.dart';
 import 'package:icfesapp/page/documents_page.dart';
+import 'package:icfesapp/page/events_schedule.dart';
 import 'package:icfesapp/page/lobby_page.dart';
 import 'package:icfesapp/page/rooms_page.dart';
 
@@ -19,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   static const List<Widget> _widgetOptions = <Widget>[
     LobbyPage(),
     RoomsPage(),
-    LobbyPage(),
+    SchedulePage(),
     DocumentsPage()
   ];
 

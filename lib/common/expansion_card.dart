@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 class ExpansionCard extends StatefulWidget {
   final String title;
-  final String time;
+  final String starDate;
   final String subtitle;
   final Widget picture;
   final Function() onChanged;
 
   const ExpansionCard({
     Key key,
-    this.time,
+    this.starDate,
     this.title,
     this.subtitle,
     this.picture,
@@ -25,39 +25,44 @@ class _ExpansionCardState extends State<ExpansionCard> {
 
   @override
   Widget build(BuildContext context) {
+    var expansionTile = ExpansionTile(
+      trailing: _expanded
+          ? Icon(
+              Icons.remove_circle_outline,
+              color: Colors.pink,
+            )
+          : Icon(
+              Icons.add_circle_outline,
+              color: Colors.pink,
+            ),
+      leading: Text(
+        widget.starDate,
+        style: Theme.of(context).textTheme.headline3,
+      ),
+      title: Text(
+        widget.title,
+        style: Theme.of(context).textTheme.headline3,
+      ),
+      subtitle: Text(
+        widget.subtitle,
+      ),
+      children: <Widget>[widget.picture],
+      onExpansionChanged: (changed) {
+        setState(() {
+          _expanded = changed;
+        });
+        if (widget.onChanged != null) {
+          widget.onChanged.call();
+        }
+      },
+      initiallyExpanded: _expanded,
+    );
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       elevation: 2.0,
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-        child: ExpansionTile(
-          trailing: _expanded
-              ? Icon(
-                  Icons.remove_circle_outline,
-                  color: Colors.pink,
-                )
-              : Icon(
-                  Icons.add_circle_outline,
-                  color: Colors.pink,
-                ),
-          title: Text(
-            widget.title,
-            style: Theme.of(context).textTheme.headline3,
-          ),
-          subtitle: Text(
-            widget.subtitle, /*  style: textstyle5 */
-          ),
-          children: <Widget>[widget.picture],
-          onExpansionChanged: (changed) {
-            setState(() {
-              _expanded = changed;
-            });
-            if (widget.onChanged != null) {
-              widget.onChanged.call();
-            }
-          },
-          initiallyExpanded: _expanded,
-        ),
+        child: expansionTile,
       ),
     );
   }

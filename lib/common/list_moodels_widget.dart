@@ -17,7 +17,7 @@ class RoomList extends StatelessWidget {
           itemBuilder: (context, index) {
             String _pictureUrl = _baseUrl + rooms[index].picture;
             return ExpansionCard(
-              time: rooms[index].startDate,
+              starDate: rooms[index].startDate,
               title: rooms[index].title,
               subtitle: rooms[index].description,
               picture: CachedNetworkImage(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:icfesapp/common/list_moodels_widget.dart';
 import 'package:icfesapp/providers/rooms_provider.dart';
-import 'package:icfesapp/src/widgets/list_moodels_widget.dart';
 
 class RoomsPage extends StatelessWidget {
   const RoomsPage({Key key}) : super(key: key);

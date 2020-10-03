@@ -54,7 +54,7 @@ class IcfesApp extends StatelessWidget {
             fontFamily: 'Poppins',
             color: Colors.black,
           ),
-          headline4: TextStyle(fontSize: 17.0, fontFamily: 'Poppins'),
+          headline4: TextStyle(fontSize: 18.0, fontFamily: 'MontserratRegular'),
           headline5: TextStyle(fontSize: 16.0, fontFamily: 'Poppins'),
           bodyText1: TextStyle(
             fontSize: 12.0,
