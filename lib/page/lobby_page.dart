@@ -3,11 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:icfesapp/common/expansion_card.dart';
 
-final textstyle = new TextStyle(fontSize: 25, color: Colors.white);
-final textstyle2 = new TextStyle(fontSize: 18, color: Colors.white);
 final textstyle3 = new TextStyle(fontSize: 18, color: Colors.black);
-final textstyle4 = new TextStyle(fontSize: 20, color: Colors.black);
-final textstyle5 = new TextStyle(fontSize: 16, color: Colors.black45);
 
 class LobbyPage extends StatelessWidget {
   const LobbyPage({Key key}) : super(key: key);

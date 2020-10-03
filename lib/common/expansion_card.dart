@@ -2,13 +2,19 @@ import 'package:flutter/material.dart';
 
 class ExpansionCard extends StatefulWidget {
   final String title;
+  final String time;
   final String subtitle;
-  final Image picture;
+  final Widget picture;
   final Function() onChanged;
 
-  const ExpansionCard(
-      {Key key, this.title, this.subtitle, this.picture, this.onChanged})
-      : super(key: key);
+  const ExpansionCard({
+    Key key,
+    this.time,
+    this.title,
+    this.subtitle,
+    this.picture,
+    this.onChanged,
+  }) : super(key: key);
 
   @override
   _ExpansionCardState createState() => _ExpansionCardState();
@@ -41,9 +47,7 @@ class _ExpansionCardState extends State<ExpansionCard> {
           subtitle: Text(
             widget.subtitle, /*  style: textstyle5 */
           ),
-          children: <Widget>[
-            widget.picture,
-          ],
+          children: <Widget>[widget.picture],
           onExpansionChanged: (changed) {
             setState(() {
               _expanded = changed;
