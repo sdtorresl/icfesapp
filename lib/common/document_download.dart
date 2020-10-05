@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-final textStyle2 = new TextStyle(fontSize: 18, color: Colors.black);
-
 class DocumentDownload extends StatelessWidget {
   final String title;
   final IconData icon;
@@ -20,7 +18,11 @@ class DocumentDownload extends StatelessWidget {
         contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         leading: Icon(this.icon, color: Colors.black26),
         onLongPress: () {},
-        title: Text(this.title, style: textStyle2),
+        title: Text(this.title,
+            style: Theme.of(context)
+                .textTheme
+                .bodyText1
+                .copyWith(color: Colors.black)),
       ),
     );
   }

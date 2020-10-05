@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icfesapp/common/document_download.dart';
 
-final textStyle = new TextStyle(fontSize: 25, color: Colors.black);
-final textStyle2 = new TextStyle(fontSize: 18, color: Colors.black);
-
 class DocumentsPage extends StatelessWidget {
   const DocumentsPage({Key key}) : super(key: key);
 
@@ -15,7 +12,7 @@ class DocumentsPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          _mainTitle(),
+          _mainTitle(context),
           SizedBox(height: 20),
           Expanded(
             child: _listDocuments(),
@@ -52,11 +49,12 @@ class DocumentsPage extends StatelessWidget {
     );
   }
 
-  Widget _mainTitle() {
+  Widget _mainTitle(context) {
     return Container(
       child: Text(
         "Documentos",
-        style: textStyle,
+        style:
+            Theme.of(context).textTheme.headline1.copyWith(color: Colors.black),
       ),
     );
   }
