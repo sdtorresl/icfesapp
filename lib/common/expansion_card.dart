@@ -9,12 +9,15 @@ class ExpansionCard extends StatefulWidget {
 
   const ExpansionCard({
     Key key,
-    this.starDate,
-    this.title,
-    this.subtitle,
-    this.picture,
+    @required this.starDate,
+    @required this.title,
+    @required this.subtitle,
+    @required this.picture,
     this.onChanged,
-  }) : super(key: key);
+  })  : assert(title != null),
+        assert(starDate != null),
+        assert(subtitle != null),
+        super(key: key);
 
   @override
   _ExpansionCardState createState() => _ExpansionCardState();
