@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icfesapp/common/expansion_list_navegation.dart';
-import 'package:icfesapp/common/list_schedule_widget.dart';
+
+import 'package:icfesapp/common/schedule_list..dart';
 import 'package:icfesapp/providers/schedule_provider.dart';
 
 class SchedulePage extends StatelessWidget {
@@ -9,14 +10,14 @@ class SchedulePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: ListView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           _principalTile(context),
           SizedBox(height: 30.0),
           _titleSchedule(context),
-          ExpansionList(),
-          _listSchedule(context),
-          SizedBox(height: 30.0),
+          ListNavegationStatefulWidget(),
+          Expanded(child: _listSchedule(context)),
         ],
       ),
     );

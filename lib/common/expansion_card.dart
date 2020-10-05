@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ExpansionCard extends StatefulWidget {
-  final String title;
   final String starDate;
+  final String title;
   final String subtitle;
   final Widget picture;
   final Function() onChanged;
@@ -35,13 +35,18 @@ class _ExpansionCardState extends State<ExpansionCard> {
               Icons.add_circle_outline,
               color: Colors.pink,
             ),
-      leading: Text(
-        widget.starDate,
-        style: Theme.of(context).textTheme.headline3,
-      ),
-      title: Text(
-        widget.title,
-        style: Theme.of(context).textTheme.headline3,
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            widget.starDate,
+            style: Theme.of(context).textTheme.headline5,
+          ),
+          Text(
+            widget.title,
+            style: Theme.of(context).textTheme.headline2,
+          )
+        ],
       ),
       subtitle: Text(
         widget.subtitle,

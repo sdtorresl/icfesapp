@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:icfesapp/common/expansion_card.dart';
-import 'package:icfesapp/models/room_model.dart';
+import 'package:icfesapp/models/schedule_list.dart';
 
 class ScheduleList extends StatelessWidget {
-  final List<RoomModel> schedules;
+  final List<ScheduleModel> schedules;
 
   ScheduleList({@required this.schedules});
 

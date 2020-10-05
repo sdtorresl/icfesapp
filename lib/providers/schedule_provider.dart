@@ -1,11 +1,11 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert' as json;
-import 'package:icfesapp/models/room_model.dart';
+import 'package:icfesapp/models/schedule_list.dart';
 
 class ScheduleProvider {
-  final String _url = "https://dev-eweb.us.seedcloud.co/json-salas";
+  final String _url = "https://dev-eweb.us.seedcloud.co/json-sesiones";
 
-  Future<List<RoomModel>> getSchedule() async {
+  Future<List<ScheduleModel>> getSchedule() async {
     try {
       var response = await http.get(_url);
 
@@ -14,10 +14,10 @@ class ScheduleProvider {
       if (response.statusCode == 200) {
         print(response.body);
         List<dynamic> jsonResponse = json.jsonDecode(response.body);
-        List<RoomModel> schedules = List();
+        List<ScheduleModel> schedules = List();
 
         for (var item in jsonResponse) {
-          RoomModel schedule = RoomModel.fromMap(item);
+          ScheduleModel schedule = ScheduleModel.fromJson(item);
           schedules.add(schedule);
           print(schedule);
         }

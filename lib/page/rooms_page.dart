@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:icfesapp/common/list_moodels_widget.dart';
+import 'package:icfesapp/common/room_list.dart';
 import 'package:icfesapp/providers/rooms_provider.dart';
 
 class RoomsPage extends StatelessWidget {
