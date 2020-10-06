@@ -17,11 +17,8 @@ class _ListNavegationStatefulWidgetState
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(3),
-        color: Color.fromRGBO(243, 243, 243, 1),
       ),
-      margin: EdgeInsets.only(
-          left: MediaQuery.of(context).size.width / 4,
-          right: MediaQuery.of(context).size.width / 10),
+      width: MediaQuery.of(context).size.width,
       child: DropdownButton(
         value: _value,
         underline: Container(

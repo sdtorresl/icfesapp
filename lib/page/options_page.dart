@@ -14,7 +14,6 @@ class SocialNetworkPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          SizedBox(height: 20.0),
           _socialTitle(context),
           SizedBox(height: 20.0),
           DocumentInterest(
@@ -38,7 +37,8 @@ class SocialNetworkPage extends StatelessWidget {
       child: Text(
         'Más opciones',
         textAlign: TextAlign.right,
-        style: Theme.of(context).textTheme.headline2,
+        style:
+            Theme.of(context).textTheme.headline1.copyWith(color: Colors.black),
       ),
     );
   }

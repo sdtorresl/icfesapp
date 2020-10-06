@@ -13,36 +13,32 @@ class SchedulePage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          _principalTile(context),
-          SizedBox(height: 30.0),
-          _titleSchedule(context),
-          ListNavegationStatefulWidget(),
-          SizedBox(
-            height: 20,
+          Container(
+            padding: EdgeInsets.all(25),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Agenda',
+                  style: Theme.of(context).textTheme.headline1.copyWith(
+                        color: Colors.black,
+                      ),
+                ),
+                SizedBox(height: 30.0),
+                Text(
+                  'Selecciona la sala ',
+                  style: Theme.of(context).textTheme.headline4,
+                ),
+                ListNavegationStatefulWidget(),
+              ],
+            ),
           ),
+          SizedBox(height: 20),
           Expanded(child: _listSchedule(context))
         ],
       ),
     );
   }
-}
-
-Widget _principalTile(context) {
-  return Container(
-      child: Text(
-    'Agenda',
-    textAlign: TextAlign.right,
-    style: Theme.of(context).textTheme.headline2,
-  ));
-}
-
-Widget _titleSchedule(context) {
-  return Container(
-      child: Text(
-    'Selecciona la sala ',
-    textAlign: TextAlign.right,
-    style: Theme.of(context).textTheme.headline4,
-  ));
 }
 
 final scheduleProvider = ScheduleProvider();
