@@ -53,4 +53,7 @@ class EventModel {
         "sections": List<dynamic>.from(sections.map((x) => x.toMap())),
         "documents": List<dynamic>.from(documents.map((x) => x.toMap())),
       };
+
+  @override
+  String toString() => this.toJson();
 }

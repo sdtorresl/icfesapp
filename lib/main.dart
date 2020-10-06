@@ -75,7 +75,7 @@ class IcfesApp extends StatelessWidget {
           ),
           button: TextStyle(
             fontSize: 10.0,
-            fontFamily: 'Montserralight',
+            fontFamily: 'MontserraLight',
           ),
         ),
       ),
