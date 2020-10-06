@@ -44,7 +44,5 @@ class RoomModel {
       };
 
   @override
-  String toString() {
-    return this.toJson();
-  }
+  String toString() => this.toJson();
 }

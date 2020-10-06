@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-
 import 'package:icfesapp/page/home_page.dart';
 
 void main() {
@@ -8,20 +6,20 @@ void main() {
 }
 
 class IcfesApp extends StatelessWidget {
-  final Color accent = Color(0xffe7326e);
-  final Color accentLight = Color(0xffff6c9c);
-  final Color accentDark = Color(0xffaf0043);
-  final Color primary = Color(0xff0074ca);
-  final Color primaryLight = Color(0xff5ba2fe);
-  final Color primaryDark = Color(0xff004999);
-  final Color grey = Color(0xffcccccc);
+  Color get accent => Color(0xffe7326e);
+  Color get accentLight => Color(0xffff6c9c);
+  Color get accentDark => Color(0xffaf0043);
+  Color get primary => Color(0xff0074ca);
+  Color get primaryLight => Color(0xff5ba2fe);
+  Color get primaryDark => Color(0xff004999);
+  Color get grey => Color(0xfff3f3f3);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ICFES App',
-      debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'MontserratLight',
         primaryColor: primary,
@@ -39,8 +37,8 @@ class IcfesApp extends StatelessWidget {
         ),
         textTheme: TextTheme(
           headline1: TextStyle(
-              fontSize: 16.0,
-              fontFamily: 'Poppinsmedium',
+              fontSize: 22.0,
+              fontFamily: 'PoppinsMedium',
               color: Colors.white,
               fontWeight: FontWeight.bold),
           headline2: TextStyle(
@@ -50,7 +48,7 @@ class IcfesApp extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
           headline3: TextStyle(
-            fontSize: 14.0,
+            fontSize: 20.0,
             fontFamily: 'Poppins',
             color: Colors.black,
           ),
@@ -78,7 +76,7 @@ class IcfesApp extends StatelessWidget {
           ),
           button: TextStyle(
             fontSize: 10.0,
-            fontFamily: 'Montserralight',
+            fontFamily: 'MontserraLight',
           ),
         ),
       ),

@@ -50,11 +50,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    #- assets/img/backgrounds/
-    # - assets/img/icons/
       - assets/img/
-    #- images/a_dot_burr.jpeg
-    #- images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -70,6 +66,10 @@ flutter:
   fonts:
     - family: Montserrat
       fonts:
+        - asset: assets/fonts/Montserrat/Montserrat-Regular.ttf
+
+    - family: MontserratMedium
+      fonts:
         - asset: assets/fonts/Montserrat/Montserrat-Medium.ttf
     
     - family: MontserratLight
@@ -78,8 +78,12 @@ flutter:
 
     - family: Poppins
       fonts:
-        - asset: assets/fonts/Poppins/Poppins-Medium.ttf
+        - asset: assets/fonts/Poppins/Poppins-Regular.ttf
     
+    - family: PoppinsMedium
+      fonts:
+        - asset: assets/fonts/Poppins/Poppins-Medium.ttf
+
     - family: PoppinsLight
       fonts:
         - asset: assets/fonts/Poppins/Poppins-Light.ttf

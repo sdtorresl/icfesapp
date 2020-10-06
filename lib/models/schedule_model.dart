@@ -1,11 +1,8 @@
+// To parse this JSON data, do
+//
+//     final scheduleModel = scheduleModelFromMap(jsonString);
+
 import 'dart:convert';
-
-List<ScheduleModel> scheduleModelFromJson(String str) =>
-    List<ScheduleModel>.from(
-        json.decode(str).map((x) => ScheduleModel.fromJson(x)));
-
-String scheduleModelToJson(List<ScheduleModel> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class ScheduleModel {
   ScheduleModel({
@@ -26,7 +23,12 @@ class ScheduleModel {
   String icon;
   String room;
 
-  factory ScheduleModel.fromJson(Map<String, dynamic> json) => ScheduleModel(
+  factory ScheduleModel.fromJson(String str) =>
+      ScheduleModel.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory ScheduleModel.fromMap(Map<String, dynamic> json) => ScheduleModel(
         title: json["title"],
         description: json["description"],
         picture: json["picture"],
@@ -36,7 +38,7 @@ class ScheduleModel {
         room: json["room"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toMap() => {
         "title": title,
         "description": description,
         "picture": picture,
@@ -45,4 +47,7 @@ class ScheduleModel {
         "icon": icon,
         "room": room,
       };
+
+  @override
+  toString() => this.toJson();
 }

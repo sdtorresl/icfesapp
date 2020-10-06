@@ -1,6 +1,6 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert' as json;
-import 'package:icfesapp/models/schedule_list.dart';
+import 'package:icfesapp/models/schedule_model.dart';
 
 class ScheduleProvider {
   final String _url = "https://dev-eweb.us.seedcloud.co/json-sesiones";
@@ -17,7 +17,8 @@ class ScheduleProvider {
         List<ScheduleModel> schedules = List();
 
         for (var item in jsonResponse) {
-          ScheduleModel schedule = ScheduleModel.fromJson(item);
+          print(item);
+          ScheduleModel schedule = ScheduleModel.fromMap(item);
           schedules.add(schedule);
           print(schedule);
         }
@@ -27,7 +28,6 @@ class ScheduleProvider {
         print('Request failed with status: ${response.statusCode}.');
       }
     } catch (Exception) {
-      print("Aqui");
       print(Exception);
     }
 

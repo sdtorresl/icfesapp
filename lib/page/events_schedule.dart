@@ -51,17 +51,18 @@ Widget _listSchedule(context) {
     decoration: BoxDecoration(color: Color.fromRGBO(243, 243, 243, 1)),
   );
   return FutureBuilder(
-      future: scheduleProvider.getSchedule(),
-      builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
-        if (snapshot.hasData) {
-          return ScheduleList(schedules: snapshot.data);
-        } else {
-          return Container(
-            height: 400,
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        }
-      });
+    future: scheduleProvider.getSchedule(),
+    builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+      if (snapshot.hasData) {
+        return ScheduleList(schedules: snapshot.data);
+      } else {
+        return Container(
+          height: 400,
+          child: Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
+      }
+    },
+  );
 }
