@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:icfesapp/common/fab_bottom_app_bar.dart';
-import 'package:icfesapp/page/schedule_page.dart';
-import 'package:icfesapp/page/lobby_page.dart';
-import 'package:icfesapp/page/rooms_page.dart';
-import 'package:icfesapp/page/options_page.dart';
+import 'package:icfesapp/pages/schedule_page.dart';
+import 'package:icfesapp/pages/lobby_page.dart';
+import 'package:icfesapp/pages/rooms_page.dart';
+import 'package:icfesapp/pages/options_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
