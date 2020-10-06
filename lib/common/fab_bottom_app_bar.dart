@@ -67,7 +67,8 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
   }
 
   Widget _buildMiddleTabItem() {
-    return Expanded(
+    return Container(
+      width: 20,
       child: SizedBox(
         height: widget.height,
         child: Column(
