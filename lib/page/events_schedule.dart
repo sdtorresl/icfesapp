@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:icfesapp/common/expansion_list_navegation.dart';
+import 'package:icfesapp/common/rooms_dropdown.dart';
 
 import 'package:icfesapp/common/schedule_list..dart';
 import 'package:icfesapp/providers/schedule_provider.dart';

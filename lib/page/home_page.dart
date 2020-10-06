@@ -5,7 +5,7 @@ import 'package:icfesapp/common/fab_bottom_app_bar.dart';
 import 'package:icfesapp/page/events_schedule.dart';
 import 'package:icfesapp/page/lobby_page.dart';
 import 'package:icfesapp/page/rooms_page.dart';
-import 'package:icfesapp/page/social_networks_page.dart';
+import 'package:icfesapp/page/options_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
