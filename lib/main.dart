@@ -44,9 +44,9 @@ class IcfesApp extends StatelessWidget {
               color: Colors.white,
               fontWeight: FontWeight.bold),
           headline2: TextStyle(
-            fontSize: 16.0,
+            fontSize: 18.0,
             fontFamily: 'PoppinsMedium',
-            color: Colors.black,
+            color: Colors.black87,
             fontWeight: FontWeight.bold,
           ),
           headline3: TextStyle(
@@ -55,19 +55,22 @@ class IcfesApp extends StatelessWidget {
             color: Colors.black,
           ),
           headline4: TextStyle(fontSize: 18.0, fontFamily: 'MontserratRegular'),
-          headline5: TextStyle(fontSize: 12.0, fontFamily: 'Montserrat Light'),
+          headline5: TextStyle(fontSize: 14.0, fontFamily: 'Montserrat Light'),
           bodyText1: TextStyle(
-            fontSize: 12.0,
+            fontSize: 15.0,
             fontFamily: 'MontserratLight',
             color: Colors.white,
           ),
-          bodyText2: TextStyle(fontSize: 12.0, fontFamily: 'MontserratRegular'),
-          subtitle1: TextStyle(
-            fontSize: 12.0,
-            fontFamily: 'MontserratMedium',
-            color: Colors.black87,
+          bodyText2: TextStyle(
+            fontSize: 15.0,
+            fontFamily: 'MontserratRegular',
           ),
-          subtitle2: TextStyle(fontSize: 12.0, fontFamily: 'MontserratRegular'),
+          subtitle1: TextStyle(
+            fontSize: 18.0,
+            fontFamily: 'MontserratMedium',
+            color: Colors.black26,
+          ),
+          subtitle2: TextStyle(fontSize: 14.0, fontFamily: 'MontserratRegular'),
           caption: TextStyle(
             fontSize: 25.0,
             fontFamily: 'MontserratMedium',

@@ -15,7 +15,13 @@ class _ListNavegationStatefulWidgetState
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(3),
+        color: Color.fromRGBO(243, 243, 243, 1),
+      ),
+      margin: EdgeInsets.only(
+          left: MediaQuery.of(context).size.width / 4,
+          right: MediaQuery.of(context).size.width / 10),
       child: DropdownButton(
         value: _value,
         underline: Container(

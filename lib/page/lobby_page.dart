@@ -17,7 +17,6 @@ class LobbyPage extends StatelessWidget {
           _mainstart(context),
           _mainTitle(context),
           _watch(context),
-          _dateWatch(context),
           SizedBox(height: 30.0),
           ExpansionCard(
             title: "Ejemplo",
@@ -93,124 +92,110 @@ Widget _mainTitle(context) {
 }
 
 Widget _watch(context) {
-  return Container(
-    child: Row(
-      children: <Widget>[
-        Positioned(
-          child: Container(
-            height: 100.0,
-            width: 120.0,
-            child: Stack(
-              children: <Widget>[
-                Positioned(
-                  child: Container(
-                    height: 70.0,
-                    width: 100.0,
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 5, color: Colors.blue),
-                        shape: BoxShape.circle,
-                        color: Colors.lightBlue[900]),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          '03',
-                          style: Theme.of(context).textTheme.caption,
+  return Column(
+    children: [
+      Container(
+        child: Row(
+          children: <Widget>[
+            Positioned(
+              child: Container(
+                height: 100.0,
+                width: 120.0,
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 70.0,
+                            width: 100.0,
+                            decoration: BoxDecoration(
+                                border:
+                                    Border.all(width: 5, color: Colors.blue),
+                                shape: BoxShape.circle,
+                                color: Colors.lightBlue[900]),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Text(
+                                  '03',
+                                  style: Theme.of(context).textTheme.caption,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Positioned(
+              child: Container(
+                height: 100.0,
+                width: 120.0,
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      child: Container(
+                        height: 70.0,
+                        width: 100.0,
+                        decoration: BoxDecoration(
+                            border: Border.all(width: 5, color: Colors.blue),
+                            shape: BoxShape.circle,
+                            color: Colors.lightBlue[900]),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              '72',
+                              style: Theme.of(context).textTheme.caption,
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
-          ),
-        ),
-        Positioned(
-          child: Container(
-            height: 100.0,
-            width: 120.0,
-            child: Stack(
-              children: <Widget>[
-                Positioned(
-                  child: Container(
-                    height: 70.0,
-                    width: 100.0,
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 5, color: Colors.blue),
-                        shape: BoxShape.circle,
-                        color: Colors.lightBlue[900]),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          '72',
-                          style: Theme.of(context).textTheme.caption,
+            Positioned(
+              child: Container(
+                height: 100.0,
+                width: 120.0,
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      child: Container(
+                        height: 70.0,
+                        width: 100.0,
+                        decoration: BoxDecoration(
+                          border: Border.all(width: 5, color: Colors.blue),
+                          shape: BoxShape.circle,
+                          color: Colors.lightBlue[900],
                         ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        Positioned(
-          child: Container(
-            height: 100.0,
-            width: 120.0,
-            child: Stack(
-              children: <Widget>[
-                Positioned(
-                  child: Container(
-                    height: 70.0,
-                    width: 100.0,
-                    decoration: BoxDecoration(
-                      border: Border.all(width: 5, color: Colors.blue),
-                      shape: BoxShape.circle,
-                      color: Colors.lightBlue[900],
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          '00',
-                          style: Theme.of(context).textTheme.caption,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              '00',
+                              style: Theme.of(context).textTheme.caption,
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
-          ),
+          ],
         ),
-      ],
-    ),
-  );
-}
-
-Widget _dateWatch(context) {
-  return Container(
-    child: Row(
-      children: <Widget>[
-        Positioned(
-          child: Container(
-            height: 100.0,
-            width: 120.0,
-            child: Stack(
-              children: <Widget>[
-                Text(
-                  'dias',
-                  style: textstyle3,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    ),
+      ),
+    ],
   );
 }

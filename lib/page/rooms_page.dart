@@ -8,7 +8,6 @@ class RoomsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final roomsProvider = RoomsProvider();
-
     return FutureBuilder(
       future: roomsProvider.getRooms(),
       builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
