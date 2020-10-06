@@ -21,7 +21,7 @@ class EventModel {
 
   String title;
   String description;
-  int picture;
+  String picture;
   DateTime startDate;
   DateTime endDate;
   List<SectionModel> sections;
