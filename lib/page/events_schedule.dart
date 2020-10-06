@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:icfesapp/common/expansion_list_navegation.dart';
+import 'package:icfesapp/common/rooms_dropdown.dart';
 
 import 'package:icfesapp/common/schedule_list..dart';
 import 'package:icfesapp/providers/schedule_provider.dart';
@@ -17,7 +17,10 @@ class SchedulePage extends StatelessWidget {
           SizedBox(height: 30.0),
           _titleSchedule(context),
           ListNavegationStatefulWidget(),
-          Expanded(child: _listSchedule(context)),
+          SizedBox(
+            height: 20,
+          ),
+          Expanded(child: _listSchedule(context))
         ],
       ),
     );
@@ -26,24 +29,27 @@ class SchedulePage extends StatelessWidget {
 
 Widget _principalTile(context) {
   return Container(
-    child: Text(
-      'Agenda',
-      style: Theme.of(context).textTheme.headline2,
-    ),
-  );
+      child: Text(
+    'Agenda',
+    textAlign: TextAlign.right,
+    style: Theme.of(context).textTheme.headline2,
+  ));
 }
 
 Widget _titleSchedule(context) {
   return Container(
-    child: Text(
-      'Selecciona la sala ',
-      style: Theme.of(context).textTheme.headline4,
-    ),
-  );
+      child: Text(
+    'Selecciona la sala ',
+    textAlign: TextAlign.right,
+    style: Theme.of(context).textTheme.headline4,
+  ));
 }
 
 final scheduleProvider = ScheduleProvider();
 Widget _listSchedule(context) {
+  Container(
+    decoration: BoxDecoration(color: Color.fromRGBO(243, 243, 243, 1)),
+  );
   return FutureBuilder(
     future: scheduleProvider.getSchedule(),
     builder: (BuildContext context, AsyncSnapshot<List> snapshot) {

@@ -53,6 +53,7 @@ class _ExpansionCardState extends State<ExpansionCard> {
       ),
       subtitle: Text(
         widget.subtitle,
+        style: Theme.of(context).textTheme.bodyText2,
       ),
       children: <Widget>[widget.picture],
       onExpansionChanged: (changed) {

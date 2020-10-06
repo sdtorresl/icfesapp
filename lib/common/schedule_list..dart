@@ -13,6 +13,7 @@ class ScheduleList extends StatelessWidget {
   Widget build(BuildContext context) {
     const String _baseUrl = "https://dev-eweb.us.seedcloud.co";
     return Container(
+      decoration: BoxDecoration(color: Color.fromRGBO(243, 243, 243, 1)),
       padding: EdgeInsets.only(top: 10.0),
       child: ListView.builder(
         itemCount: schedules.length,
