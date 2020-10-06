@@ -19,7 +19,7 @@ class SocialNetworkPage extends StatelessWidget {
           SizedBox(height: 20.0),
           DocumentInterest(
             title: 'Documentos de interés para el usuario',
-            icon: Icons.picture_as_pdf_outlined,
+            icon: Icons.picture_as_pdf,
             url: 'http://',
           ),
           DocumentInterest(

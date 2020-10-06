@@ -191,36 +191,34 @@ Widget _watch(context) {
               child: Container(
                 height: 100.0,
                 width: 120.0,
-                child: Stack(
-                  children: <Widget>[
-                    Positioned(
-                      child: Container(
-                        height: 70.0,
-                        width: 100.0,
-                        decoration: BoxDecoration(
-                          border: Border.all(width: 5, color: Colors.blue),
-                          shape: BoxShape.circle,
-                          color: Colors.lightBlue[900],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              '00',
-                              style: Theme.of(context).textTheme.caption,
-                            ),
-                          ],
-                        ),
+                child: Stack(children: <Widget>[
+                  Positioned(
+                    child: Container(
+                      height: 70.0,
+                      width: 100.0,
+                      decoration: BoxDecoration(
+                        border: Border.all(width: 5, color: Colors.blue),
+                        shape: BoxShape.circle,
+                        color: Colors.lightBlue[900],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            '00',
+                            style: Theme.of(context).textTheme.caption,
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                ),
-              ],
+                ]),
+              ),
             ),
-          ),
+          ],
         ),
-      ],
-    ),
+      ),
+    ],
   );
 }
