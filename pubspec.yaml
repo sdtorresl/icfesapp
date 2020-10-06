@@ -27,6 +27,7 @@ dependencies:
   font_awesome_flutter: ^8.8.1
   http: ^0.12.2
   cached_network_image: ^2.3.2+1
+  flutter_countdown_timer: ^1.3.0
   # vimeoplayer: ^0.1.2
 
 dev_dependencies:
