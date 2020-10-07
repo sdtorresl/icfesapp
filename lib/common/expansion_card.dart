@@ -47,7 +47,9 @@ class _ExpansionCardState extends State<ExpansionCard> {
           ),
           Text(
             widget.title,
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.headline4.copyWith(
+                  color: Colors.black,
+                ),
           )
         ],
       ),
