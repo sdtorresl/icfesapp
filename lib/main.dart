@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icfesapp/pages/home_page.dart';
+import 'package:icfesapp/pages/posters_page.dart';
 
 void main() {
   runApp(IcfesApp());
@@ -17,6 +18,7 @@ class IcfesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'ICFES App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -80,7 +82,11 @@ class IcfesApp extends StatelessWidget {
           ),
         ),
       ),
-      home: HomePage(),
+      initialRoute: 'login',
+      routes: {
+        'login': (BuildContext context) => PosterPage(),
+        'home': (BuildContext context) => HomePage(),
+      },
     );
   }
 }
