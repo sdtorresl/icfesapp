@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:icfesapp/common/sightposter.dart';
+import 'package:icfesapp/common/poster_view.dart';
+
 import 'package:icfesapp/providers/poster_provider.dart';
 
 class PosterPage extends StatelessWidget {

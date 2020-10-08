@@ -1,6 +1,5 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert' as json;
-
 import 'package:icfesapp/models/video_poster_model.dart';
 
 class PosterProvider {
@@ -15,10 +14,11 @@ class PosterProvider {
       if (response.statusCode == 200) {
         print(response.body);
         List<dynamic> jsonResponse = json.jsonDecode(response.body);
-        List<VideoPosterModel> posters = List();
 
-        for (var item in jsonResponse) {
-          VideoPosterModel poster = VideoPosterModel.fromJson(item);
+        List<VideoPosterModel> posters = List();
+        print(jsonResponse[0]["posters"]);
+        for (var item in jsonResponse[0]["posters"]) {
+          VideoPosterModel poster = VideoPosterModel.fromMap(item);
           posters.add(poster);
           print(poster);
         }
@@ -28,7 +28,6 @@ class PosterProvider {
         print('Request failed with status: ${response.statusCode}.');
       }
     } catch (Exception) {
-      print("Aqui");
       print(Exception);
     }
 

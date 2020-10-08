@@ -1,32 +1,7 @@
 import 'dart:convert';
 
-List<VideoPosterModel> videoPosterModelFromJson(String str) =>
-    List<VideoPosterModel>.from(
-        json.decode(str).map((x) => VideoPosterModel.fromJson(x)));
-
-String videoPosterModelToJson(List<VideoPosterModel> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
 class VideoPosterModel {
   VideoPosterModel({
-    this.posters,
-  });
-
-  List<Poster> posters;
-
-  factory VideoPosterModel.fromJson(Map<String, dynamic> json) =>
-      VideoPosterModel(
-        posters:
-            List<Poster>.from(json["posters"].map((x) => Poster.fromJson(x))),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "posters": List<dynamic>.from(posters.map((x) => x.toJson())),
-      };
-}
-
-class Poster {
-  Poster({
     this.id,
     this.titulo,
     this.descripcion,
@@ -42,20 +17,26 @@ class Poster {
   String imagen;
   String adjunto;
 
-  factory Poster.fromJson(Map<String, dynamic> json) => Poster(
+  factory VideoPosterModel.fromJson(String str) =>
+      VideoPosterModel.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory VideoPosterModel.fromMap(Map<String, dynamic> json) =>
+      VideoPosterModel(
         id: json["id"],
         titulo: json["titulo"],
         descripcion: json["descripcion"],
-        videos: Videos.fromJson(json["videos"]),
+        videos: Videos.fromMap(json["videos"]),
         imagen: json["imagen"],
         adjunto: json["adjunto"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toMap() => {
         "id": id,
         "titulo": titulo,
         "descripcion": descripcion,
-        "videos": videos.toJson(),
+        "videos": videos.toMap(),
         "imagen": imagen,
         "adjunto": adjunto,
       };
@@ -68,11 +49,15 @@ class Videos {
 
   String url;
 
-  factory Videos.fromJson(Map<String, dynamic> json) => Videos(
+  factory Videos.fromJson(String str) => Videos.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory Videos.fromMap(Map<String, dynamic> json) => Videos(
         url: json["url"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toMap() => {
         "url": url,
       };
 }

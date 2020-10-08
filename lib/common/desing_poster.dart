@@ -24,8 +24,6 @@ class DesingPoster extends StatefulWidget {
 }
 
 class _DesingPosterState extends State<DesingPoster> {
-  bool _expanded = false;
-
   @override
   Widget build(BuildContext context) {
     var expansionTile = ExpansionTile(
