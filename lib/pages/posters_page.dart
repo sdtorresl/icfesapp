@@ -4,24 +4,57 @@ import 'package:icfesapp/common/poster_view.dart';
 
 import 'package:icfesapp/providers/poster_provider.dart';
 
-class PosterPage extends StatelessWidget {
-  const PosterPage({Key key}) : super(key: key);
+void main() => runApp(PosterPage());
 
+class PosterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      appBar: _topBar(context),
+      bottomNavigationBar: BackButton(color: Colors.pink),
+      backgroundColor: Color(0xFFFAFAFA),
       body: Container(
         padding: const EdgeInsets.all(8.0),
         child: Container(
-          decoration: BoxDecoration(color: Color.fromRGBO(243, 243, 243, 1)),
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(243, 243, 243, 1),
+            borderRadius: BorderRadius.circular(15.0),
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              SizedBox(height: 130.0),
+              SizedBox(height: 20.0),
               _posterTile(context),
               Expanded(child: _listPoster(context)),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _topBar(context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double barHeight = 100;
+    return PreferredSize(
+      preferredSize: Size(
+        screenWidth,
+        barHeight,
+      ),
+      child: Container(
+        child: Stack(
+          children: <Widget>[
+            Container(
+              height: MediaQuery.of(context).size.height * .1,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage('assets/img/colors2.png'),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

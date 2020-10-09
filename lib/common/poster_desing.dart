@@ -29,10 +29,16 @@ class _PosterDesingState extends State<DesingPoster> {
           Container(
             height: 200,
             width: 500,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
-            child: FittedBox(
-              fit: BoxFit.fitWidth,
-              child: VimeoPlayer(id: '461450946'),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15.0),
+              child: Container(
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  widthFactor: 0.9,
+                  heightFactor: 0.9,
+                  child: VimeoPlayer(id: '461450946'),
+                ),
+              ),
             ),
           ),
           Text(
@@ -40,7 +46,8 @@ class _PosterDesingState extends State<DesingPoster> {
             style: Theme.of(context).textTheme.headline2.copyWith(
                   color: Colors.black,
                 ),
-          )
+          ),
+          Padding(padding: EdgeInsets.all(5))
         ],
       ),
       subtitle: Column(
@@ -73,7 +80,7 @@ class _PosterDesingState extends State<DesingPoster> {
     );
 
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       elevation: 2.0,
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
