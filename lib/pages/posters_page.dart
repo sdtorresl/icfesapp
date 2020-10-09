@@ -9,25 +9,30 @@ class PosterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(color: Color.fromRGBO(243, 243, 243, 1)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          SizedBox(height: 109),
-          _posterTile(context),
-          SizedBox(height: 20),
-          Expanded(child: _listPoster(context)),
-        ],
+    return Scaffold(
+      body: Container(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          decoration: BoxDecoration(color: Color.fromRGBO(243, 243, 243, 1)),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: 130.0),
+              _posterTile(context),
+              Expanded(child: _listPoster(context)),
+            ],
+          ),
+        ),
       ),
     );
   }
 
   Widget _posterTile(context) {
     return Container(
+      width: MediaQuery.of(context).size.width * 0.95,
       child: Text(
         'Video Posters',
-        textAlign: TextAlign.right,
+        textAlign: TextAlign.left,
         style:
             Theme.of(context).textTheme.headline1.copyWith(color: Colors.black),
       ),
