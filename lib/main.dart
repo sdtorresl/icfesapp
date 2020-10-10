@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icfesapp/pages/home_page.dart';
+import 'package:icfesapp/pages/onboarding_page.dart';
 import 'package:icfesapp/pages/posters_page.dart';
 
 void main() {
@@ -82,10 +83,11 @@ class IcfesApp extends StatelessWidget {
           ),
         ),
       ),
-      initialRoute: 'login',
+      initialRoute: 'onboarding',
       routes: {
         'login': (BuildContext context) => PosterPage(),
         'home': (BuildContext context) => HomePage(),
+        'onboarding': (BuildContext context) => OnboardingPage(),
       },
     );
   }

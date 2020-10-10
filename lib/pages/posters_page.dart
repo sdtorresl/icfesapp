@@ -10,7 +10,6 @@ class PosterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
       appBar: _topBar(context),
       bottomNavigationBar: BackButton(color: Colors.pink),
       backgroundColor: Color(0xFFFAFAFA),
@@ -25,7 +24,7 @@ class PosterPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               SizedBox(height: 20.0),
-              _posterTile(context),
+              _posterTitle(context),
               Expanded(child: _listPoster(context)),
             ],
           ),
@@ -60,7 +59,7 @@ class PosterPage extends StatelessWidget {
     );
   }
 
-  Widget _posterTile(context) {
+  Widget _posterTitle(context) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.95,
       child: Text(
