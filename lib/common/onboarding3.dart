@@ -20,6 +20,8 @@ class Onboarding3 extends StatelessWidget {
             _imageContent(context),
             SizedBox(height: 28),
             _lessButton(),
+            SizedBox(height: 35),
+            _lessPoint(context),
           ],
         ),
       ),
@@ -81,6 +83,44 @@ Widget _lessButton() {
         ),
       ),
       onPressed: () {},
+    ),
+  );
+}
+
+Widget _lessPoint(context) {
+  return Center(
+    child: Container(
+      width: MediaQuery.of(context).size.width * 0.6,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Container(
+            height: 20,
+            width: 75,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.pink, width: 2),
+            ),
+          ),
+          Container(
+            height: 20,
+            width: 75,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.pink, width: 2),
+            ),
+          ),
+          Container(
+            height: 20,
+            width: 75,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.pink, width: 10),
+            ),
+          ),
+        ],
+      ),
     ),
   );
 }
