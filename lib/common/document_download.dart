@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 
 class DocumentDownload extends StatelessWidget {
   final String title;
+  final String description;
+  final String type;
   final IconData icon;
   final String url;
 
-  const DocumentDownload({Key key, this.title, this.icon, this.url})
+  const DocumentDownload(
+      {Key key, this.title, this.description, this.type, this.icon, this.url})
       : super(key: key);
 
   @override
@@ -16,9 +19,32 @@ class DocumentDownload extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: ListTile(
         contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-        leading: Icon(this.icon, color: Colors.black26),
+        leading: Icon(
+          this.icon,
+          color: Colors.black54,
+        ),
         onLongPress: () {},
-        title: Text(this.title,
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(this.title,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline2
+                    .copyWith(color: Colors.black)),
+            Text(this.description,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline3
+                    .copyWith(color: Colors.black)),
+            Text(this.type,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline4
+                    .copyWith(color: Colors.black)),
+          ],
+        ),
+        subtitle: Text(this.url,
             style: Theme.of(context)
                 .textTheme
                 .bodyText1
