@@ -15,8 +15,8 @@ class RoomModel {
   final String title;
   final String description;
   final String picture;
-  final String startDate;
-  final String endDate;
+  final DateTime startDate;
+  final DateTime endDate;
   final String fieldIcon;
 
   factory RoomModel.fromJson(String str) => RoomModel.fromMap(json.decode(str));
@@ -28,8 +28,8 @@ class RoomModel {
         title: json["title"],
         description: json["description"],
         picture: json["picture"],
-        startDate: json["start-date"],
-        endDate: json["end-date"],
+        startDate: DateTime.parse(json["start-date"]),
+        endDate: DateTime.parse(json["end-date"]),
         fieldIcon: json["field_icon"],
       );
 
@@ -38,8 +38,8 @@ class RoomModel {
         "title": title,
         "description": description,
         "picture": picture,
-        "start-date": startDate,
-        "end-date": endDate,
+        "start-date": startDate.toIso8601String(),
+        "end-date": endDate.toIso8601String(),
         "field_icon": fieldIcon,
       };
 
