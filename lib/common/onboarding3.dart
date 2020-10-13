@@ -67,7 +67,7 @@ Widget _descriptionContent(context) {
 
 Widget _imageContent(context) {
   return Container(
-    child: Image.asset("assets/img/Bitmap@3x.png"),
+    child: Image.asset("assets/img/Onboarding@1x.png"),
   );
 }
 

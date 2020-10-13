@@ -8,7 +8,7 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="icfesapp"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/splash">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
