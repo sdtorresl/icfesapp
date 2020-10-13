@@ -3,12 +3,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:icfesapp/models/video_poster_model.dart';
 import 'package:vimeoplayer/vimeoplayer.dart';
 
-class DesingPoster extends StatefulWidget {
+class PosterView extends StatefulWidget {
   final Videos video;
   final String title;
   final String subtitle;
 
-  const DesingPoster({
+  const PosterView({
     Key key,
     @required this.video,
     @required this.title,
@@ -16,10 +16,10 @@ class DesingPoster extends StatefulWidget {
   });
 
   @override
-  _PosterDesingState createState() => _PosterDesingState();
+  _PosterViewState createState() => _PosterViewState();
 }
 
-class _PosterDesingState extends State<DesingPoster> {
+class _PosterViewState extends State<PosterView> {
   @override
   Widget build(BuildContext context) {
     var expansionTile = ListTile(

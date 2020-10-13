@@ -33,7 +33,7 @@ class _ListNavegationStatefulWidgetState
           width: MediaQuery.of(context).size.width,
           child: Center(
             child: DropdownButtonHideUnderline(
-              child: _roomsCategoriesDropDown(),
+              child: _roomsDropDown(),
             ),
           ),
         ),
@@ -41,7 +41,7 @@ class _ListNavegationStatefulWidgetState
     );
   }
 
-  Widget _roomsCategoriesDropDown() {
+  Widget _roomsDropDown() {
     final scheduleProvider = ScheduleProvider();
     return FutureBuilder(
       future: scheduleProvider.getSchedule(),

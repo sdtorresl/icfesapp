@@ -19,7 +19,7 @@ class Onboarding extends StatelessWidget {
     return Container(
       child: ListTile(
         title: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             SizedBox(height: 15),
@@ -40,15 +40,17 @@ class Onboarding extends StatelessWidget {
                     .copyWith(color: Colors.black),
               ),
             ),
-            Text(
-              this.description,
-              style: Theme.of(context)
-                  .textTheme
-                  .headline3
-                  .copyWith(color: Colors.black),
+            Center(
+              child: Text(
+                this.description,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline3
+                    .copyWith(color: Colors.black),
+              ),
             ),
             Image.asset(this.picture),
-            SizedBox(height: 60),
+            SizedBox(height: 20),
             Container(
               width: 400,
               margin: EdgeInsets.only(bottom: 10),
@@ -66,8 +68,8 @@ class Onboarding extends StatelessWidget {
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.6,
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Container(
                       height: 15,

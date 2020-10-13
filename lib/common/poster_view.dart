@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:icfesapp/common/poster_desing.dart';
+import 'package:icfesapp/common/video_poster.dart';
 
 import 'package:icfesapp/models/video_poster_model.dart';
 
@@ -14,7 +14,7 @@ class PosterList extends StatelessWidget {
       child: ListView.builder(
         itemCount: posters.length,
         itemBuilder: (context, index) {
-          return DesingPoster(
+          return PosterView(
             video: posters[index].videos,
             title: posters[index].titulo,
             subtitle: posters[index].descripcion,

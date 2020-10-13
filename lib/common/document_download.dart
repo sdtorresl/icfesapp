@@ -25,7 +25,6 @@ class DocumentDownload extends StatelessWidget {
           this.icon,
           color: Colors.black54,
         ),
-        onLongPress: () {},
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -59,6 +58,7 @@ class DocumentDownload extends StatelessWidget {
               .bodyText1
               .copyWith(color: Colors.black),
         ),
+        onLongPress: () {},
       ),
     );
   }
