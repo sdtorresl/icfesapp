@@ -47,7 +47,9 @@ class _PosterDesingState extends State<DesingPoster> {
                   color: Colors.black,
                 ),
           ),
-          Padding(padding: EdgeInsets.all(5))
+          Padding(
+            padding: EdgeInsets.all(5),
+          )
         ],
       ),
       subtitle: Column(
@@ -71,7 +73,9 @@ class _PosterDesingState extends State<DesingPoster> {
                     .headline3
                     .copyWith(color: Colors.pink),
               ),
-              Padding(padding: EdgeInsets.all(3)),
+              Padding(
+                padding: EdgeInsets.all(3),
+              ),
               FaIcon(FontAwesomeIcons.cloudDownloadAlt, color: Colors.pink),
             ],
           ),
@@ -80,7 +84,9 @@ class _PosterDesingState extends State<DesingPoster> {
     );
 
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
       elevation: 2.0,
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),

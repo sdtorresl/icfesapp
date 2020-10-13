@@ -16,7 +16,9 @@ class DocumentDownload extends StatelessWidget {
     return Card(
       elevation: 2.0,
       margin: EdgeInsets.only(bottom: 20),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: ListTile(
         contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         leading: Icon(
@@ -27,28 +29,36 @@ class DocumentDownload extends StatelessWidget {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(this.title,
-                style: Theme.of(context)
-                    .textTheme
-                    .headline2
-                    .copyWith(color: Colors.black)),
-            Text(this.description,
-                style: Theme.of(context)
-                    .textTheme
-                    .headline3
-                    .copyWith(color: Colors.black)),
-            Text(this.type,
-                style: Theme.of(context)
-                    .textTheme
-                    .headline4
-                    .copyWith(color: Colors.black)),
+            Text(
+              this.title,
+              style: Theme.of(context)
+                  .textTheme
+                  .headline2
+                  .copyWith(color: Colors.black),
+            ),
+            Text(
+              this.description,
+              style: Theme.of(context)
+                  .textTheme
+                  .headline3
+                  .copyWith(color: Colors.black),
+            ),
+            Text(
+              this.type,
+              style: Theme.of(context)
+                  .textTheme
+                  .headline4
+                  .copyWith(color: Colors.black),
+            ),
           ],
         ),
-        subtitle: Text(this.url,
-            style: Theme.of(context)
-                .textTheme
-                .bodyText1
-                .copyWith(color: Colors.black)),
+        subtitle: Text(
+          this.url,
+          style: Theme.of(context)
+              .textTheme
+              .bodyText1
+              .copyWith(color: Colors.black),
+        ),
       ),
     );
   }

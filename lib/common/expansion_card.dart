@@ -69,7 +69,9 @@ class _ExpansionCardState extends State<ExpansionCard> {
       initiallyExpanded: _expanded,
     );
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
       elevation: 2.0,
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),

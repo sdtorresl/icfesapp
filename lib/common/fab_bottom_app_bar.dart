@@ -39,20 +39,25 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
 
   _updateIndex(int index) {
     widget.onTabSelected(index);
-    setState(() {
-      _selectedIndex = index;
-    });
+    setState(
+      () {
+        _selectedIndex = index;
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> items = List.generate(widget.items.length, (int index) {
-      return _buildTabItem(
-        item: widget.items[index],
-        index: index,
-        onPressed: _updateIndex,
-      );
-    });
+    List<Widget> items = List.generate(
+      widget.items.length,
+      (int index) {
+        return _buildTabItem(
+          item: widget.items[index],
+          index: index,
+          onPressed: _updateIndex,
+        );
+      },
+    );
     items.insert(items.length >> 1, _buildMiddleTabItem());
 
     return BottomAppBar(

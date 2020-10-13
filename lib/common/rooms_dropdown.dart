@@ -27,8 +27,9 @@ class _ListNavegationStatefulWidgetState
       children: <Widget>[
         Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(3),
-              color: Color.fromRGBO(243, 243, 243, 1)),
+            borderRadius: BorderRadius.circular(3),
+            color: Color.fromRGBO(243, 243, 243, 1),
+          ),
           width: MediaQuery.of(context).size.width,
           child: Center(
             child: DropdownButtonHideUnderline(
@@ -55,10 +56,12 @@ class _ListNavegationStatefulWidgetState
             value: dropdownValue,
             autofocus: false,
             onChanged: (newValue) {
-              setState(() {
-                dropdownValue = newValue;
-                categoryId = categoriesMap[newValue.toString()];
-              });
+              setState(
+                () {
+                  dropdownValue = newValue;
+                  categoryId = categoriesMap[newValue.toString()];
+                },
+              );
             },
             onTap: () {},
             items: _returnCategories(categories)
@@ -90,7 +93,11 @@ class _ListNavegationStatefulWidgetState
         categoriesMap[item.title] = item.title;
       }
     });
-    _stringList.sort((a, b) => a.toString().compareTo(b.toString()));
+    _stringList.sort(
+      (a, b) => a.toString().compareTo(
+            b.toString(),
+          ),
+    );
     return _stringList;
   }
 }
