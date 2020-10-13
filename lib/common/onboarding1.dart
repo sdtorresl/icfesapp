@@ -57,6 +57,7 @@ Widget _descriptionContent(context) {
     child: Center(
       child: Text(
         'Disfruta de la nueva plataforma que te  ayudara a crecer',
+        textAlign: TextAlign.center,
         style:
             Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.black),
       ),

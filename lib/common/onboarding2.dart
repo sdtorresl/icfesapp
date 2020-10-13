@@ -57,6 +57,7 @@ Widget _descriptionContent(context) {
     child: Center(
       child: Text(
         'Participa y comparte en redes sociales',
+        textAlign: TextAlign.center,
         style:
             Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.black),
       ),

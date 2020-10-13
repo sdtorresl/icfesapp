@@ -57,6 +57,7 @@ Widget _descriptionContent(context) {
     child: Center(
       child: Text(
         'Conectate y observa el evento a través de tu celular',
+        textAlign: TextAlign.center,
         style:
             Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.black),
       ),
