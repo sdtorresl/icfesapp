@@ -4,26 +4,24 @@ class Onboarding3 extends StatelessWidget {
   const Onboarding3({Key key}) : super(key: key);
 
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(color: Colors.white),
-        padding: EdgeInsets.all(25),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            _iconExit(context),
-            SizedBox(height: 125),
-            _onboardingTitle(context),
-            SizedBox(height: 18),
-            _descriptionContent(context),
-            SizedBox(height: 28),
-            _imageContent(context),
-            SizedBox(height: 28),
-            _lessButton(),
-            SizedBox(height: 35),
-            _lessPoint(context),
-          ],
-        ),
+    return Container(
+      decoration: BoxDecoration(color: Colors.white),
+      padding: EdgeInsets.all(25),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          _iconExit(context),
+          SizedBox(height: 125),
+          _onboardingTitle(context),
+          SizedBox(height: 18),
+          _descriptionContent(context),
+          SizedBox(height: 28),
+          _imageContent(context),
+          SizedBox(height: 28),
+          _lessButton(),
+          SizedBox(height: 35),
+          _lessPoint(context),
+        ],
       ),
     );
   }
@@ -67,7 +65,7 @@ Widget _descriptionContent(context) {
 
 Widget _imageContent(context) {
   return Container(
-    child: Image.asset("assets/img/Onboarding@1x.png"),
+    child: Image.asset("assets/img/Bitmap3.png"),
   );
 }
 
@@ -97,7 +95,7 @@ Widget _lessPoint(context) {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Container(
-            height: 20,
+            height: 15,
             width: 75,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
@@ -105,7 +103,7 @@ Widget _lessPoint(context) {
             ),
           ),
           Container(
-            height: 20,
+            height: 15,
             width: 75,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
@@ -113,7 +111,7 @@ Widget _lessPoint(context) {
             ),
           ),
           Container(
-            height: 20,
+            height: 15,
             width: 75,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
