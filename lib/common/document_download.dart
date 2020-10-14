@@ -41,44 +41,50 @@ class _DocumentDownloadState extends State<DocumentDownload> {
               Icons.add_circle_outline,
               color: Colors.pink,
             ),
-      leading: FaIcon(FontAwesomeIcons.filePdf, size: 40),
+      leading: FaIcon(
+        FontAwesomeIcons.filePdf,
+        size: 30,
+      ),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
             widget.title,
-            style: Theme.of(context).textTheme.headline5,
+            style: Theme.of(context).textTheme.headline2,
+            textAlign: TextAlign.start,
           ),
           Text(
             widget.description,
-            style: Theme.of(context).textTheme.headline4.copyWith(
-                  color: Colors.black,
-                ),
-          )
+            style: Theme.of(context)
+                .textTheme
+                .headline4
+                .copyWith(color: Colors.black),
+          ),
         ],
       ),
-      subtitle: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            widget.type,
-            style: Theme.of(context).textTheme.bodyText2,
-          ),
-          RaisedButton(
+      children: <Widget>[
+        SizedBox(
+          width: 400,
+          height: 50,
+          child: RaisedButton(
             onPressed: _launchURL,
-            child: Text('Descargas',
-                style: Theme.of(context)
-                    .textTheme
-                    .headline5
-                    .copyWith(color: Colors.white)),
+            child: Text(
+              'Descargas',
+              style: Theme.of(context)
+                  .textTheme
+                  .headline4
+                  .copyWith(color: Colors.white),
+            ),
             color: Colors.pink,
           ),
-        ],
-      ),
+        ),
+      ],
       onExpansionChanged: (changed) {
-        setState(() {
-          _expanded = changed;
-        });
+        setState(
+          () {
+            _expanded = changed;
+          },
+        );
         if (widget.onChanged != null) {
           widget.onChanged.call();
         }
