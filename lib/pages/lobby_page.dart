@@ -53,23 +53,6 @@ class _LobbyPageState extends State<LobbyPage> {
                     picture: event.picture.toString(),
                   ),
                 ),
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: IcfesApp().grey,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(25),
-                        topRight: Radius.circular(25),
-                      ),
-                    ),
-                    child: SizedBox(
-                      height: 25,
-                    ),
-                  ),
-                )
               ],
             ),
           );

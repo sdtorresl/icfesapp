@@ -83,7 +83,7 @@ class IcfesApp extends StatelessWidget {
           ),
         ),
       ),
-      initialRoute: 'onboarding',
+      initialRoute: 'home',
       routes: {
         'login': (BuildContext context) => PosterPage(),
         'home': (BuildContext context) => HomePage(),

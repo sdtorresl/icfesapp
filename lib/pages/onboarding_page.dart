@@ -104,20 +104,22 @@ class _OnboardingPageState extends State<OnboardingPage> {
             child: Row(
               children: [
                 FloatingActionButton(
-                    elevation: 5.0,
-                    child: Icon(
-                      Icons.navigate_next,
-                      color: Colors.white,
-                    ),
-                    onPressed: _current == 2
-                        ? () => {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => HomePage()),
+                  elevation: 5.0,
+                  child: Icon(
+                    Icons.navigate_next,
+                    color: Colors.white,
+                  ),
+                  onPressed: _current == imgList.length.bitLength
+                      ? () => {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HomePage(),
                               ),
-                            }
-                        : () => _controller.nextPage()),
+                            ),
+                          }
+                      : () => _controller.nextPage(),
+                ),
               ],
             ),
           ),
