@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:icfesapp/common/document_download.dart';
+import 'package:icfesapp/common/document_list.dart';
 
 import 'package:icfesapp/models/document_model.dart';
 import 'package:icfesapp/models/event_model.dart';
 import 'package:icfesapp/providers/event_provider.dart';
+import 'package:icfesapp/utils/column_builder.dart';
 
 class DocumentPage extends StatefulWidget {
   const DocumentPage({Key key}) : super(key: key);
@@ -40,27 +42,10 @@ class _DocumentPageState extends State<DocumentPage> {
     EventProvider eventProvider = EventProvider();
     return FutureBuilder(
       future: eventProvider.getEvent(),
-      builder: (BuildContext context, AsyncSnapshot<EventModel> snapshot) {
-        if (snapshot.hasData) {
-          EventModel event = snapshot.data;
-          List<DocumentModel> documents = event.documents;
-
-          print("Event: ${event.startDate}");
-
-          Widget description = Container(
-            height: 400,
-            child: DocumentDownload(
-              url: '',
-              title: event.title,
-              description: event.description,
-              type: '',
-            ),
-          );
-
-          return ListView(
-            children: [
-              description,
-            ],
+      builder: (BuildContext context, AsyncSnapshot<EventModel> documents) {
+        if (documents.hasData) {
+          return DocumentList(
+            documents: [],
           );
         } else {
           return Container(
@@ -73,14 +58,14 @@ class _DocumentPageState extends State<DocumentPage> {
       },
     );
   }
-}
 
-Widget _mainTitle(context) {
-  return Container(
-    child: Text(
-      "Documentos",
-      style:
-          Theme.of(context).textTheme.headline1.copyWith(color: Colors.black),
-    ),
-  );
+  Widget _mainTitle(context) {
+    return Container(
+      child: Text(
+        "Documentos",
+        style:
+            Theme.of(context).textTheme.headline1.copyWith(color: Colors.black),
+      ),
+    );
+  }
 }

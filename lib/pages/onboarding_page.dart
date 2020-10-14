@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:icfesapp/common/onboarding1.dart';
 import 'package:icfesapp/pages/home_page.dart';
 
-final List<String> imgList = ['1', '2', '3'];
+final List<String> imgList = [
+  '1',
+  '2',
+  '3',
+];
 
 class OnboardingPage extends StatefulWidget {
   @override
@@ -76,6 +80,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: imgList.map((item) {
               int index = imgList.indexOf(item);
               return Container(
@@ -93,18 +98,26 @@ class _OnboardingPageState extends State<OnboardingPage> {
           ),
           SizedBox(height: 20),
           Container(
-            alignment: Alignment.bottomCenter,
+            width: 60,
             margin: EdgeInsets.only(bottom: 10),
+            alignment: Alignment.bottomCenter,
             child: Row(
               children: [
                 FloatingActionButton(
-                  elevation: 5.0,
-                  child: Icon(
-                    Icons.navigate_next,
-                    color: Colors.white,
-                  ),
-                  onPressed: () => _controller.nextPage(),
-                ),
+                    elevation: 5.0,
+                    child: Icon(
+                      Icons.navigate_next,
+                      color: Colors.white,
+                    ),
+                    onPressed: _current == 2
+                        ? () => {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()),
+                              ),
+                            }
+                        : () => _controller.nextPage()),
               ],
             ),
           ),
