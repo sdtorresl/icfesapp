@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     RoomsPage(),
     SchedulePage(),
     //SocialNetworkPage(),
-    DocumentsPage(),
+    DocumentPage(),
   ];
 
   void _onItemTapped(int index) {

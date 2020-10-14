@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:icfesapp/common/document_download.dart';
 
-class DocumentsPage extends StatelessWidget {
-  const DocumentsPage({Key key}) : super(key: key);
+import 'package:icfesapp/models/document_model.dart';
+import 'package:icfesapp/models/event_model.dart';
+import 'package:icfesapp/providers/event_provider.dart';
+
+class DocumentPage extends StatefulWidget {
+  const DocumentPage({Key key}) : super(key: key);
+
+  @override
+  _DocumentPageState createState() => _DocumentPageState();
+}
+
+class _DocumentPageState extends State<DocumentPage> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,47 +37,50 @@ class DocumentsPage extends StatelessWidget {
   }
 
   Widget _listDocuments() {
-    return ListView(
-      children: <Widget>[
-        DocumentDownload(
-          title: "Descarga el kit de documentos",
-          description: "documento 1",
-          icon: Icons.insert_drive_file_outlined,
-          type: 'pdf',
-          url: "http://",
-        ),
-        DocumentDownload(
-          title: "Descarga el kit de documentos",
-          description: 'documento2',
-          icon: Icons.insert_drive_file_outlined,
-          type: 'pdf',
-          url: "http://",
-        ),
-        DocumentDownload(
-          title: "Descarga el kit de documentos",
-          description: 'documento3',
-          icon: Icons.insert_drive_file_outlined,
-          type: 'pdf',
-          url: "http://",
-        ),
-        DocumentDownload(
-          title: "Descarga el kit de documentos",
-          description: "documentos4",
-          icon: Icons.insert_drive_file_outlined,
-          type: 'pdf',
-          url: "http://",
-        ),
-      ],
-    );
-  }
+    EventProvider eventProvider = EventProvider();
+    return FutureBuilder(
+      future: eventProvider.getEvent(),
+      builder: (BuildContext context, AsyncSnapshot<EventModel> snapshot) {
+        if (snapshot.hasData) {
+          EventModel event = snapshot.data;
+          List<DocumentModel> documents = event.documents;
 
-  Widget _mainTitle(context) {
-    return Container(
-      child: Text(
-        "Documentos",
-        style:
-            Theme.of(context).textTheme.headline1.copyWith(color: Colors.black),
-      ),
+          print("Event: ${event.startDate}");
+
+          Widget description = Container(
+            height: 400,
+            child: DocumentDownload(
+              url: '',
+              title: event.title,
+              description: event.description,
+              type: '',
+            ),
+          );
+
+          return ListView(
+            children: [
+              description,
+            ],
+          );
+        } else {
+          return Container(
+            height: 400,
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        }
+      },
     );
   }
+}
+
+Widget _mainTitle(context) {
+  return Container(
+    child: Text(
+      "Documentos",
+      style:
+          Theme.of(context).textTheme.headline1.copyWith(color: Colors.black),
+    ),
+  );
 }
