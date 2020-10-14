@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:icfesapp/pages/documents_page.dart';
 import 'package:icfesapp/pages/home_page.dart';
+import 'package:icfesapp/pages/transmission_page.dart';
 
 void main() {
   runApp(IcfesApp());
@@ -80,7 +82,12 @@ class IcfesApp extends StatelessWidget {
           ),
         ),
       ),
-      home: HomePage(),
+      initialRoute: 'home',
+      routes: {
+        'home': (context) => HomePage(),
+        'transmission': (context) => TransmissionPage(),
+        'documents': (context) => DocumentsPage()
+      },
     );
   }
 }
