@@ -18,8 +18,8 @@ class ScheduleModel {
   String title;
   String description;
   String picture;
-  String startDate;
-  String endDate;
+  DateTime startDate;
+  DateTime endDate;
   String icon;
   String room;
 
@@ -32,8 +32,8 @@ class ScheduleModel {
         title: json["title"],
         description: json["description"],
         picture: json["picture"],
-        startDate: json["start-date"],
-        endDate: json["end-date"],
+        startDate: DateTime.parse(json["start-date"]),
+        endDate: DateTime.parse(json["end-date"]),
         icon: json["icon"],
         room: json["room"],
       );
@@ -42,8 +42,8 @@ class ScheduleModel {
         "title": title,
         "description": description,
         "picture": picture,
-        "start-date": startDate,
-        "end-date": endDate,
+        "start-date": startDate.toIso8601String(),
+        "end-date": endDate.toIso8601String(),
         "icon": icon,
         "room": room,
       };

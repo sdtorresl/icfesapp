@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:icfesapp/models/schedule_model.dart';
+import 'package:icfesapp/providers/schedule_provider.dart';
 
 class ListNavegationStatefulWidget extends StatefulWidget {
   ListNavegationStatefulWidget({Key key}) : super(key: key);
@@ -10,47 +12,92 @@ class ListNavegationStatefulWidget extends StatefulWidget {
 
 class _ListNavegationStatefulWidgetState
     extends State<ListNavegationStatefulWidget> {
-  int _value = 1;
+  final scheduleProvider = ScheduleModel();
+  String dropdownValue;
+  String selectedSessions;
+  Map<String, String> sessionsMap = new Map();
+  String categoryId;
+  String searchText;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(3),
-      ),
-      width: MediaQuery.of(context).size.width,
-      child: DropdownButton(
-        value: _value,
-        underline: Container(
-          height: 2,
-          color: Colors.black,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: <Widget>[
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(3),
+            color: Color.fromRGBO(243, 243, 243, 1),
+          ),
+          width: MediaQuery.of(context).size.width,
+          child: Center(
+            child: DropdownButtonHideUnderline(
+              child: _roomsDropDown(),
+            ),
+          ),
         ),
-        items: [
-          DropdownMenuItem(
-            child: Text("Sala Colombia investiga"),
-            value: 1,
-          ),
-          DropdownMenuItem(
-            child: Text("Enlace a sesiones"),
-            value: 2,
-          ),
-          DropdownMenuItem(
-            child: Text("Enlace a sesiones 2"),
-            value: 3,
-          ),
-          DropdownMenuItem(
-            child: Text("Enlace a sesiones 3"),
-            value: 4,
-          ),
-        ],
-        onChanged: (value) {
-          setState(
-            () {
-              _value = value;
-            },
-          );
-        },
-      ),
+      ],
     );
+  }
+
+  Widget _roomsDropDown() {
+    final scheduleProvider = ScheduleProvider();
+    return FutureBuilder(
+      future: scheduleProvider.getSchedule(),
+      builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+        if (snapshot.hasData) {
+          List<ScheduleModel> sessions = snapshot.data;
+          return DropdownButton(
+            underline: Container(
+              height: 2,
+              color: Colors.black,
+            ),
+            value: dropdownValue,
+            autofocus: false,
+            onChanged: (newValue) {
+              setState(
+                () {
+                  dropdownValue = newValue;
+                  categoryId = sessionsMap[newValue.toString()];
+                },
+              );
+            },
+            onTap: () {},
+            items: _returnSessions(sessions)
+                .map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(
+                  value,
+                  style: Theme.of(context).textTheme.caption,
+                ),
+              );
+            }).toList(),
+          );
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
+    );
+  }
+
+  List<String> _returnSessions(List<ScheduleModel> sessionsList) {
+    List<String> _stringList = new List();
+    sessionsMap = new Map();
+    sessionsList.forEach((item) {
+      if (!_stringList.contains(item.title)) {
+        _stringList.add(item.title);
+        sessionsMap[item.title] = item.title;
+      }
+    });
+    _stringList.sort(
+      (a, b) => a.toString().compareTo(
+            b.toString(),
+          ),
+    );
+    return _stringList;
   }
 }
