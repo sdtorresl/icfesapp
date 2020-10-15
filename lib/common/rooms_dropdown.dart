@@ -47,7 +47,7 @@ class _ListNavegationStatefulWidgetState
       future: scheduleProvider.getSchedule(),
       builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
         if (snapshot.hasData) {
-          List<ScheduleModel> categories = snapshot.data;
+          List<ScheduleModel> sessions = snapshot.data;
           return DropdownButton(
             underline: Container(
               height: 2,
@@ -64,7 +64,7 @@ class _ListNavegationStatefulWidgetState
               );
             },
             onTap: () {},
-            items: _returnCategories(categories)
+            items: _returnCategories(sessions)
                 .map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
