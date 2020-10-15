@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:icfesapp/common/document_download.dart';
 import 'package:icfesapp/models/document_model.dart';
 import 'package:icfesapp/models/event_model.dart';

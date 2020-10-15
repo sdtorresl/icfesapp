@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:icfesapp/common/onboarding1.dart';
+import 'package:icfesapp/common/onboarding_view.dart';
 import 'package:icfesapp/pages/home_page.dart';
 
 final List<String> imgList = [
