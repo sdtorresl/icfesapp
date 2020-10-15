@@ -15,7 +15,7 @@ class _ListNavegationStatefulWidgetState
   final scheduleProvider = ScheduleModel();
   String dropdownValue;
   String selectedCategory;
-  Map<String, String> categoriesMap = new Map();
+  Map<String, String> sessionsMap = new Map();
   String categoryId;
   String searchText;
 
@@ -59,12 +59,12 @@ class _ListNavegationStatefulWidgetState
               setState(
                 () {
                   dropdownValue = newValue;
-                  categoryId = categoriesMap[newValue.toString()];
+                  categoryId = sessionsMap[newValue.toString()];
                 },
               );
             },
             onTap: () {},
-            items: _returnCategories(sessions)
+            items: _returnSessions(sessions)
                 .map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
@@ -84,13 +84,13 @@ class _ListNavegationStatefulWidgetState
     );
   }
 
-  List<String> _returnCategories(List<ScheduleModel> categoriesList) {
+  List<String> _returnSessions(List<ScheduleModel> sessionsList) {
     List<String> _stringList = new List();
-    categoriesMap = new Map();
-    categoriesList.forEach((item) {
+    sessionsMap = new Map();
+    sessionsList.forEach((item) {
       if (!_stringList.contains(item.title)) {
         _stringList.add(item.title);
-        categoriesMap[item.title] = item.title;
+        sessionsMap[item.title] = item.title;
       }
     });
     _stringList.sort(
