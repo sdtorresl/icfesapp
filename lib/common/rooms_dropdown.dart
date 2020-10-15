@@ -14,7 +14,7 @@ class _ListNavegationStatefulWidgetState
     extends State<ListNavegationStatefulWidget> {
   final scheduleProvider = ScheduleModel();
   String dropdownValue;
-  String selectedCategory;
+  String selectedSessions;
   Map<String, String> sessionsMap = new Map();
   String categoryId;
   String searchText;
