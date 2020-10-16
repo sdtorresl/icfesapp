@@ -37,8 +37,6 @@ class _LobbyPageState extends State<LobbyPage> {
           EventModel event = snapshot.data;
           List<SectionModel> sections = event.sections;
 
-          print("Event: ${event.startDate}");
-
           Widget description = Container(
             height: 400,
             child: Stack(
