@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icfesapp/common/user_preferences.dart';
-import 'package:icfesapp/pages/home_page.dart';
-import 'package:icfesapp/pages/onboarding_page.dart';
+import 'package:icfesapp/pages/login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -87,14 +86,16 @@ class IcfesApp extends StatelessWidget {
           ),
         ),
       ),
-      initialRoute:
+      home: LoginPage(),
+      /*initialRoute:
           prefs.onboardingViewed != null && prefs.onboardingViewed == true
-              ? 'home'
+              ? 'login'
               : 'onboarding',
       routes: {
         'home': (BuildContext context) => HomePage(),
         'onboarding': (BuildContext context) => OnboardingPage(),
-      },
+        'login': (BuildContext context) => LoginPage(),
+      },*/
     );
   }
 }
