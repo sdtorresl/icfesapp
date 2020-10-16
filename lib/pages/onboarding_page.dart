@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:icfesapp/common/onboarding_view.dart';
 import 'package:icfesapp/common/user_preferences.dart';
-import 'package:icfesapp/pages/home_page.dart';
 
 class OnboardingPage extends StatefulWidget {
   @override
@@ -61,15 +60,18 @@ class _OnboardingPageState extends State<OnboardingPage> {
           CarouselSlider(
             items: carouselItems,
             options: CarouselOptions(
-                autoPlay: false,
-                enlargeCenterPage: false,
-                aspectRatio: 0.9,
-                viewportFraction: 1,
-                onPageChanged: (index, reason) {
-                  setState(() {
+              autoPlay: false,
+              enlargeCenterPage: false,
+              aspectRatio: 0.9,
+              viewportFraction: 1,
+              onPageChanged: (index, reason) {
+                setState(
+                  () {
                     _current = index;
-                  });
-                }),
+                  },
+                );
+              },
+            ),
             carouselController: _controller,
           ),
           Row(
