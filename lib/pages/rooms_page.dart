@@ -22,33 +22,38 @@ class _RoomsPageState extends State<RoomsPage> {
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> tabs = [
-      {"title": 'Charlas en vivo', "widget": _roomList(context)},
-      {"title": "Material pregrabado", "widget": text()}
+      {"title": 'Charlas en vivo', "widget": roomList(context)},
+      {"title": "Material pregrabado", "widget": text(context)}
     ];
     if (_currentWidget == null) {
-      _currentWidget = _roomList(context);
+      _currentWidget = roomList(context);
     }
-    Expanded(
-      child: _currentWidget,
-    );
-    return Container(
-      margin: EdgeInsets.only(top: 15),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: tabs.map((tab) {
-          int currentIndex = tabs.indexOf(tab);
-          bool selected = currentIndex == _selectedTab;
 
-          Function onTabFunction = () {
-            setState(() {
-              _selectedTab = currentIndex;
-              _currentWidget = tab['widget'];
-            });
-          };
+    return Column(
+      children: <Widget>[
+        Container(
+          margin: EdgeInsets.only(top: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: tabs.map((tab) {
+              int currentIndex = tabs.indexOf(tab);
+              bool selected = currentIndex == _selectedTab;
 
-          return _tab(tab["title"], onTabFunction, selected);
-        }).toList(),
-      ),
+              Function onTabFunction = () {
+                setState(() {
+                  _selectedTab = currentIndex;
+                  _currentWidget = tab['widget'];
+                });
+              };
+
+              return _tab(tab["title"], onTabFunction, selected);
+            }).toList(),
+          ),
+        ),
+        Expanded(
+          child: _currentWidget,
+        ),
+      ],
     );
   }
 
@@ -77,7 +82,7 @@ class _RoomsPageState extends State<RoomsPage> {
     );
   }
 
-  Widget _roomList(context) {
+  Widget roomList(context) {
     final roomsProvider = RoomsProvider();
     return FutureBuilder(
       future: roomsProvider.getRooms(),
@@ -96,7 +101,7 @@ class _RoomsPageState extends State<RoomsPage> {
     );
   }
 
-  Widget text() {
+  Widget text(context) {
     return Text(
       'dddjdj',
       style: Theme.of(context).textTheme.headline1,
