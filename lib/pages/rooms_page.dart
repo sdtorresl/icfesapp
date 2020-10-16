@@ -16,14 +16,21 @@ class _RoomsPageState extends State<RoomsPage> {
     super.initState();
   }
 
+  int _selectedTab = 0;
+  Widget _currentWidget;
+
   @override
   Widget build(BuildContext context) {
-    int _selectedTab = 0;
     List<Map<String, dynamic>> tabs = [
-      {"title": 'Charlas en vivo', "widget": roomList(context)},
-      {"title": "Material pregrabado", "widget": text(context)}
+      {"title": 'Charlas en vivo', "widget": _roomList(context)},
+      {"title": "Material pregrabado", "widget": text()}
     ];
-
+    if (_currentWidget == null) {
+      _currentWidget = _roomList(context);
+    }
+    Expanded(
+      child: _currentWidget,
+    );
     return Container(
       margin: EdgeInsets.only(top: 15),
       child: Row(
@@ -35,7 +42,7 @@ class _RoomsPageState extends State<RoomsPage> {
           Function onTabFunction = () {
             setState(() {
               _selectedTab = currentIndex;
-              roomList(context);
+              _currentWidget = tab['widget'];
             });
           };
 
@@ -70,7 +77,7 @@ class _RoomsPageState extends State<RoomsPage> {
     );
   }
 
-  Widget roomList(context) {
+  Widget _roomList(context) {
     final roomsProvider = RoomsProvider();
     return FutureBuilder(
       future: roomsProvider.getRooms(),
@@ -89,7 +96,10 @@ class _RoomsPageState extends State<RoomsPage> {
     );
   }
 
-  Widget text(context) {
-    return Text('dddjdj');
+  Widget text() {
+    return Text(
+      'dddjdj',
+      style: Theme.of(context).textTheme.headline1,
+    );
   }
 }
