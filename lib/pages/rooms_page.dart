@@ -18,61 +18,81 @@ class _RoomsPageState extends State<RoomsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final roomsProvider = RoomsProvider();
-    return FutureBuilder(
-      future: roomsProvider.getRooms(),
-      builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
-        if (snapshot.hasData) {
-          return bottomSelector(context);
-        } else {
-          return Container(
-            height: 400,
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        }
-      },
+    int _selectedTab = 0;
+    List<Map<String, dynamic>> tabs = [
+      {"title": 'Charlas en vivo', "widget": chat(context)},
+      {"title": "Material pregrabado", "widget": poll(context)}
+    ];
+
+    return Container(
+      margin: EdgeInsets.only(top: 15),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: tabs.map((tab) {
+          int currentIndex = tabs.indexOf(tab);
+          bool selected = currentIndex == _selectedTab;
+
+          Function onTabFunction = () {
+            setState(() {
+              _selectedTab = currentIndex;
+            });
+          };
+
+          return _tab(tab["title"], onTabFunction, selected);
+        }).toList(),
+      ),
     );
   }
 
-  Widget bottomSelector(context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        GestureDetector(
-          child: Container(
-            decoration: BoxDecoration(color: IcfesApp().primaryLight),
-            padding: EdgeInsets.all(10),
-            child: Text(
-              "Charlas en vivo",
-              textAlign: TextAlign.center,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyText1
-                  .copyWith(color: Colors.white),
-            ),
+  Widget _tab(String title, Function onTap, selected) {
+    double borderRadius = 10;
+
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: selected ? IcfesApp().primaryLight : IcfesApp().grey,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(borderRadius),
+            topRight: Radius.circular(borderRadius),
           ),
-          onTap: () {
-            setState(() {});
-          },
         ),
-        GestureDetector(
-          child: Container(
-            decoration: BoxDecoration(color: IcfesApp().primaryLight),
-            padding: EdgeInsets.all(10),
-            child: Text(
-              "Material Pregravado",
-              textAlign: TextAlign.center,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyText1
-                  .copyWith(color: Colors.white),
-            ),
-          ),
-          onTap: () {},
-        )
-      ],
+        padding: EdgeInsets.all(15),
+        child: Text(
+          title,
+          style: Theme.of(context)
+              .textTheme
+              .bodyText1
+              .copyWith(color: selected ? Colors.white : Colors.black),
+        ),
+      ),
     );
   }
+
+  Widget chat(context) {
+    return Text("holaaa");
+  }
+
+  Widget poll(context) {
+    return Text("Hola");
+  }
+}
+
+Widget roomList() {
+  final roomsProvider = RoomsProvider();
+  return FutureBuilder(
+    future: roomsProvider.getRooms(),
+    builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+      if (snapshot.hasData) {
+        return RoomList(rooms: snapshot.data);
+      } else {
+        return Container(
+          height: 400,
+          child: Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
+      }
+    },
+  );
 }
