@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:icfesapp/common/custom_webview.dart';
+
 import 'package:icfesapp/common/room_list.dart';
 import 'package:icfesapp/main.dart';
-import 'package:icfesapp/models/room_model.dart';
+
 import 'package:icfesapp/providers/rooms_provider.dart';
 
 class RoomsPage extends StatefulWidget {
@@ -20,8 +20,8 @@ class _RoomsPageState extends State<RoomsPage> {
   Widget build(BuildContext context) {
     int _selectedTab = 0;
     List<Map<String, dynamic>> tabs = [
-      {"title": 'Charlas en vivo', "widget": chat(context)},
-      {"title": "Material pregrabado", "widget": poll(context)}
+      {"title": 'Charlas en vivo', "widget": roomList(context)},
+      {"title": "Material pregrabado", "widget": text(context)}
     ];
 
     return Container(
@@ -35,6 +35,7 @@ class _RoomsPageState extends State<RoomsPage> {
           Function onTabFunction = () {
             setState(() {
               _selectedTab = currentIndex;
+              roomList(context);
             });
           };
 
@@ -69,30 +70,26 @@ class _RoomsPageState extends State<RoomsPage> {
     );
   }
 
-  Widget chat(context) {
-    return Text("holaaa");
+  Widget roomList(context) {
+    final roomsProvider = RoomsProvider();
+    return FutureBuilder(
+      future: roomsProvider.getRooms(),
+      builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+        if (snapshot.hasData) {
+          return RoomList(rooms: snapshot.data);
+        } else {
+          return Container(
+            height: 400,
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        }
+      },
+    );
   }
 
-  Widget poll(context) {
-    return Text("Hola");
+  Widget text(context) {
+    return Text('dddjdj');
   }
-}
-
-Widget roomList() {
-  final roomsProvider = RoomsProvider();
-  return FutureBuilder(
-    future: roomsProvider.getRooms(),
-    builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
-      if (snapshot.hasData) {
-        return RoomList(rooms: snapshot.data);
-      } else {
-        return Container(
-          height: 400,
-          child: Center(
-            child: CircularProgressIndicator(),
-          ),
-        );
-      }
-    },
-  );
 }

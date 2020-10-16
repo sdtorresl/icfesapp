@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:icfesapp/common/fab_bottom_app_bar.dart';
-import 'package:icfesapp/pages/documents_page.dart';
+
 import 'package:icfesapp/pages/schedule_page.dart';
 import 'package:icfesapp/pages/lobby_page.dart';
 import 'package:icfesapp/pages/rooms_page.dart';
