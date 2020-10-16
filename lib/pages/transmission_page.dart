@@ -57,7 +57,8 @@ class _TransmissionPageState extends State<TransmissionPage> {
                   ),
                 ),
                 Container(
-                  child: VimeoPlayer(id: '395212534', autoPlay: true),
+                  child:
+                      VimeoPlayer(id: transmission.videoCode, autoPlay: true),
                 ),
                 bottomSelector(
                     chatUrl:
@@ -81,6 +82,9 @@ class _TransmissionPageState extends State<TransmissionPage> {
       {"title": "Encuesta", "widget": poll(chatUrl)}
     ];
 
+    double totalWidth = MediaQuery.of(context).size.width;
+    double tabWidth = totalWidth / tabs.length;
+
     return Container(
       margin: EdgeInsets.only(top: 15),
       child: Row(
@@ -96,18 +100,19 @@ class _TransmissionPageState extends State<TransmissionPage> {
             });
           };
 
-          return _tab(tab["title"], onTabFunction, selected);
+          return _tab(tab["title"], onTabFunction, selected, tabWidth);
         }).toList(),
       ),
     );
   }
 
-  Widget _tab(String title, Function onTap, selected) {
+  Widget _tab(String title, Function onTap, bool selected, double width) {
     double borderRadius = 10;
 
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        width: width,
         decoration: BoxDecoration(
           color: selected ? IcfesApp().primaryLight : IcfesApp().grey,
           borderRadius: BorderRadius.only(
@@ -118,6 +123,7 @@ class _TransmissionPageState extends State<TransmissionPage> {
         padding: EdgeInsets.all(15),
         child: Text(
           title,
+          textAlign: TextAlign.center,
           style: Theme.of(context)
               .textTheme
               .bodyText1
