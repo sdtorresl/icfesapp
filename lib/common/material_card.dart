@@ -11,7 +11,7 @@ class MaterialCard extends StatefulWidget {
     Key key,
     @required this.title,
     @required this.description,
-    @required this.uploadDate,
+    this.uploadDate,
     @required this.videoCode,
     this.onChanged,
   })  : assert(title != null),

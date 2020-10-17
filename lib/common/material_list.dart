@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:icfesapp/common/material_card.dart';
 import 'package:icfesapp/models/prerecorded_model.dart';
+import 'package:icfesapp/utils/date_formatter.dart';
 
 class MaterialList extends StatelessWidget {
   final List<PrerecordedModel> materials;
@@ -18,7 +19,8 @@ class MaterialList extends StatelessWidget {
           return MaterialCard(
             title: materials[index].title,
             description: materials[index].description,
-            uploadDate: materials[index].uploadDate,
+            uploadDate:
+                DateFormatter.dateTimeToString(materials[index].uploadDate),
             videoCode: materials[index].videoCode,
           );
         },

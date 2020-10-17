@@ -10,7 +10,7 @@ class PrerecordedModel {
 
   String title;
   String description;
-  String uploadDate;
+  DateTime uploadDate;
   String videoCode;
 
   factory PrerecordedModel.fromJson(String str) =>
@@ -22,7 +22,7 @@ class PrerecordedModel {
       PrerecordedModel(
         title: json["title"],
         description: json["description"],
-        uploadDate: json["upload-date"],
+        uploadDate: DateTime.parse(json["upload-date"]),
         videoCode: json["video-code"],
       );
 
