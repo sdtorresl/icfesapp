@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:icfesapp/common/material_list.dart';
+
 import 'package:icfesapp/common/room_list.dart';
 import 'package:icfesapp/main.dart';
+import 'package:icfesapp/providers/prerecorded_provider.dart';
 
 import 'package:icfesapp/providers/rooms_provider.dart';
 
@@ -23,7 +26,7 @@ class _RoomsPageState extends State<RoomsPage> {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> tabs = [
       {"title": 'Charlas en vivo', "widget": roomList(context)},
-      {"title": "Material pregrabado", "widget": text(context)}
+      {"title": "Material pregrabado", "widget": materiaLists(context)}
     ];
     if (_currentWidget == null) {
       _currentWidget = roomList(context);
@@ -101,10 +104,24 @@ class _RoomsPageState extends State<RoomsPage> {
     );
   }
 
-  Widget text(context) {
-    return Text(
-      'dddjdj',
-      style: Theme.of(context).textTheme.headline1,
+  Widget materiaLists(context) {
+    final prerecordedProvider = PrerecordedProvider();
+    return FutureBuilder(
+      future: prerecordedProvider.getPrerecorded(),
+      builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+        if (snapshot.hasData) {
+          return MaterialList(
+            materials: snapshot.data,
+          );
+        } else {
+          return Container(
+            height: 400,
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        }
+      },
     );
   }
 }
