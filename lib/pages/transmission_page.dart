@@ -3,6 +3,7 @@ import 'package:icfesapp/common/custom_webview.dart';
 import 'package:icfesapp/main.dart';
 import 'package:icfesapp/models/transmission_model.dart';
 import 'package:icfesapp/providers/transmission_provider.dart';
+import 'package:vimeoplayer/vimeoplayer.dart';
 
 class TransmissionPage extends StatefulWidget {
   final int id;
@@ -15,6 +16,7 @@ class TransmissionPage extends StatefulWidget {
 
 class _TransmissionPageState extends State<TransmissionPage> {
   Widget _currentWidget;
+  int _selectedTab = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -43,17 +45,20 @@ class _TransmissionPageState extends State<TransmissionPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(
-                  transmission.title,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline3
-                      .copyWith(color: Colors.black),
+                Container(
+                  margin: EdgeInsets.only(bottom: 20),
+                  child: Text(
+                    transmission.title,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline2
+                        .copyWith(color: Colors.black),
+                  ),
                 ),
                 Container(
-                  height: 250,
-                  decoration: BoxDecoration(color: IcfesApp().primaryDark),
+                  child:
+                      VimeoPlayer(id: transmission.videoCode, autoPlay: true),
                 ),
                 bottomSelector(
                     chatUrl:
@@ -72,46 +77,59 @@ class _TransmissionPageState extends State<TransmissionPage> {
   }
 
   Widget bottomSelector({String chatUrl}) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        GestureDetector(
-          child: Container(
-            decoration: BoxDecoration(color: IcfesApp().primaryLight),
-            padding: EdgeInsets.all(10),
-            child: Text(
-              "Chat",
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyText1
-                  .copyWith(color: Colors.white),
-            ),
-          ),
-          onTap: () {
+    List<Map<String, dynamic>> tabs = [
+      {"title": 'Comentarios', "widget": chat(chatUrl)},
+      {"title": "Encuesta", "widget": poll(chatUrl)}
+    ];
+
+    double totalWidth = MediaQuery.of(context).size.width;
+    double tabWidth = totalWidth / tabs.length;
+
+    return Container(
+      margin: EdgeInsets.only(top: 15),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: tabs.map((tab) {
+          int currentIndex = tabs.indexOf(tab);
+          bool selected = currentIndex == _selectedTab;
+
+          Function onTabFunction = () {
             setState(() {
-              _currentWidget = chat(chatUrl);
+              _selectedTab = currentIndex;
+              _currentWidget = tab["widget"];
             });
-          },
+          };
+
+          return _tab(tab["title"], onTabFunction, selected, tabWidth);
+        }).toList(),
+      ),
+    );
+  }
+
+  Widget _tab(String title, Function onTap, bool selected, double width) {
+    double borderRadius = 10;
+
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: width,
+        decoration: BoxDecoration(
+          color: selected ? IcfesApp().primaryLight : IcfesApp().grey,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(borderRadius),
+            topRight: Radius.circular(borderRadius),
+          ),
         ),
-        GestureDetector(
-          child: Container(
-            decoration: BoxDecoration(color: IcfesApp().primaryLight),
-            padding: EdgeInsets.all(10),
-            child: Text(
-              "Encuestas",
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyText1
-                  .copyWith(color: Colors.white),
-            ),
-          ),
-          onTap: () {
-            setState(() {
-              _currentWidget = poll(chatUrl);
-            });
-          },
-        )
-      ],
+        padding: EdgeInsets.all(15),
+        child: Text(
+          title,
+          textAlign: TextAlign.center,
+          style: Theme.of(context)
+              .textTheme
+              .bodyText1
+              .copyWith(color: selected ? Colors.white : Colors.black),
+        ),
+      ),
     );
   }
 

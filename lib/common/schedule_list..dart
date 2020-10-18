@@ -20,7 +20,7 @@ class ScheduleList extends StatelessWidget {
         itemBuilder: (context, index) {
           String _pictureUrl = _baseUrl + schedules[index].picture;
           return ExpansionCard(
-            header: schedules[index].startDate,
+            header: schedules[index].title,
             title: schedules[index].title,
             subtitle: schedules[index].description,
             haddin: CachedNetworkImage(

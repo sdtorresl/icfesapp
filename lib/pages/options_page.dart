@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:icfesapp/common/networks.dart';
+import 'package:icfesapp/common/options_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:icfesapp/common/social_icon.dart';
 
-class SocialNetworkPage extends StatelessWidget {
-  const SocialNetworkPage({Key key}) : super(key: key);
+class OptionsPage extends StatelessWidget {
+  const OptionsPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,15 +16,20 @@ class SocialNetworkPage extends StatelessWidget {
         children: <Widget>[
           _socialTitle(context),
           SizedBox(height: 20.0),
-          DocumentInterest(
+          OptionsCard(
             title: 'Documentos de interés para el usuario',
             icon: Icons.picture_as_pdf,
             url: 'http://',
+            onTap: () => Navigator.of(context).pushNamed('documents'),
           ),
-          DocumentInterest(
+          OptionsCard(
             title: 'Video pósters',
             icon: Icons.tv,
             url: 'http://',
+            onTap: () {
+              print('push');
+              Navigator.of(context).pushNamed('video-posters');
+            },
           ),
           _socialNetwork(context),
         ],

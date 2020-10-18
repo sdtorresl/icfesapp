@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:icfesapp/pages/documents_page.dart';
 import 'package:icfesapp/pages/home_page.dart';
+import 'package:icfesapp/pages/posters_page.dart';
 import 'package:icfesapp/pages/transmission_page.dart';
+import 'package:icfesapp/common/user_preferences.dart';
+import 'package:icfesapp/pages/onboarding_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final prefs = new UserPreferences();
+  await prefs.initPrefs();
   runApp(IcfesApp());
 }
 
 class IcfesApp extends StatelessWidget {
+  final prefs = new UserPreferences();
   Color get accent => Color(0xffe7326e);
   Color get accentLight => Color(0xffff6c9c);
   Color get accentDark => Color(0xffaf0043);
@@ -19,6 +26,7 @@ class IcfesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'ICFES App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -82,11 +90,16 @@ class IcfesApp extends StatelessWidget {
           ),
         ),
       ),
-      initialRoute: 'home',
+      initialRoute:
+          prefs.onboardingViewed != null && prefs.onboardingViewed == true
+              ? 'home'
+              : 'onboarding',
       routes: {
-        'home': (context) => HomePage(),
+        'home': (BuildContext context) => HomePage(),
+        'onboarding': (BuildContext context) => OnboardingPage(),
         'transmission': (context) => TransmissionPage(),
-        'documents': (context) => DocumentsPage()
+        'documents': (context) => DocumentsPage(),
+        'video-posters': (context) => PostersPage(),
       },
     );
   }

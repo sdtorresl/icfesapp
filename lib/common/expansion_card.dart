@@ -28,6 +28,32 @@ class _ExpansionCardState extends State<ExpansionCard> {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> headerItems;
+    if (widget.header != null) {
+      headerItems = <Widget>[
+        Text(
+          widget.header,
+          style: Theme.of(context).textTheme.headline5,
+        ),
+        SizedBox(height: 4),
+        Text(
+          widget.title,
+          style: Theme.of(context).textTheme.headline4.copyWith(
+                color: Colors.black,
+              ),
+        )
+      ];
+    } else {
+      headerItems = <Widget>[
+        Text(
+          widget.title,
+          style: Theme.of(context).textTheme.headline4.copyWith(
+                color: Colors.black,
+              ),
+        )
+      ];
+    }
+
     var expansionTile = ExpansionTile(
       trailing: _expanded
           ? Icon(
@@ -53,9 +79,12 @@ class _ExpansionCardState extends State<ExpansionCard> {
           )
         ],
       ),
-      subtitle: Text(
-        widget.subtitle,
-        style: Theme.of(context).textTheme.bodyText2,
+      subtitle: Container(
+        padding: EdgeInsets.only(top: 5, bottom: 5),
+        child: Text(
+          widget.subtitle,
+          style: Theme.of(context).textTheme.bodyText2,
+        ),
       ),
       children: <Widget>[widget.haddin],
       onExpansionChanged: (changed) {
@@ -69,7 +98,9 @@ class _ExpansionCardState extends State<ExpansionCard> {
       initiallyExpanded: _expanded,
     );
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
       elevation: 2.0,
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
