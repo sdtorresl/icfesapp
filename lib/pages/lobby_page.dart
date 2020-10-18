@@ -102,7 +102,7 @@ class _LobbyPageState extends State<LobbyPage> {
           title: section.title,
           subtitle: section.description,
           header: "wharever",
-          haddin: CachedNetworkImage(
+          hidden: CachedNetworkImage(
             imageUrl: section.picture,
             placeholder: (context, url) => CircularProgressIndicator(),
             errorWidget: (context, url, error) => Icon(Icons.error),

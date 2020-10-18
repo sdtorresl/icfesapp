@@ -4,7 +4,7 @@ class ExpansionCard extends StatefulWidget {
   final String header;
   final String title;
   final String subtitle;
-  final Widget haddin;
+  final Widget hidden;
   final Function() onChanged;
 
   const ExpansionCard({
@@ -12,7 +12,7 @@ class ExpansionCard extends StatefulWidget {
     @required this.header,
     @required this.title,
     @required this.subtitle,
-    @required this.haddin,
+    @required this.hidden,
     this.onChanged,
   })  : assert(title != null),
         assert(header != null),
@@ -66,18 +66,7 @@ class _ExpansionCardState extends State<ExpansionCard> {
             ),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            widget.header,
-            style: Theme.of(context).textTheme.headline5,
-          ),
-          Text(
-            widget.title,
-            style: Theme.of(context).textTheme.headline4.copyWith(
-                  color: Colors.black,
-                ),
-          )
-        ],
+        children: headerItems,
       ),
       subtitle: Container(
         padding: EdgeInsets.only(top: 5, bottom: 5),
@@ -86,7 +75,7 @@ class _ExpansionCardState extends State<ExpansionCard> {
           style: Theme.of(context).textTheme.bodyText2,
         ),
       ),
-      children: <Widget>[widget.haddin],
+      children: <Widget>[widget.hidden],
       onExpansionChanged: (changed) {
         setState(() {
           _expanded = changed;

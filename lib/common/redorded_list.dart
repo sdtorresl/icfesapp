@@ -19,7 +19,7 @@ class RedordedList extends StatelessWidget {
             header: DateFormatter.dateTimeToString(redorded[index].uploadDate),
             title: redorded[index].title,
             subtitle: '',
-            haddin: Column(
+            hidden: Column(
               children: [
                 Text(
                   redorded[index].description,
