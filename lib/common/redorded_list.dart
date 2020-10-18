@@ -3,10 +3,10 @@ import 'package:icfesapp/common/expansion_card.dart';
 import 'package:icfesapp/models/prerecorded_model.dart';
 import 'package:icfesapp/utils/date_formatter.dart';
 
-class MaterialList extends StatelessWidget {
+class RedordedList extends StatelessWidget {
   final List<PrerecordedModel> materials;
 
-  MaterialList({@required this.materials});
+  RedordedList({@required this.materials});
   @override
   Widget build(BuildContext context) {
     return Container(
