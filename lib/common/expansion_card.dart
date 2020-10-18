@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 
 class ExpansionCard extends StatefulWidget {
-  final String startDate;
+  final String header;
   final String title;
   final String subtitle;
-  final Widget picture;
+  final Widget hidden;
   final Function() onChanged;
 
   const ExpansionCard({
     Key key,
-    this.startDate,
+    @required this.header,
     @required this.title,
     @required this.subtitle,
-    @required this.picture,
+    @required this.hidden,
     this.onChanged,
   })  : assert(title != null),
+        assert(header != null),
         assert(subtitle != null),
         super(key: key);
 
@@ -28,10 +29,10 @@ class _ExpansionCardState extends State<ExpansionCard> {
   @override
   Widget build(BuildContext context) {
     List<Widget> headerItems;
-    if (widget.startDate != null) {
+    if (widget.header != null) {
       headerItems = <Widget>[
         Text(
-          widget.startDate,
+          widget.header,
           style: Theme.of(context).textTheme.headline5,
         ),
         SizedBox(height: 4),
@@ -74,7 +75,7 @@ class _ExpansionCardState extends State<ExpansionCard> {
           style: Theme.of(context).textTheme.bodyText2,
         ),
       ),
-      children: <Widget>[widget.picture],
+      children: <Widget>[widget.hidden],
       onExpansionChanged: (changed) {
         setState(() {
           _expanded = changed;

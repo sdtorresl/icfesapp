@@ -101,7 +101,8 @@ class _LobbyPageState extends State<LobbyPage> {
         return ExpansionCard(
           title: section.title,
           subtitle: section.description,
-          picture: CachedNetworkImage(
+          header: "wharever",
+          hidden: CachedNetworkImage(
             imageUrl: section.picture,
             placeholder: (context, url) => CircularProgressIndicator(),
             errorWidget: (context, url, error) => Icon(Icons.error),
