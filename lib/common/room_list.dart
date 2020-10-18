@@ -20,7 +20,7 @@ class RoomList extends StatelessWidget {
         itemBuilder: (context, index) {
           String _pictureUrl = _baseUrl + rooms[index].picture;
           return ExpansionCard(
-            starDate: DateFormatter.dateTimeToString(rooms[index].startDate),
+            header: DateFormatter.dateTimeToString(rooms[index].startDate),
             title: rooms[index].title,
             subtitle: rooms[index].description,
             haddin: CachedNetworkImage(

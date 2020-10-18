@@ -16,8 +16,7 @@ class MaterialList extends StatelessWidget {
         itemCount: materials.length,
         itemBuilder: (context, index) {
           return ExpansionCard(
-            starDate:
-                DateFormatter.dateTimeToString(materials[index].uploadDate),
+            header: DateFormatter.dateTimeToString(materials[index].uploadDate),
             title: materials[index].title,
             subtitle: '',
             haddin: Column(
