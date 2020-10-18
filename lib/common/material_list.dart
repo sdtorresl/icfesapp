@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:icfesapp/common/expansion_card.dart';
 
 import 'package:icfesapp/common/material_card.dart';
 import 'package:icfesapp/models/prerecorded_model.dart';
@@ -16,12 +17,28 @@ class MaterialList extends StatelessWidget {
       child: ListView.builder(
         itemCount: materials.length,
         itemBuilder: (context, index) {
-          return MaterialCard(
-            title: materials[index].title,
-            description: materials[index].description,
-            uploadDate:
+          return ExpansionCard(
+            starDate:
                 DateFormatter.dateTimeToString(materials[index].uploadDate),
-            videoCode: materials[index].videoCode,
+            title: materials[index].title,
+            subtitle: '',
+            picture: Column(
+              children: [
+                Text(
+                  materials[index].description,
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                Text(
+                  materials[index].videoCode,
+                  style: Theme.of(context).textTheme.headline1.copyWith(
+                        color: Colors.black,
+                      ),
+                )
+              ],
+            ),
           );
         },
       ),
