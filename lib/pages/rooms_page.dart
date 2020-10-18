@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:icfesapp/common/redorded_list.dart';
+import 'package:icfesapp/common/recorded_list.dart';
 import 'package:icfesapp/common/room_list.dart';
 import 'package:icfesapp/main.dart';
 import 'package:icfesapp/providers/prerecorded_provider.dart';
@@ -23,7 +23,7 @@ class _RoomsPageState extends State<RoomsPage> {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> tabs = [
       {"title": 'Charlas en vivo', "widget": roomList(context)},
-      {"title": "Material pregrabado", "widget": materiaLists(context)}
+      {"title": "Material pregrabado", "widget": recordedList(context)}
     ];
     if (_currentWidget == null) {
       _currentWidget = roomList(context);
@@ -101,14 +101,14 @@ class _RoomsPageState extends State<RoomsPage> {
     );
   }
 
-  Widget materiaLists(context) {
+  Widget recordedList(context) {
     final prerecordedProvider = PrerecordedProvider();
     return FutureBuilder(
       future: prerecordedProvider.getPrerecorded(),
       builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
         if (snapshot.hasData) {
-          return RedordedList(
-            redorded: snapshot.data,
+          return RecordedList(
+            recorded: snapshot.data,
           );
         } else {
           return Container(

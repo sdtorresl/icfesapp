@@ -9,14 +9,12 @@ class ExpansionCard extends StatefulWidget {
 
   const ExpansionCard({
     Key key,
-    @required this.header,
+    this.header,
+    this.subtitle,
     @required this.title,
-    @required this.subtitle,
     @required this.hidden,
     this.onChanged,
   })  : assert(title != null),
-        assert(header != null),
-        assert(subtitle != null),
         super(key: key);
 
   @override
@@ -68,13 +66,15 @@ class _ExpansionCardState extends State<ExpansionCard> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: headerItems,
       ),
-      subtitle: Container(
-        padding: EdgeInsets.only(top: 5, bottom: 5),
-        child: Text(
-          widget.subtitle,
-          style: Theme.of(context).textTheme.bodyText2,
-        ),
-      ),
+      subtitle: widget.subtitle != null
+          ? Container(
+              padding: EdgeInsets.only(top: 5, bottom: 5),
+              child: Text(
+                widget.subtitle,
+                style: Theme.of(context).textTheme.bodyText2,
+              ),
+            )
+          : null,
       children: <Widget>[widget.hidden],
       onExpansionChanged: (changed) {
         setState(() {

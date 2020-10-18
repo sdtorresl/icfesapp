@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:icfesapp/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DocumentDownload extends StatefulWidget {
@@ -74,7 +75,7 @@ class _DocumentDownloadState extends State<DocumentDownload> {
                   .headline4
                   .copyWith(color: Colors.white),
             ),
-            color: Colors.pink,
+            color: IcfesApp().accent,
           ),
         ),
       ],
