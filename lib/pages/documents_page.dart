@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:icfesapp/common/document_download.dart';
 
-class DocumentsPage extends StatelessWidget {
+import 'package:icfesapp/common/document_download.dart';
+import 'package:icfesapp/models/document_model.dart';
+import 'package:icfesapp/models/event_model.dart';
+import 'package:icfesapp/providers/event_provider.dart';
+
+class DocumentsPage extends StatefulWidget {
   const DocumentsPage({Key key}) : super(key: key);
+
+  @override
+  _DocumentsPageState createState() => _DocumentsPageState();
+}
+
+class _DocumentsPageState extends State<DocumentsPage> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,39 +37,54 @@ class DocumentsPage extends StatelessWidget {
   }
 
   Widget _listDocuments() {
-    return ListView(
-      children: <Widget>[
-        DocumentDownload(
-          title: "Descarga el kit de documentos",
-          icon: Icons.dashboard,
-          url: "http://",
-        ),
-        DocumentDownload(
-          title: "Descarga el kit de documentos",
-          icon: Icons.insert_drive_file,
-          url: "http://",
-        ),
-        DocumentDownload(
-          title: "Descarga el kit de documentos",
-          icon: Icons.dashboard,
-          url: "http://",
-        ),
-        DocumentDownload(
-          title: "Descarga el kit de documentos",
-          icon: Icons.dashboard,
-          url: "http://",
-        ),
-      ],
-    );
-  }
+    EventProvider eventProvider = EventProvider();
+    return FutureBuilder(
+      future: eventProvider.getEvent(),
+      builder: (BuildContext context, AsyncSnapshot<EventModel> snapshot) {
+        if (snapshot.hasData) {
+          EventModel event = snapshot.data;
+          print(event);
+          List<DocumentModel> documents = event.documents;
 
-  Widget _mainTitle(context) {
-    return Container(
-      child: Text(
-        "Documentos",
-        style:
-            Theme.of(context).textTheme.headline1.copyWith(color: Colors.black),
-      ),
+          return _sections(context, documents);
+        } else {
+          return Container(
+            height: 400,
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        }
+      },
     );
   }
+}
+
+Widget _sections(context, List<DocumentModel> documets) {
+  print(documets);
+  return Container(
+    child: ListView.builder(
+      itemCount: documets.length,
+      itemBuilder: (context, index) {
+        DocumentModel document = documets[index];
+
+        return DocumentDownload(
+          url: document.url,
+          title: document.title,
+          description: document.description,
+          type: document.type,
+        );
+      },
+    ),
+  );
+}
+
+Widget _mainTitle(context) {
+  return Container(
+    child: Text(
+      "Documentos",
+      style:
+          Theme.of(context).textTheme.headline1.copyWith(color: Colors.black),
+    ),
+  );
 }

@@ -37,8 +37,6 @@ class _LobbyPageState extends State<LobbyPage> {
           EventModel event = snapshot.data;
           List<SectionModel> sections = event.sections;
 
-          print("Event: ${event.startDate}");
-
           Widget description = Container(
             height: 400,
             child: Stack(
@@ -50,26 +48,9 @@ class _LobbyPageState extends State<LobbyPage> {
                   child: EventDescription(
                     title: event.title,
                     description: event.description,
-                    picture: event.picture.toString(),
+                    picture: event.picture,
                   ),
                 ),
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: IcfesApp().grey,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(25),
-                        topRight: Radius.circular(25),
-                      ),
-                    ),
-                    child: SizedBox(
-                      height: 25,
-                    ),
-                  ),
-                )
               ],
             ),
           );
@@ -120,7 +101,6 @@ class _LobbyPageState extends State<LobbyPage> {
         return ExpansionCard(
           title: section.title,
           subtitle: section.description,
-          starDate: "wharever",
           picture: CachedNetworkImage(
             imageUrl: section.picture,
             placeholder: (context, url) => CircularProgressIndicator(),

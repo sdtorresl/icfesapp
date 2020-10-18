@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ExpansionCard extends StatefulWidget {
-  final String starDate;
+  final String startDate;
   final String title;
   final String subtitle;
   final Widget picture;
@@ -9,13 +9,12 @@ class ExpansionCard extends StatefulWidget {
 
   const ExpansionCard({
     Key key,
-    @required this.starDate,
+    this.startDate,
     @required this.title,
     @required this.subtitle,
     @required this.picture,
     this.onChanged,
   })  : assert(title != null),
-        assert(starDate != null),
         assert(subtitle != null),
         super(key: key);
 
@@ -28,6 +27,32 @@ class _ExpansionCardState extends State<ExpansionCard> {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> headerItems;
+    if (widget.startDate != null) {
+      headerItems = <Widget>[
+        Text(
+          widget.startDate,
+          style: Theme.of(context).textTheme.headline5,
+        ),
+        SizedBox(height: 4),
+        Text(
+          widget.title,
+          style: Theme.of(context).textTheme.headline4.copyWith(
+                color: Colors.black,
+              ),
+        )
+      ];
+    } else {
+      headerItems = <Widget>[
+        Text(
+          widget.title,
+          style: Theme.of(context).textTheme.headline4.copyWith(
+                color: Colors.black,
+              ),
+        )
+      ];
+    }
+
     var expansionTile = ExpansionTile(
       trailing: _expanded
           ? Icon(
@@ -40,22 +65,14 @@ class _ExpansionCardState extends State<ExpansionCard> {
             ),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            widget.starDate,
-            style: Theme.of(context).textTheme.headline5,
-          ),
-          Text(
-            widget.title,
-            style: Theme.of(context).textTheme.headline4.copyWith(
-                  color: Colors.black,
-                ),
-          )
-        ],
+        children: headerItems,
       ),
-      subtitle: Text(
-        widget.subtitle,
-        style: Theme.of(context).textTheme.bodyText2,
+      subtitle: Container(
+        padding: EdgeInsets.only(top: 5, bottom: 5),
+        child: Text(
+          widget.subtitle,
+          style: Theme.of(context).textTheme.bodyText2,
+        ),
       ),
       children: <Widget>[widget.picture],
       onExpansionChanged: (changed) {
@@ -69,7 +86,9 @@ class _ExpansionCardState extends State<ExpansionCard> {
       initiallyExpanded: _expanded,
     );
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
       elevation: 2.0,
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),

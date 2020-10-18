@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:icfesapp/common/expansion_card.dart';
 import 'package:icfesapp/models/schedule_model.dart';
+import 'package:icfesapp/utils/date_formatter.dart';
 
 class ScheduleList extends StatelessWidget {
   final List<ScheduleModel> schedules;
@@ -20,7 +21,8 @@ class ScheduleList extends StatelessWidget {
         itemBuilder: (context, index) {
           String _pictureUrl = _baseUrl + schedules[index].picture;
           return ExpansionCard(
-            starDate: schedules[index].startDate,
+            startDate:
+                DateFormatter.dateTimeToString(schedules[index].startDate),
             title: schedules[index].title,
             subtitle: schedules[index].description,
             picture: CachedNetworkImage(
