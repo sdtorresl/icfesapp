@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-
-import 'package:icfesapp/common/material_list.dart';
-
+import 'package:icfesapp/common/redorded_list.dart';
 import 'package:icfesapp/common/room_list.dart';
 import 'package:icfesapp/main.dart';
 import 'package:icfesapp/providers/prerecorded_provider.dart';
-
 import 'package:icfesapp/providers/rooms_provider.dart';
 
 class RoomsPage extends StatefulWidget {
@@ -110,7 +107,7 @@ class _RoomsPageState extends State<RoomsPage> {
       future: prerecordedProvider.getPrerecorded(),
       builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
         if (snapshot.hasData) {
-          return MaterialList(
+          return RedordedList(
             materials: snapshot.data,
           );
         } else {
