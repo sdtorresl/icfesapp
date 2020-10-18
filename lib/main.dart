@@ -91,7 +91,7 @@ class IcfesApp extends StatelessWidget {
         ),
       ),
       initialRoute:
-          prefs.onboardingViewed != null && prefs.onboardingViewed == false
+          prefs.onboardingViewed != null && prefs.onboardingViewed == true
               ? 'home'
               : 'onboarding',
       routes: {

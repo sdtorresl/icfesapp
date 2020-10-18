@@ -48,7 +48,7 @@ class _LobbyPageState extends State<LobbyPage> {
                   child: EventDescription(
                     title: event.title,
                     description: event.description,
-                    picture: event.picture.toString(),
+                    picture: event.picture,
                   ),
                 ),
               ],
