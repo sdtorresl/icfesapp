@@ -32,6 +32,9 @@ dependencies:
   carousel_slider: ^2.3.1
   url_launcher: ^5.7.2
   shared_preferences: ^0.5.2
+  rxdart: ^0.24.1
+  
+  
   #splashscreen:
 
 dev_dependencies:

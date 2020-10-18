@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:icfesapp/common/provider_bloc.dart';
 import 'package:icfesapp/common/user_preferences.dart';
 import 'package:icfesapp/pages/login_page.dart';
 
@@ -21,7 +22,8 @@ class IcfesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return Provider(
+     child : MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'ICFES App',
       theme: ThemeData(
@@ -96,6 +98,7 @@ class IcfesApp extends StatelessWidget {
         'onboarding': (BuildContext context) => OnboardingPage(),
         'login': (BuildContext context) => LoginPage(),
       },*/
+    ),
     );
   }
 }
