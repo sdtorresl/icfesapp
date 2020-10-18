@@ -108,7 +108,7 @@ class _RoomsPageState extends State<RoomsPage> {
       builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
         if (snapshot.hasData) {
           return RedordedList(
-            materials: snapshot.data,
+            redorded: snapshot.data,
           );
         } else {
           return Container(
