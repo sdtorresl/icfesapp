@@ -22,7 +22,7 @@ class MaterialList extends StatelessWidget {
                 DateFormatter.dateTimeToString(materials[index].uploadDate),
             title: materials[index].title,
             subtitle: '',
-            picture: Column(
+            haddin: Column(
               children: [
                 Text(
                   materials[index].description,

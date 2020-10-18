@@ -4,7 +4,7 @@ class ExpansionCard extends StatefulWidget {
   final String starDate;
   final String title;
   final String subtitle;
-  final Widget picture;
+  final Widget haddin;
   final Function() onChanged;
 
   const ExpansionCard({
@@ -12,7 +12,7 @@ class ExpansionCard extends StatefulWidget {
     @required this.starDate,
     @required this.title,
     @required this.subtitle,
-    @required this.picture,
+    @required this.haddin,
     this.onChanged,
   })  : assert(title != null),
         assert(starDate != null),
@@ -57,7 +57,7 @@ class _ExpansionCardState extends State<ExpansionCard> {
         widget.subtitle,
         style: Theme.of(context).textTheme.bodyText2,
       ),
-      children: <Widget>[widget.picture],
+      children: <Widget>[widget.haddin],
       onExpansionChanged: (changed) {
         setState(() {
           _expanded = changed;

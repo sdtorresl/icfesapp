@@ -23,7 +23,7 @@ class RoomList extends StatelessWidget {
             starDate: DateFormatter.dateTimeToString(rooms[index].startDate),
             title: rooms[index].title,
             subtitle: rooms[index].description,
-            picture: CachedNetworkImage(
+            haddin: CachedNetworkImage(
               imageUrl: _pictureUrl,
               placeholder: (context, url) => CircularProgressIndicator(),
               errorWidget: (context, url, error) => Icon(Icons.error),

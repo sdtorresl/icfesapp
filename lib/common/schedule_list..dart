@@ -23,7 +23,7 @@ class ScheduleList extends StatelessWidget {
             starDate: schedules[index].startDate,
             title: schedules[index].title,
             subtitle: schedules[index].description,
-            picture: CachedNetworkImage(
+            haddin: CachedNetworkImage(
               imageUrl: _pictureUrl,
               placeholder: (context, url) => CircularProgressIndicator(),
               errorWidget: (context, url, error) => Icon(Icons.error),

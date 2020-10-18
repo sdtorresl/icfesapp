@@ -121,7 +121,7 @@ class _LobbyPageState extends State<LobbyPage> {
           title: section.title,
           subtitle: section.description,
           starDate: "wharever",
-          picture: CachedNetworkImage(
+          haddin: CachedNetworkImage(
             imageUrl: section.picture,
             placeholder: (context, url) => CircularProgressIndicator(),
             errorWidget: (context, url, error) => Icon(Icons.error),
