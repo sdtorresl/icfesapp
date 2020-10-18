@@ -21,7 +21,7 @@ class ScheduleList extends StatelessWidget {
         itemBuilder: (context, index) {
           String _pictureUrl = _baseUrl + schedules[index].picture;
           return ExpansionCard(
-            starDate:
+            startDate:
                 DateFormatter.dateTimeToString(schedules[index].startDate),
             title: schedules[index].title,
             subtitle: schedules[index].description,

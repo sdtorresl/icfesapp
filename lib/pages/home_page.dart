@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:icfesapp/common/fab_bottom_app_bar.dart';
-import 'package:icfesapp/pages/documents_page.dart';
 import 'package:icfesapp/pages/schedule_page.dart';
 import 'package:icfesapp/pages/lobby_page.dart';
 import 'package:icfesapp/pages/rooms_page.dart';
+import 'options_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
@@ -21,8 +21,7 @@ class _HomePageState extends State<HomePage> {
     LobbyPage(),
     RoomsPage(),
     SchedulePage(),
-    //SocialNetworkPage(),
-    DocumentPage(),
+    OptionsPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -48,7 +47,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: _transmisionButton(),
+      floatingActionButton: _transmisionButton(context),
     );
   }
 
@@ -75,7 +74,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-Widget _transmisionButton() {
+Widget _transmisionButton(context) {
   return Container(
     margin: EdgeInsets.only(bottom: 10),
     child: FloatingActionButton(
@@ -84,7 +83,9 @@ Widget _transmisionButton() {
         Icons.video_call,
         color: Colors.white,
       ),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.pushNamed(context, 'transmission');
+      },
     ),
   );
 }

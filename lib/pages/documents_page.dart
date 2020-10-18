@@ -5,14 +5,14 @@ import 'package:icfesapp/models/document_model.dart';
 import 'package:icfesapp/models/event_model.dart';
 import 'package:icfesapp/providers/event_provider.dart';
 
-class DocumentPage extends StatefulWidget {
-  const DocumentPage({Key key}) : super(key: key);
+class DocumentsPage extends StatefulWidget {
+  const DocumentsPage({Key key}) : super(key: key);
 
   @override
-  _DocumentPageState createState() => _DocumentPageState();
+  _DocumentsPageState createState() => _DocumentsPageState();
 }
 
-class _DocumentPageState extends State<DocumentPage> {
+class _DocumentsPageState extends State<DocumentsPage> {
   @override
   void initState() {
     super.initState();

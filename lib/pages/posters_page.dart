@@ -4,9 +4,9 @@ import 'package:icfesapp/common/poster_view.dart';
 
 import 'package:icfesapp/providers/poster_provider.dart';
 
-void main() => runApp(PosterPage());
+void main() => runApp(PostersPage());
 
-class PosterPage extends StatelessWidget {
+class PostersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

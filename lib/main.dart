@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:icfesapp/common/user_preferences.dart';
+import 'package:icfesapp/pages/documents_page.dart';
 import 'package:icfesapp/pages/home_page.dart';
+import 'package:icfesapp/pages/posters_page.dart';
+import 'package:icfesapp/pages/transmission_page.dart';
+import 'package:icfesapp/common/user_preferences.dart';
 import 'package:icfesapp/pages/onboarding_page.dart';
 
 void main() async {
@@ -94,6 +97,9 @@ class IcfesApp extends StatelessWidget {
       routes: {
         'home': (BuildContext context) => HomePage(),
         'onboarding': (BuildContext context) => OnboardingPage(),
+        'transmission': (context) => TransmissionPage(),
+        'documents': (context) => DocumentsPage(),
+        'video-posters': (context) => PostersPage(),
       },
     );
   }

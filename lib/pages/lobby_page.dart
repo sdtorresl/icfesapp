@@ -37,8 +37,6 @@ class _LobbyPageState extends State<LobbyPage> {
           EventModel event = snapshot.data;
           List<SectionModel> sections = event.sections;
 
-          print("Event: ${event.startDate}");
-
           Widget description = Container(
             height: 400,
             child: Stack(
@@ -50,7 +48,7 @@ class _LobbyPageState extends State<LobbyPage> {
                   child: EventDescription(
                     title: event.title,
                     description: event.description,
-                    picture: event.picture.toString(),
+                    picture: event.picture,
                   ),
                 ),
               ],
@@ -103,7 +101,6 @@ class _LobbyPageState extends State<LobbyPage> {
         return ExpansionCard(
           title: section.title,
           subtitle: section.description,
-          starDate: "wharever",
           picture: CachedNetworkImage(
             imageUrl: section.picture,
             placeholder: (context, url) => CircularProgressIndicator(),

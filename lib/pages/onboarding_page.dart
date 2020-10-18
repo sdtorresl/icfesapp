@@ -1,13 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:icfesapp/common/onboarding_view.dart';
-import 'package:icfesapp/pages/home_page.dart';
-
-final List<String> imgList = [
-  '1',
-  '2',
-  '3',
-];
+import 'package:icfesapp/common/user_preferences.dart';
 
 class OnboardingPage extends StatefulWidget {
   @override
@@ -18,71 +12,73 @@ class OnboardingPage extends StatefulWidget {
 
 class _OnboardingPageState extends State<OnboardingPage> {
   int _current = 0;
+  final List<Widget> carouselItems = [
+    Onboarding(
+      title: 'Consulta todo sobre el evento',
+      description: 'Disfruta de la nueva plataforma que te ayudara a crecer',
+      picture: 'assets/img/Bitmap.png',
+    ),
+    Onboarding(
+      title: 'Tu espacio virtual',
+      description: 'Conectate y observa el evento a través de tu celular',
+      picture: 'assets/img/Bitmap2.png',
+    ),
+    Onboarding(
+      title: 'Comparte en redes',
+      description: 'Participa y comparte en redes sociales',
+      picture: 'assets/img/Bitmap3.png',
+    ),
+  ];
   final CarouselController _controller = CarouselController();
 
   @override
   Widget build(BuildContext context) {
+    final prefs = UserPreferences();
+
     return Scaffold(
       body: Column(
         children: [
           SafeArea(
             child: Container(
+              margin: EdgeInsets.only(top: 25),
               alignment: Alignment.bottomRight,
               height: 30,
               child: FloatingActionButton(
+                heroTag: 'close-button',
                 elevation: 5.0,
                 child: Icon(
                   Icons.clear,
-                  color: Colors.black87,
+                  color: Colors.white,
                 ),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) {
-                      return HomePage();
-                    }),
-                  );
+                  prefs.onboardingViewed = true;
+                  Navigator.of(context).pushNamed('home');
                 },
               ),
             ),
           ),
           CarouselSlider(
-            items: [
-              Onboarding(
-                title: 'Consulta todo sobre el evento',
-                description:
-                    'Disfruta de la nueva plataforma que te ayudara a crecer',
-                picture: 'assets/img/Bitmap.png',
-              ),
-              Onboarding(
-                title: 'Tu espacio virtual',
-                description:
-                    'Conectate y observa el evento a través de tu celular',
-                picture: 'assets/img/Bitmap2.png',
-              ),
-              Onboarding(
-                title: 'Comparte en redes',
-                description: 'Participa y comparte en redes sociales',
-                picture: 'assets/img/Bitmap3.png',
-              ),
-            ],
+            items: carouselItems,
             options: CarouselOptions(
-                autoPlay: false,
-                enlargeCenterPage: false,
-                aspectRatio: 0.9,
-                viewportFraction: 1,
-                onPageChanged: (index, reason) {
-                  setState(() {
+              autoPlay: false,
+              enlargeCenterPage: false,
+              aspectRatio: 0.9,
+              viewportFraction: 1,
+              onPageChanged: (index, reason) {
+                setState(
+                  () {
                     _current = index;
-                  });
-                }),
+                  },
+                );
+              },
+            ),
             carouselController: _controller,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: imgList.map((item) {
-              int index = imgList.indexOf(item);
+            children: carouselItems.map((item) {
+              int index = carouselItems.indexOf(item);
               return Container(
                 width: 15.0,
                 height: 15.0,
@@ -109,15 +105,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     Icons.navigate_next,
                     color: Colors.white,
                   ),
-                  onPressed: _current == imgList.length.bitLength
-                      ? () => {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => HomePage(),
-                              ),
-                            ),
-                          }
+                  onPressed: _current == carouselItems.length - 1
+                      ? () {
+                          prefs.onboardingViewed = true;
+                          Navigator.of(context).pushNamed('home');
+                        }
                       : () => _controller.nextPage(),
                 ),
               ],
