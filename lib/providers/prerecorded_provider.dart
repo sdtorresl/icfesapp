@@ -27,10 +27,7 @@ class PrerecordedProvider {
       } else {
         print('Request failed with status: ${response.statusCode}.');
       }
-    } catch (Exception) {
-      print("Aqui");
-      print(Exception);
-    }
+    } catch (Exception) {}
 
     return [];
   }
