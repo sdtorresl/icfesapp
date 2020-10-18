@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:icfesapp/common/login_bloc.dart';
+import 'package:icfesapp/bloc/login_bloc.dart';
 
 class Provider extends InheritedWidget {
   static Provider _instancia;

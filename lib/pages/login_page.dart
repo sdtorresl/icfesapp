@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:icfesapp/common/login_bloc.dart';
-import 'package:icfesapp/common/provider_bloc.dart';
+import 'package:icfesapp/bloc/login_bloc.dart';
+import 'package:icfesapp/bloc/provider_bloc.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -24,7 +24,7 @@ class LoginPage extends StatelessWidget {
             child: _enderCode(bloc),
           ),
           SizedBox(height: 20),
-          Text('¿Olvidó su codigó?'),
+          Text('¿Olvidó su codigó?', textAlign: TextAlign.center),
           SizedBox(height: 40),
           Container(
             alignment: Alignment.center,
@@ -124,6 +124,7 @@ class LoginPage extends StatelessWidget {
                     hintText: "Excribe tu codigo",
                     counterText: snapshot.data,
                     errorText: snapshot.error,
+                    fillColor: Colors.black12,
                   ),
                   onChanged: bloc.changeEmail,
                 ),
@@ -139,11 +140,13 @@ class LoginPage extends StatelessWidget {
     return StreamBuilder(
       stream: bloc.formValidStream,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
+        final size = MediaQuery.of(context).size;
         return Container(
           child: SizedBox(
-            width: 350,
-            height: 50,
+            width: size.width * 0.9,
+            height: size.width * 0.15,
             child: RaisedButton(
+              color: Colors.pink,
               onPressed: snapshot.hasData ? () => _login(bloc, context) : null,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
