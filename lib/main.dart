@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icfesapp/pages/documents_page.dart';
 import 'package:icfesapp/pages/home_page.dart';
+import 'package:icfesapp/pages/jitsi_page.dart';
 import 'package:icfesapp/pages/posters_page.dart';
 import 'package:icfesapp/pages/transmission_page.dart';
 import 'package:icfesapp/common/user_preferences.dart';
@@ -92,7 +93,7 @@ class IcfesApp extends StatelessWidget {
       ),
       initialRoute:
           prefs.onboardingViewed != null && prefs.onboardingViewed == true
-              ? 'home'
+              ? 'conference-room'
               : 'onboarding',
       routes: {
         'home': (BuildContext context) => HomePage(),
@@ -100,6 +101,7 @@ class IcfesApp extends StatelessWidget {
         'transmission': (context) => TransmissionPage(),
         'documents': (context) => DocumentsPage(),
         'video-posters': (context) => PostersPage(),
+        'conference-room': (context) => JitsiPage(),
       },
     );
   }
