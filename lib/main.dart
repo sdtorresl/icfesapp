@@ -98,19 +98,19 @@ class IcfesApp extends StatelessWidget {
             ),
           ),
         ),
+        initialRoute:
+            prefs.onboardingViewed != null && prefs.onboardingViewed == false
+                ? 'home'
+                : 'onboarding',
+        routes: {
+          'home': (BuildContext context) => HomePage(),
+          'onboarding': (BuildContext context) => OnboardingPage(),
+          'transmission': (context) => TransmissionPage(),
+          'documents': (context) => DocumentsPage(),
+          'video-posters': (context) => PostersPage(),
+          'login': (BuildContext context) => LoginPage(),
+        },
       ),
-      initialRoute:
-          prefs.onboardingViewed != null && prefs.onboardingViewed == false
-              ? 'home'
-              : 'onboarding',
-      routes: {
-        'home': (BuildContext context) => HomePage(),
-        'onboarding': (BuildContext context) => OnboardingPage(),
-        'transmission': (context) => TransmissionPage(),
-        'documents': (context) => DocumentsPage(),
-        'video-posters': (context) => PostersPage(),
-        'login': (BuildContext context) => LoginPage(),
-      },
     );
   }
 }
