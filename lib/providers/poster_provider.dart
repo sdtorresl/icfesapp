@@ -27,9 +27,7 @@ class PosterProvider {
       } else {
         print('Request failed with status: ${response.statusCode}.');
       }
-    } catch (Exception) {
-      print(Exception);
-    }
+    } catch (Exception) {}
 
     return [];
   }
