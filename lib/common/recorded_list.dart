@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:icfesapp/common/expansion_card.dart';
 import 'package:icfesapp/models/prerecorded_model.dart';
 import 'package:icfesapp/pages/recorded_page.dart';
-import 'package:icfesapp/pages/transmission_page.dart';
 import 'package:icfesapp/utils/date_formatter.dart';
 
 import '../main.dart';
@@ -47,7 +46,6 @@ class RecordedList extends StatelessWidget {
     recordList.add(SizedBox(height: 35));
 
     return Container(
-      decoration: BoxDecoration(color: Color.fromRGBO(243, 243, 243, 1)),
       padding: EdgeInsets.only(top: 10.0),
       child: ListView(
         children: recordList,

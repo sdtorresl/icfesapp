@@ -84,41 +84,49 @@ class _RoomsPageState extends State<RoomsPage> {
 
   Widget roomList(context) {
     final roomsProvider = RoomsProvider();
-    return FutureBuilder(
-      future: roomsProvider.getRooms(),
-      builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
-        if (snapshot.hasData) {
-          return RoomList(rooms: snapshot.data);
-        } else {
-          return Container(
-            height: 400,
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        }
-      },
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      color: Colors.transparent,
+      child: FutureBuilder(
+        future: roomsProvider.getRooms(),
+        builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+          if (snapshot.hasData) {
+            return RoomList(rooms: snapshot.data);
+          } else {
+            return Container(
+              height: 400,
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
+        },
+      ),
     );
   }
 
   Widget recordedList(context) {
     final prerecordedProvider = PrerecordedProvider();
-    return FutureBuilder(
-      future: prerecordedProvider.getPrerecorded(),
-      builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
-        if (snapshot.hasData) {
-          return RecordedList(
-            recorded: snapshot.data,
-          );
-        } else {
-          return Container(
-            height: 400,
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        }
-      },
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      color: Colors.transparent,
+      child: FutureBuilder(
+        future: prerecordedProvider.getPrerecorded(),
+        builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+          if (snapshot.hasData) {
+            return RecordedList(
+              recorded: snapshot.data,
+            );
+          } else {
+            return Container(
+              height: 400,
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
+        },
+      ),
     );
   }
 }

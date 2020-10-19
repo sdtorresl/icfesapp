@@ -55,7 +55,6 @@ class RoomList extends StatelessWidget {
 
     roomList.add(SizedBox(height: 35));
     return Container(
-      decoration: BoxDecoration(color: Color.fromRGBO(243, 243, 243, 1)),
       padding: EdgeInsets.only(top: 10.0),
       child: ListView(
         children: roomList,

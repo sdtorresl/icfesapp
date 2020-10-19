@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:icfesapp/common/schedule_list..dart';
+import 'package:icfesapp/main.dart';
 import 'package:icfesapp/models/room_model.dart';
 import 'package:icfesapp/models/schedule_model.dart';
 import 'package:icfesapp/providers/rooms_provider.dart';
@@ -23,7 +24,7 @@ class _SchedulePageState extends State<SchedulePage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            padding: EdgeInsets.all(25),
+            padding: EdgeInsets.only(left: 25, top: 20, right: 20, bottom: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -33,28 +34,32 @@ class _SchedulePageState extends State<SchedulePage> {
                         color: Colors.black,
                       ),
                 ),
-                SizedBox(height: 30.0),
+                SizedBox(height: 20.0),
                 Text(
                   'Selecciona la sala ',
                   style: Theme.of(context).textTheme.headline4,
                 ),
+                SizedBox(height: 5),
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(3),
-                    color: Color.fromRGBO(243, 243, 243, 1),
-                  ),
+                      borderRadius: BorderRadius.circular(5),
+                      color: IcfesApp().grey),
                   padding: EdgeInsets.symmetric(horizontal: 15),
                   width: MediaQuery.of(context).size.width,
-                  child: Center(
-                    child: DropdownButtonHideUnderline(
-                      child: _roomsDropdown(),
-                    ),
+                  child: DropdownButtonHideUnderline(
+                    child: _roomsDropdown(),
                   ),
                 ),
               ],
             ),
           ),
-          Expanded(child: _listSchedule(context))
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.only(left: 25, top: 10, right: 25),
+              color: IcfesApp().grey,
+              child: _listSchedule(context),
+            ),
+          )
         ],
       ),
     );
