@@ -39,10 +39,10 @@ class IcfesApp extends StatelessWidget {
           colorScheme: ColorScheme.light(primary: primary, secondary: accent),
           buttonTheme: ButtonThemeData(
             buttonColor: accent,
-            disabledColor: grey,
+            disabledColor: accentLight,
             padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50),
+              borderRadius: BorderRadius.circular(5),
             ),
           ),
           textTheme: TextTheme(
