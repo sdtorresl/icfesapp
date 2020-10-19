@@ -40,6 +40,9 @@ class VideoPosterModel {
         "imagen": imagen,
         "adjunto": adjunto,
       };
+
+  @override
+  String toString() => this.toJson();
 }
 
 class Videos {
@@ -60,4 +63,7 @@ class Videos {
   Map<String, dynamic> toMap() => {
         "url": url,
       };
+
+  @override
+  String toString() => this.toJson();
 }

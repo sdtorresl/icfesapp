@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 
 class ExpansionCard extends StatefulWidget {
-  final String starDate;
+  final String header;
   final String title;
   final String subtitle;
-  final Widget picture;
+  final Widget hidden;
   final Function() onChanged;
 
   const ExpansionCard({
     Key key,
-    @required this.starDate,
+    this.header,
+    this.subtitle,
     @required this.title,
-    @required this.subtitle,
-    @required this.picture,
+    @required this.hidden,
     this.onChanged,
   })  : assert(title != null),
-        assert(starDate != null),
-        assert(subtitle != null),
         super(key: key);
 
   @override
@@ -28,6 +26,32 @@ class _ExpansionCardState extends State<ExpansionCard> {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> headerItems;
+    if (widget.header != null) {
+      headerItems = <Widget>[
+        Text(
+          widget.header,
+          style: Theme.of(context).textTheme.headline5,
+        ),
+        SizedBox(height: 4),
+        Text(
+          widget.title,
+          style: Theme.of(context).textTheme.headline4.copyWith(
+                color: Colors.black,
+              ),
+        )
+      ];
+    } else {
+      headerItems = <Widget>[
+        Text(
+          widget.title,
+          style: Theme.of(context).textTheme.headline4.copyWith(
+                color: Colors.black,
+              ),
+        )
+      ];
+    }
+
     var expansionTile = ExpansionTile(
       trailing: _expanded
           ? Icon(
@@ -40,24 +64,18 @@ class _ExpansionCardState extends State<ExpansionCard> {
             ),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            widget.starDate,
-            style: Theme.of(context).textTheme.headline5,
-          ),
-          Text(
-            widget.title,
-            style: Theme.of(context).textTheme.headline4.copyWith(
-                  color: Colors.black,
-                ),
-          )
-        ],
+        children: headerItems,
       ),
-      subtitle: Text(
-        widget.subtitle,
-        style: Theme.of(context).textTheme.bodyText2,
-      ),
-      children: <Widget>[widget.picture],
+      subtitle: widget.subtitle != null
+          ? Container(
+              padding: EdgeInsets.only(top: 5, bottom: 5),
+              child: Text(
+                widget.subtitle,
+                style: Theme.of(context).textTheme.bodyText2,
+              ),
+            )
+          : null,
+      children: <Widget>[widget.hidden],
       onExpansionChanged: (changed) {
         setState(() {
           _expanded = changed;

@@ -11,8 +11,6 @@ import 'package:icfesapp/models/section_model.dart';
 import 'package:icfesapp/providers/event_provider.dart';
 import 'package:icfesapp/utils/column_builder.dart';
 
-final textstyle3 = new TextStyle(fontSize: 18, color: Colors.black);
-
 class LobbyPage extends StatefulWidget {
   const LobbyPage({Key key}) : super(key: key);
 
@@ -37,20 +35,34 @@ class _LobbyPageState extends State<LobbyPage> {
           EventModel event = snapshot.data;
           List<SectionModel> sections = event.sections;
 
-          print("Event: ${event.startDate}");
-
           Widget description = Container(
-            height: 400,
+            height: 380,
+            color: IcfesApp().primaryDark,
             child: Stack(
               children: <Widget>[
                 Positioned(
-                  top: 10,
+                  top: 0,
                   left: 0,
                   right: 0,
                   child: EventDescription(
                     title: event.title,
                     description: event.description,
-                    picture: event.picture.toString(),
+                    picture: event.picture,
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  left: 0,
+                  child: Container(
+                    height: 20,
+                    decoration: BoxDecoration(
+                      color: IcfesApp().grey,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -103,8 +115,7 @@ class _LobbyPageState extends State<LobbyPage> {
         return ExpansionCard(
           title: section.title,
           subtitle: section.description,
-          starDate: "wharever",
-          picture: CachedNetworkImage(
+          hidden: CachedNetworkImage(
             imageUrl: section.picture,
             placeholder: (context, url) => CircularProgressIndicator(),
             errorWidget: (context, url, error) => Icon(Icons.error),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:icfesapp/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DocumentDownload extends StatefulWidget {
@@ -50,23 +51,20 @@ class _DocumentDownloadState extends State<DocumentDownload> {
         children: <Widget>[
           Text(
             widget.title,
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context)
+                .textTheme
+                .headline4
+                .copyWith(color: Colors.black),
             textAlign: TextAlign.start,
           ),
         ],
       ),
       children: <Widget>[
-        SizedBox(height: 25),
-        Text(
-          widget.description,
-          style: Theme.of(context)
-              .textTheme
-              .headline4
-              .copyWith(color: Colors.black),
-        ),
-        SizedBox(height: 25),
+        SizedBox(height: 5),
+        Text(widget.description, style: Theme.of(context).textTheme.bodyText2),
+        SizedBox(height: 15),
         SizedBox(
-          width: 400,
+          width: MediaQuery.of(context).size.width,
           height: 50,
           child: RaisedButton(
             onPressed: _launchURL,
@@ -77,7 +75,7 @@ class _DocumentDownloadState extends State<DocumentDownload> {
                   .headline4
                   .copyWith(color: Colors.white),
             ),
-            color: Colors.pink,
+            color: IcfesApp().accent,
           ),
         ),
       ],

@@ -5,14 +5,16 @@ import 'package:icfesapp/models/document_model.dart';
 import 'package:icfesapp/models/event_model.dart';
 import 'package:icfesapp/providers/event_provider.dart';
 
-class DocumentPage extends StatefulWidget {
-  const DocumentPage({Key key}) : super(key: key);
+import '../main.dart';
+
+class DocumentsPage extends StatefulWidget {
+  const DocumentsPage({Key key}) : super(key: key);
 
   @override
-  _DocumentPageState createState() => _DocumentPageState();
+  _DocumentsPageState createState() => _DocumentsPageState();
 }
 
-class _DocumentPageState extends State<DocumentPage> {
+class _DocumentsPageState extends State<DocumentsPage> {
   @override
   void initState() {
     super.initState();
@@ -20,18 +22,35 @@ class _DocumentPageState extends State<DocumentPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(color: Color.fromRGBO(243, 243, 243, 1)),
-      padding: EdgeInsets.all(25),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          _mainTitle(context),
-          SizedBox(height: 20),
-          Expanded(
-            child: _listDocuments(),
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: IcfesApp().accent,
+        ),
+        shadowColor: Colors.transparent,
+        backgroundColor: Colors.white,
+        flexibleSpace: Container(
+          padding: EdgeInsets.only(left: 75),
+          child: Image(
+            width: 300,
+            image: AssetImage('assets/img/dots.png'),
+            repeat: ImageRepeat.repeat,
           ),
-        ],
+        ),
+      ),
+      body: Container(
+        decoration: BoxDecoration(color: Color.fromRGBO(243, 243, 243, 1)),
+        padding: EdgeInsets.all(25),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            _mainTitle(context),
+            SizedBox(height: 20),
+            Expanded(
+              child: _listDocuments(),
+            ),
+          ],
+        ),
       ),
     );
   }

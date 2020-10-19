@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class EventDescription extends StatelessWidget {
@@ -20,11 +21,16 @@ class EventDescription extends StatelessWidget {
               style: Theme.of(context).textTheme.headline1,
             ),
           ),
-          new Image.asset('assets/img/Group 6.png'),
+          CachedNetworkImage(
+            imageUrl: this.picture,
+            placeholder: (context, url) => CircularProgressIndicator(),
+            errorWidget: (context, url, error) => SizedBox(
+              height: 50,
+            ),
+          ),
           Container(
             margin: EdgeInsets.only(top: 10, bottom: 50),
             padding: EdgeInsets.all(10),
-            height: 80,
             child: Text(
               description,
               style: Theme.of(context).textTheme.bodyText1,
