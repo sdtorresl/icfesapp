@@ -66,7 +66,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 SizedBox(height: 30.0),
                 Container(
-                  child: _crearBoton(bloc),
+                  child: _createButton(bloc),
                   alignment: Alignment.bottomCenter,
                 ),
                 SizedBox(height: 50),
@@ -154,7 +154,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _crearBoton(LoginBloc bloc) {
+  Widget _createButton(LoginBloc bloc) {
     return StreamBuilder(
       stream: bloc.formValidStream,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
