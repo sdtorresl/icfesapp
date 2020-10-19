@@ -13,42 +13,44 @@ class RecordedList extends StatelessWidget {
   RecordedList({@required this.recorded});
   @override
   Widget build(BuildContext context) {
+    List<Widget> recordList = List();
+    for (var record in recorded) {
+      recordList.add(ExpansionCard(
+        header: DateFormatter.dateTimeToString(record.uploadDate),
+        title: record.title,
+        hidden: Column(
+          children: [
+            Text(
+              record.description,
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 15),
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: RaisedButton(
+                child: Text(
+                  "Ver material",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline4
+                      .copyWith(color: Colors.white),
+                ),
+                onPressed: () => _openRecord(context, record),
+                color: IcfesApp().accent,
+              ),
+            ),
+            SizedBox(height: 10),
+          ],
+        ),
+      ));
+    }
+    recordList.add(SizedBox(height: 35));
+
     return Container(
       decoration: BoxDecoration(color: Color.fromRGBO(243, 243, 243, 1)),
       padding: EdgeInsets.only(top: 10.0),
-      child: ListView.builder(
-        itemCount: recorded.length,
-        itemBuilder: (context, index) {
-          PrerecordedModel record = recorded[index];
-          return ExpansionCard(
-            header: DateFormatter.dateTimeToString(record.uploadDate),
-            title: record.title,
-            hidden: Column(
-              children: [
-                Text(
-                  record.description,
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: 15),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: RaisedButton(
-                    child: Text(
-                      "Ver material",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline4
-                          .copyWith(color: Colors.white),
-                    ),
-                    onPressed: () => _openRecord(context, record),
-                    color: IcfesApp().accent,
-                  ),
-                ),
-                SizedBox(height: 10),
-              ],
-            ),
-          );
-        },
+      child: ListView(
+        children: recordList,
       ),
     );
   }
