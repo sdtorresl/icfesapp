@@ -1,58 +1,38 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
-import 'dart:convert' as json;
-import 'package:icfesapp/models/schedule_model.dart';
 import 'package:icfesapp/models/user_model.dart';
 
 class UserProvider {
-  final String _url = "https://dev-eweb.us.seedcloud.co/login'";
-
-  Future<List<UserModel>> login() async {
+  Future<UserModel> login(String email, String code) async {
+    final String _url = "https://dev-eweb.us.seedcloud.co/login'";
     try {
-      var response = await http.get(_url);
+      String username = 'eweb';
+      String password = 'E02i4BMX';
+      String basicAuth =
+          'Basic ' + base64Encode(utf8.encode('$username:$password'));
 
-      //print({responseCode: response.statusCode})
+      var response = await http.post(
+        _url,
+        body: json.encode({'email': email, 'code': password}),
+        headers: <String, String>{'authorization': basicAuth},
+      );
+
+      print(response.statusCode);
+      print(response.body);
 
       if (response.statusCode == 200) {
-        print(response.body);
-        List<dynamic> jsonResponse = json.jsonDecode(response.body);
-        List<ScheduleModel> schedules = List();
-
-        for (var item in jsonResponse) {
-          print(item);
-          ScheduleModel schedule = ScheduleModel.fromMap(item);
-          schedules.add(schedule);
-          print(schedule);
-        }
-
-        return schedules;
+        return token(token);
       } else {
         print('Request failed with status: ${response.statusCode}.');
       }
-    } catch (Exception) {}
+    } catch (Exception) {
+      print(Exception);
+    }
 
-    return [];
+    return null;
   }
-}
 
-main() async {
-  String username = 'eweb';
-  String password = 'E02i4BMX';
-  String basicAuth =
-      'Basic ' + base64Encode(utf8.encode('$username:$password'));
-  print(basicAuth);
-
-  Response r = await get(' https://dev-eweb.us.seedcloud.co/login',
-      headers: <String, String>{'authorization': basicAuth});
-  print(r.statusCode);
-  print(r.body);
-
-  var url = 'https://dev-eweb.us.seedcloud.co/login';
-  http.post(url, body: json.encode({'email': 'code'})).then(
-    (response) {
-      print("Response status: ${response.statusCode}");
-      print("Response body: ${response.body}");
-    },
-  );
+  Future<UserModel> token(String token) async {
+    return null;
+  }
 }

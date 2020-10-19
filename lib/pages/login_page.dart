@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icfesapp/bloc/login_bloc.dart';
 import 'package:icfesapp/bloc/provider_bloc.dart';
+import 'package:icfesapp/providers/user_provider.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -203,6 +204,9 @@ class LoginPage extends StatelessWidget {
     print('Password: ${bloc.password}');
     print('================');
 
-    Navigator.pushReplacementNamed(context, 'home');
+    UserProvider userProvider = UserProvider();
+    userProvider.login(bloc.email, bloc.password);
+
+    //Navigator.pushReplacementNamed(context, 'home');
   }
 }
