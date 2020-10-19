@@ -45,5 +45,9 @@
 	<!-- Youtube Player required -->
 	<key>io.flutter.embedded_views_preview</key>
 	<true/>
+
+	<!-- Vimeo Player -->
+	<key>NSAllowsArbitraryLoads</key>
+	<true/>
 </dict>
 </plist>

@@ -22,7 +22,7 @@ class _RoomsPageState extends State<RoomsPage> {
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> tabs = [
-      {"title": 'Charlas en vivo', "widget": roomList(context)},
+      {"title": 'Salas en vivo', "widget": roomList(context)},
       {"title": "Material pregrabado", "widget": recordedList(context)}
     ];
     if (_currentWidget == null) {

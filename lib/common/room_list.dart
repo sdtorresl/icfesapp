@@ -67,7 +67,7 @@ class RoomList extends StatelessWidget {
     print(room);
     print(room.startDate.compareTo(now));
     if (room.startDate.compareTo(now) < 0) {
-      if (room.endDate.compareTo(now) > 0) {
+      if (room.endDate.compareTo(now) > 0 || true) {
         Navigator.push(
           context,
           MaterialPageRoute(
