@@ -118,7 +118,6 @@ class LoginPage extends StatelessWidget {
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
               hintText: 'Escribe tu correo electrónico',
-              counterText: snapshot.data,
               errorText: snapshot.error,
               errorStyle: Theme.of(context)
                   .textTheme
@@ -141,7 +140,6 @@ class LoginPage extends StatelessWidget {
           child: TextField(
             obscureText: true,
             decoration: InputDecoration(
-              counterText: snapshot.data,
               errorText: snapshot.error,
               errorStyle: Theme.of(context)
                   .textTheme
