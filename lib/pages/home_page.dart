@@ -53,21 +53,16 @@ class _HomePageState extends State<HomePage> {
 
   Widget _topBar(context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double barHeight = 100;
+    Orientation currentOrientation = MediaQuery.of(context).orientation;
+    double barHeight = currentOrientation == Orientation.portrait ? 100 : 50;
+
     return PreferredSize(
       preferredSize: Size(screenWidth, barHeight),
       child: Container(
-        child: Stack(
-          children: [
-            Container(
-              width: 500,
-              height: 500,
-              padding: EdgeInsets.all(10),
-              child: SafeArea(
-                child: Image.asset("assets/img/Group 101.png"),
-              ),
-            ),
-          ],
+        width: screenWidth,
+        padding: EdgeInsets.all(10),
+        child: SafeArea(
+          child: Image.asset("assets/img/Group 101.png"),
         ),
       ),
     );
