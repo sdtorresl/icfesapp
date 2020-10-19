@@ -25,18 +25,13 @@ class PostersPage extends StatelessWidget {
           ),
         ),
       ),
-      backgroundColor: Color(0xFFFAFAFA),
       body: Container(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(20.0),
+        color: IcfesApp().grey,
         child: Container(
-          decoration: BoxDecoration(
-            color: Color.fromRGBO(243, 243, 243, 1),
-            borderRadius: BorderRadius.circular(15.0),
-          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              SizedBox(height: 20.0),
               _posterTitle(context),
               Expanded(child: _listPoster(context)),
             ],

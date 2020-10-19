@@ -19,7 +19,6 @@ class RoomsProvider {
         for (var item in jsonResponse) {
           RoomModel room = RoomModel.fromMap(item);
           rooms.add(room);
-          print(room);
         }
 
         return rooms;

@@ -17,10 +17,8 @@ class ScheduleProvider {
         List<ScheduleModel> schedules = List();
 
         for (var item in jsonResponse) {
-          print(item);
           ScheduleModel schedule = ScheduleModel.fromMap(item);
           schedules.add(schedule);
-          print(schedule);
         }
 
         return schedules;

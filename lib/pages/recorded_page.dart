@@ -22,14 +22,22 @@ class _RecordedPageState extends State<RecordedPage> {
           color: IcfesApp().accent,
         ),
         shadowColor: Colors.transparent,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
+        flexibleSpace: Container(
+          padding: EdgeInsets.only(left: 75),
+          child: Image(
+            width: 300,
+            image: AssetImage('assets/img/dots.png'),
+            repeat: ImageRepeat.repeat,
+          ),
+        ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
-            margin: EdgeInsets.only(bottom: 20),
+            margin: EdgeInsets.only(bottom: 20, top: 20),
             child: Text(
               widget.record.title,
               textAlign: TextAlign.center,
