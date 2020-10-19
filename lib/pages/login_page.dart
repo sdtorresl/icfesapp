@@ -29,10 +29,17 @@ class LoginPage extends StatelessWidget {
           Container(
             width: size.width * 0.9,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                _mainImage(context),
+                Container(
+                  child: _mainImage(context),
+                  alignment: Alignment.center,
+                ),
                 SizedBox(height: 40),
-                _mainTitle(context),
+                Container(
+                  child: _mainTitle(context),
+                  alignment: Alignment.center,
+                ),
                 SizedBox(height: 40),
                 Text(
                   'Correo electrónico',
@@ -52,17 +59,20 @@ class LoginPage extends StatelessWidget {
                 ),
                 _crearPassword(bloc),
                 SizedBox(height: 30.0),
-                Text(
-                  '¿Olvidó su código?',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline3
-                      .copyWith(color: Colors.black),
+                Container(
+                  child: _forgottenCode(context),
+                  alignment: Alignment.center,
                 ),
                 SizedBox(height: 30.0),
-                _crearBoton(bloc),
+                Container(
+                  child: _crearBoton(bloc),
+                  alignment: Alignment.bottomCenter,
+                ),
                 SizedBox(height: 50),
-                _icfesImage(),
+                Container(
+                  child: _icfesImage(),
+                  alignment: Alignment.center,
+                ),
               ],
             ),
           ),
@@ -79,10 +89,19 @@ class LoginPage extends StatelessWidget {
 
   Widget _mainTitle(context) {
     return Text(
-      '¡Bienvenido! ingresar a nuestro evento',
+      '¡Bienvenido! ingresa a nuestro evento',
       textAlign: TextAlign.center,
       style:
           Theme.of(context).textTheme.headline1.copyWith(color: Colors.black),
+    );
+  }
+
+  Widget _forgottenCode(context) {
+    return Text(
+      '¿Olvido su contraseña?',
+      textAlign: TextAlign.center,
+      style:
+          Theme.of(context).textTheme.headline4.copyWith(color: Colors.black),
     );
   }
 
@@ -98,9 +117,14 @@ class LoginPage extends StatelessWidget {
           child: TextField(
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-                hintText: 'Escribe tu correo electrónico',
-                counterText: snapshot.data,
-                errorText: snapshot.error),
+              hintText: 'Escribe tu correo electrónico',
+              counterText: snapshot.data,
+              errorText: snapshot.error,
+              errorStyle: Theme.of(context)
+                  .textTheme
+                  .headline4
+                  .copyWith(color: Colors.red),
+            ),
             onChanged: bloc.changeEmail,
           ),
         );
@@ -117,7 +141,13 @@ class LoginPage extends StatelessWidget {
           child: TextField(
             obscureText: true,
             decoration: InputDecoration(
-                counterText: snapshot.data, errorText: snapshot.error),
+              counterText: snapshot.data,
+              errorText: snapshot.error,
+              errorStyle: Theme.of(context)
+                  .textTheme
+                  .headline4
+                  .copyWith(color: Colors.red),
+            ),
             onChanged: bloc.changePassword,
           ),
         );

@@ -23,7 +23,7 @@ class Validators {
         sink.add(password);
       } else {
         sink.addError(
-          'El codigo es de 8 caracteres',
+          'El codigo debe ser de 8 caracteres',
         );
       }
     },
