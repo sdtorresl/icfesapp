@@ -42,7 +42,7 @@ class IcfesApp extends StatelessWidget {
             disabledColor: grey,
             padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(3),
+              borderRadius: BorderRadius.circular(50),
             ),
           ),
           textTheme: TextTheme(

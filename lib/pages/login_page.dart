@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icfesapp/bloc/login_bloc.dart';
 import 'package:icfesapp/bloc/provider_bloc.dart';
+import 'package:icfesapp/models/user_model.dart';
 import 'package:icfesapp/providers/user_provider.dart';
 
 class LoginPage extends StatelessWidget {
@@ -28,7 +29,7 @@ class LoginPage extends StatelessWidget {
             ),
           ),
           Container(
-            width: size.width * 0.9,
+            width: size.width * 0.85,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -49,7 +50,7 @@ class LoginPage extends StatelessWidget {
                       .headline3
                       .copyWith(color: Colors.black),
                 ),
-                _crearEmail(bloc),
+                _emailField(bloc),
                 SizedBox(height: 30.0),
                 Text(
                   'Código',
@@ -58,12 +59,7 @@ class LoginPage extends StatelessWidget {
                       .headline3
                       .copyWith(color: Colors.black),
                 ),
-                _crearPassword(bloc),
-                SizedBox(height: 30.0),
-                Container(
-                  child: _forgottenCode(context),
-                  alignment: Alignment.center,
-                ),
+                _passwordField(bloc),
                 SizedBox(height: 30.0),
                 Container(
                   child: _createButton(bloc),
@@ -84,6 +80,7 @@ class LoginPage extends StatelessWidget {
 
   Widget _mainImage(context) {
     return Container(
+      height: 75,
       child: Image.asset("assets/img/Group 103.png"),
     );
   }
@@ -97,24 +94,11 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _forgottenCode(context) {
-    return Text(
-      '¿Olvido su contraseña?',
-      textAlign: TextAlign.center,
-      style:
-          Theme.of(context).textTheme.headline4.copyWith(color: Colors.black),
-    );
-  }
-
-  Widget _crearEmail(LoginBloc bloc) {
+  Widget _emailField(LoginBloc bloc) {
     return StreamBuilder(
       stream: bloc.emailStream,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
-          decoration: BoxDecoration(
-            color: Color.fromRGBO(235, 235, 235, 1),
-          ),
           child: TextField(
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
@@ -132,23 +116,21 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _crearPassword(LoginBloc bloc) {
+  Widget _passwordField(LoginBloc bloc) {
     return StreamBuilder(
       stream: bloc.passwordStream,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        return Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
-          child: TextField(
-            obscureText: true,
-            decoration: InputDecoration(
-              errorText: snapshot.error,
-              errorStyle: Theme.of(context)
-                  .textTheme
-                  .headline4
-                  .copyWith(color: Colors.red),
-            ),
-            onChanged: bloc.changePassword,
+        return TextField(
+          obscureText: true,
+          decoration: InputDecoration(
+            hintText: "Ingresa el código que recibiste",
+            errorText: snapshot.error,
+            errorStyle: Theme.of(context)
+                .textTheme
+                .headline4
+                .copyWith(color: Colors.red),
           ),
+          onChanged: bloc.changePassword,
         );
       },
     );
@@ -160,34 +142,31 @@ class LoginPage extends StatelessWidget {
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         final size = MediaQuery.of(context).size;
         return RaisedButton(
-            child: Container(
-              width: size.width * 0.5,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    'Ingresar',
-                    textAlign: TextAlign.left,
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline4
-                        .copyWith(color: Colors.white),
-                  ),
-                  SizedBox(width: 100),
-                  Icon(
-                    Icons.arrow_forward_outlined,
-                    color: Colors.yellow[600],
-                  )
-                ],
-              ),
+          child: Container(
+            width: size.width * 0.5,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Ingresar',
+                  textAlign: TextAlign.left,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline4
+                      .copyWith(color: Colors.white),
+                ),
+                Icon(
+                  Icons.arrow_forward_outlined,
+                  color: Colors.yellow[600],
+                )
+              ],
             ),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0)),
-            elevation: 0.0,
-            color: Colors.pink,
-            textColor: Colors.white,
-            onPressed: snapshot.hasData ? () => _login(bloc, context) : null);
+          ),
+          color: Colors.pink,
+          disabledTextColor: Colors.grey,
+          onPressed: snapshot.hasData ? () => _login(bloc, context) : null,
+        );
       },
     );
   }
@@ -198,15 +177,14 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  _login(LoginBloc bloc, BuildContext context) {
-    print('================');
-    print('Email: ${bloc.email}');
-    print('Password: ${bloc.password}');
-    print('================');
-
+  _login(LoginBloc bloc, BuildContext context) async {
     UserProvider userProvider = UserProvider();
-    userProvider.login(bloc.email, bloc.password);
+    UserModel user = await userProvider.login(bloc.email, bloc.password);
 
-    //Navigator.pushReplacementNamed(context, 'home');
+    if (user != null) {
+      Navigator.pushReplacementNamed(context, 'home');
+    } else {
+      print("Not authenticated");
+    }
   }
 }
