@@ -5,33 +5,67 @@ import 'package:icfesapp/bloc/provider_bloc.dart';
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final bloc = Provider.of(context);
     return Scaffold(
-      body: ListView(
+      body: Stack(
         children: <Widget>[
-          SizedBox(height: 64.0),
-          _mainImage(context),
-          SizedBox(height: 30),
-          _mainTitle(context),
-          SizedBox(height: 30),
-          Container(
-            alignment: Alignment.center,
-            child: _mailAddress(bloc),
+          _loginForm(context),
+        ],
+      ),
+    );
+  }
+
+  Widget _loginForm(BuildContext context) {
+    final bloc = Provider.of(context);
+    final size = MediaQuery.of(context).size;
+
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          SafeArea(
+            child: Container(
+              height: 64,
+            ),
           ),
-          SizedBox(height: 5),
           Container(
-            alignment: Alignment.center,
-            child: _enderCode(bloc),
+            width: size.width * 0.9,
+            child: Column(
+              children: <Widget>[
+                _mainImage(context),
+                SizedBox(height: 40),
+                _mainTitle(context),
+                SizedBox(height: 40),
+                Text(
+                  'Correo electrónico',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline3
+                      .copyWith(color: Colors.black),
+                ),
+                _crearEmail(bloc),
+                SizedBox(height: 30.0),
+                Text(
+                  'Código',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline3
+                      .copyWith(color: Colors.black),
+                ),
+                _crearPassword(bloc),
+                SizedBox(height: 30.0),
+                Text(
+                  '¿Olvidó su código?',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline3
+                      .copyWith(color: Colors.black),
+                ),
+                SizedBox(height: 30.0),
+                _crearBoton(bloc),
+                SizedBox(height: 50),
+                _icfesImage(),
+              ],
+            ),
           ),
-          SizedBox(height: 20),
-          Text('¿Olvidó su codigó?', textAlign: TextAlign.center),
-          SizedBox(height: 40),
-          Container(
-            alignment: Alignment.center,
-            child: _buttonSignUp(bloc),
-          ),
-          SizedBox(height: 50),
-          _icfesImage(),
         ],
       ),
     );
@@ -39,9 +73,7 @@ class LoginPage extends StatelessWidget {
 
   Widget _mainImage(context) {
     return Container(
-      child: SafeArea(
-        child: Image.asset("assets/img/Group 103.png"),
-      ),
+      child: Image.asset("assets/img/Group 103.png"),
     );
   }
 
@@ -54,100 +86,53 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _mailAddress(LoginBloc bloc) {
+  Widget _crearEmail(LoginBloc bloc) {
     return StreamBuilder(
       stream: bloc.emailStream,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        final size = MediaQuery.of(context).size;
         return Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                'Correo electronico',
-                textAlign: TextAlign.left,
-                style: Theme.of(context)
-                    .textTheme
-                    .headline3
-                    .copyWith(color: Colors.black),
-              ),
-              Container(
-                width: size.width * 0.85,
-                padding: EdgeInsets.symmetric(vertical: 10),
-                decoration: BoxDecoration(
-                  color: Color.fromRGBO(235, 235, 235, 1),
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-                child: TextField(
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    hintText: "Excribe  tu correo electronico",
-                    counterText: snapshot.data,
-                    errorText: snapshot.data,
-                  ),
-                  onChanged: bloc.changeEmail,
-                ),
-              ),
-            ],
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(235, 235, 235, 1),
+          ),
+          child: TextField(
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+                hintText: 'Escribe tu correo electrónico',
+                counterText: snapshot.data,
+                errorText: snapshot.error),
+            onChanged: bloc.changeEmail,
           ),
         );
       },
     );
   }
 
-  Widget _enderCode(LoginBloc bloc) {
+  Widget _crearPassword(LoginBloc bloc) {
     return StreamBuilder(
       stream: bloc.passwordStream,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        final size = MediaQuery.of(context).size;
         return Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                'codigo',
-                style: Theme.of(context)
-                    .textTheme
-                    .headline3
-                    .copyWith(color: Colors.black),
-              ),
-              Container(
-                width: size.width * 0.85,
-                padding: EdgeInsets.symmetric(vertical: 10),
-                decoration: BoxDecoration(
-                  color: Color.fromRGBO(235, 235, 235, 1),
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-                child: TextField(
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    hintText: "Excribe tu codigo",
-                    counterText: snapshot.data,
-                    errorText: snapshot.error,
-                    fillColor: Colors.black12,
-                  ),
-                  onChanged: bloc.changeEmail,
-                ),
-              ),
-            ],
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          child: TextField(
+            obscureText: true,
+            decoration: InputDecoration(
+                counterText: snapshot.data, errorText: snapshot.error),
+            onChanged: bloc.changePassword,
           ),
         );
       },
     );
   }
 
-  Widget _buttonSignUp(LoginBloc bloc) {
+  Widget _crearBoton(LoginBloc bloc) {
     return StreamBuilder(
       stream: bloc.formValidStream,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         final size = MediaQuery.of(context).size;
-        return Container(
-          child: SizedBox(
-            width: size.width * 0.9,
-            height: size.width * 0.15,
-            child: RaisedButton(
-              color: Colors.pink,
-              onPressed: snapshot.hasData ? () => _login(bloc, context) : null,
+        return RaisedButton(
+            child: Container(
+              width: size.width * 0.5,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -160,7 +145,7 @@ class LoginPage extends StatelessWidget {
                         .headline4
                         .copyWith(color: Colors.white),
                   ),
-                  Padding(padding: EdgeInsets.all(90)),
+                  SizedBox(width: 100),
                   Icon(
                     Icons.arrow_forward_outlined,
                     color: Colors.yellow[600],
@@ -168,9 +153,19 @@ class LoginPage extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-        );
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0)),
+            elevation: 0.0,
+            color: Colors.pink,
+            textColor: Colors.white,
+            onPressed: snapshot.hasData ? () => _login(bloc, context) : null);
       },
+    );
+  }
+
+  Widget _icfesImage() {
+    return Container(
+      child: Image.asset("assets/img/Group 42.png"),
     );
   }
 
@@ -181,11 +176,5 @@ class LoginPage extends StatelessWidget {
     print('================');
 
     Navigator.pushReplacementNamed(context, 'home');
-  }
-
-  Widget _icfesImage() {
-    return Container(
-      child: Image.asset("assets/img/Group 42.png"),
-    );
   }
 }
