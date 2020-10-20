@@ -7,7 +7,7 @@ import 'package:icfesapp/pages/documents_page.dart';
 import 'package:icfesapp/pages/home_page.dart';
 import 'package:icfesapp/pages/posters_page.dart';
 import 'package:icfesapp/pages/transmission_page.dart';
-import 'package:icfesapp/common/user_preferences.dart';
+import 'package:icfesapp/preferences/user_preferences.dart';
 import 'package:icfesapp/pages/onboarding_page.dart';
 
 void main() async {
@@ -98,10 +98,7 @@ class IcfesApp extends StatelessWidget {
             ),
           ),
         ),
-        initialRoute:
-            prefs.onboardingViewed != null && prefs.onboardingViewed == false
-                ? 'home'
-                : 'onboarding',
+        initialRoute: _initialRoute(),
         routes: {
           'home': (BuildContext context) => HomePage(),
           'onboarding': (BuildContext context) => OnboardingPage(),
@@ -112,5 +109,17 @@ class IcfesApp extends StatelessWidget {
         },
       ),
     );
+  }
+
+  String _initialRoute() {
+    if (prefs.onboardingViewed == true) {
+      if (prefs.token != null) {
+        return 'home';
+      } else {
+        return 'login';
+      }
+    } else {
+      return 'onboarding';
+    }
   }
 }

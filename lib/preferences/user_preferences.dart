@@ -22,4 +22,8 @@ class UserPreferences {
   set onboardingViewed(bool value) {
     _prefs.setBool('onboardingViewed', value);
   }
+
+  set token(String token) => _prefs.setString('token', token);
+
+  String get token => _prefs.getString('token');
 }

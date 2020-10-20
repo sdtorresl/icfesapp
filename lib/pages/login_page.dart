@@ -3,6 +3,7 @@ import 'package:icfesapp/bloc/login_bloc.dart';
 import 'package:icfesapp/bloc/provider_bloc.dart';
 import 'package:icfesapp/models/user_model.dart';
 import 'package:icfesapp/providers/user_provider.dart';
+import 'package:icfesapp/utils/alert_dialog.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -184,7 +185,11 @@ class LoginPage extends StatelessWidget {
     if (user != null) {
       Navigator.pushReplacementNamed(context, 'home');
     } else {
-      print("Not authenticated");
+      showMyDialog(
+        context,
+        "Error",
+        Text("El correo o el código no son válidos, intenta nuevamente."),
+      );
     }
   }
 }

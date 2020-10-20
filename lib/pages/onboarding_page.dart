@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:icfesapp/common/onboarding_view.dart';
-import 'package:icfesapp/common/user_preferences.dart';
+import 'package:icfesapp/preferences/user_preferences.dart';
 
 class OnboardingPage extends StatefulWidget {
   @override
@@ -52,7 +52,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 ),
                 onPressed: () {
                   prefs.onboardingViewed = true;
-                  Navigator.of(context).pushNamed('home');
+                  Navigator.of(context).pushNamed('login');
                 },
               ),
             ),
@@ -108,7 +108,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   onPressed: _current == carouselItems.length - 1
                       ? () {
                           prefs.onboardingViewed = true;
-                          Navigator.of(context).pushNamed('home');
+                          Navigator.of(context).pushNamed('login');
                         }
                       : () => _controller.nextPage(),
                 ),

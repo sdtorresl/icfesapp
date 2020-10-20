@@ -11,7 +11,7 @@ class Validators {
         sink.add(email);
       } else {
         sink.addError(
-          'correo incorrecto',
+          'Correo incorrecto',
         );
       }
     },
@@ -19,11 +19,11 @@ class Validators {
 
   final validarPassword = StreamTransformer<String, String>.fromHandlers(
     handleData: (password, sink) {
-      if (password.length >= 8) {
+      if (password.length > 5) {
         sink.add(password);
       } else {
         sink.addError(
-          'El codigo debe ser de 8 caracteres',
+          'El codigo debe ser de mínimo 5 caracteres',
         );
       }
     },
