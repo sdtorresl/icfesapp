@@ -10,11 +10,11 @@ class PosterProvider {
       var response = await http.get(_url);
 
       if (response.statusCode == 200) {
-        print(response.body);
         List<dynamic> jsonResponse = json.jsonDecode(response.body);
 
         List<VideoPosterModel> posters = List();
         print(jsonResponse[0]["posters"]);
+
         for (var item in jsonResponse[0]["posters"]) {
           VideoPosterModel poster = VideoPosterModel.fromMap(item);
           posters.add(poster);
@@ -24,8 +24,29 @@ class PosterProvider {
       } else {
         print('Request failed with status: ${response.statusCode}.');
       }
-    } catch (Exception) {}
+    } catch (Exception) {
+      print(Exception);
+    }
 
     return [];
+  }
+
+  Future<bool> votePoster(posterId) async {
+    try {
+      var response = await http.get(_url);
+
+      if (response.statusCode == 200) {
+        // TODO: Implement method
+
+        return true;
+      } else {
+        print('Request failed with status: ${response.statusCode}.');
+        return false;
+      }
+    } catch (Exception) {
+      print(Exception);
+    }
+
+    return false;
   }
 }

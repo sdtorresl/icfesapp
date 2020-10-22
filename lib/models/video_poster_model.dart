@@ -57,7 +57,7 @@ class Videos {
   String toJson() => json.encode(toMap());
 
   factory Videos.fromMap(Map<String, dynamic> json) => Videos(
-        url: json["url"],
+        url: json["url"].toString(),
       );
 
   Map<String, dynamic> toMap() => {

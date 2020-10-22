@@ -6,6 +6,7 @@ import 'package:icfesapp/pages/login_page.dart';
 import 'package:icfesapp/pages/documents_page.dart';
 import 'package:icfesapp/pages/home_page.dart';
 import 'package:icfesapp/pages/posters_page.dart';
+import 'package:icfesapp/pages/posters_poll_page.dart';
 import 'package:icfesapp/pages/transmission_page.dart';
 import 'package:icfesapp/preferences/user_preferences.dart';
 import 'package:icfesapp/pages/onboarding_page.dart';
@@ -105,6 +106,7 @@ class IcfesApp extends StatelessWidget {
           'transmission': (context) => TransmissionPage(),
           'documents': (context) => DocumentsPage(),
           'video-posters': (context) => PostersPage(),
+          'video-posters-poll': (context) => PostersPollPage(),
           'login': (BuildContext context) => LoginPage(),
         },
       ),
