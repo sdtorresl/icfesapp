@@ -18,6 +18,7 @@ class EventDescription extends StatelessWidget {
             padding: EdgeInsets.all(20),
             child: Text(
               title,
+              textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.headline1,
             ),
           ),
@@ -33,6 +34,7 @@ class EventDescription extends StatelessWidget {
             padding: EdgeInsets.all(10),
             child: Text(
               description,
+              textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyText1,
             ),
           )

@@ -37,7 +37,6 @@ class _LobbyPageState extends State<LobbyPage> {
 
           Widget description = Container(
             height: 470,
-            color: IcfesApp().primaryDark,
             child: Stack(
               children: <Widget>[
                 Positioned(
