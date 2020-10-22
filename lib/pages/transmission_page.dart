@@ -3,7 +3,6 @@ import 'package:icfesapp/common/custom_webview.dart';
 import 'package:icfesapp/main.dart';
 import 'package:icfesapp/models/transmission_model.dart';
 import 'package:icfesapp/providers/transmission_provider.dart';
-import 'package:vimeoplayer/vimeoplayer.dart';
 
 class TransmissionPage extends StatefulWidget {
   final int id;
@@ -39,14 +38,22 @@ class _TransmissionPageState extends State<TransmissionPage> {
                 color: IcfesApp().accent,
               ),
               shadowColor: Colors.transparent,
-              backgroundColor: Colors.transparent,
+              backgroundColor: Colors.white,
+              flexibleSpace: Container(
+                padding: EdgeInsets.only(left: 75),
+                child: Image(
+                  width: 300,
+                  image: AssetImage('assets/img/dots.png'),
+                  repeat: ImageRepeat.repeat,
+                ),
+              ),
             ),
             body: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Container(
-                  margin: EdgeInsets.only(bottom: 20),
+                  margin: EdgeInsets.only(bottom: 10, top: 5),
                   child: Text(
                     transmission.title,
                     textAlign: TextAlign.center,
@@ -57,8 +64,14 @@ class _TransmissionPageState extends State<TransmissionPage> {
                   ),
                 ),
                 Container(
-                  child:
-                      VimeoPlayer(id: transmission.videoCode, autoPlay: true),
+                  height: 220,
+                  color: IcfesApp().grey,
+                  margin: EdgeInsets.symmetric(horizontal: 10),
+                  constraints: BoxConstraints(maxHeight: 250),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15.0),
+                    child: CustomWebView(transmission.videoCode),
+                  ),
                 ),
                 bottomSelector(
                     chatUrl:

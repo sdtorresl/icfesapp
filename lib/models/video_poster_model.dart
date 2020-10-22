@@ -40,6 +40,9 @@ class VideoPosterModel {
         "imagen": imagen,
         "adjunto": adjunto,
       };
+
+  @override
+  String toString() => this.toJson();
 }
 
 class Videos {
@@ -54,10 +57,13 @@ class Videos {
   String toJson() => json.encode(toMap());
 
   factory Videos.fromMap(Map<String, dynamic> json) => Videos(
-        url: json["url"],
+        url: json["url"].toString(),
       );
 
   Map<String, dynamic> toMap() => {
         "url": url,
       };
+
+  @override
+  String toString() => this.toJson();
 }

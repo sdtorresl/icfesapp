@@ -1,11 +1,12 @@
-import 'package:icfesapp/models/room_model.dart';
+import 'package:icfesapp/models/prerecorded_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as json;
 
-class RoomsProvider {
-  final String _url = "https://dev-eweb.us.seedcloud.co/json-salas";
+class PrerecordedProvider {
+  final String _url =
+      "https://dev-eweb.us.seedcloud.co/json-material-pregrabado";
 
-  Future<List<RoomModel>> getRooms() async {
+  Future<List<PrerecordedModel>> getPrerecorded() async {
     try {
       var response = await http.get(_url);
 
@@ -14,14 +15,15 @@ class RoomsProvider {
       if (response.statusCode == 200) {
         print(response.body);
         List<dynamic> jsonResponse = json.jsonDecode(response.body);
-        List<RoomModel> rooms = List();
+        List<PrerecordedModel> materials = List();
 
         for (var item in jsonResponse) {
-          RoomModel room = RoomModel.fromMap(item);
-          rooms.add(room);
+          PrerecordedModel material = PrerecordedModel.fromMap(item);
+          materials.add(material);
+          print(material);
         }
 
-        return rooms;
+        return materials;
       } else {
         print('Request failed with status: ${response.statusCode}.');
       }

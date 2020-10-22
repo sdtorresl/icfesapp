@@ -10,11 +10,18 @@ class OptionsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(color: Color.fromRGBO(243, 243, 243, 1)),
-      padding: EdgeInsets.all(25),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      padding: EdgeInsets.only(right: 25, left: 25),
+      child: ListView(
         children: <Widget>[
-          _socialTitle(context),
+          SizedBox(height: 25),
+          Text(
+            'Más opciones',
+            textAlign: TextAlign.left,
+            style: Theme.of(context)
+                .textTheme
+                .headline1
+                .copyWith(color: Colors.black),
+          ),
           SizedBox(height: 20.0),
           OptionsCard(
             title: 'Documentos de interés para el usuario',
@@ -32,18 +39,10 @@ class OptionsPage extends StatelessWidget {
             },
           ),
           _socialNetwork(context),
+          SizedBox(
+            height: 35,
+          )
         ],
-      ),
-    );
-  }
-
-  Widget _socialTitle(context) {
-    return Container(
-      child: Text(
-        'Más opciones',
-        textAlign: TextAlign.right,
-        style:
-            Theme.of(context).textTheme.headline1.copyWith(color: Colors.black),
       ),
     );
   }

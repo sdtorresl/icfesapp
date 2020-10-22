@@ -7,6 +7,7 @@ class PosterList extends StatelessWidget {
   final List<VideoPosterModel> posters;
 
   PosterList({@required this.posters});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,10 +15,12 @@ class PosterList extends StatelessWidget {
       child: ListView.builder(
         itemCount: posters.length,
         itemBuilder: (context, index) {
+          print(posters[index].toString());
           return PosterView(
-            video: posters[index].videos,
+            video: posters[index].videos.url,
             title: posters[index].titulo,
             subtitle: posters[index].descripcion,
+            attachment: posters[index].imagen,
           );
         },
       ),

@@ -22,4 +22,17 @@ class UserPreferences {
   set onboardingViewed(bool value) {
     _prefs.setBool('onboardingViewed', value);
   }
+
+  set token(String token) => _prefs.setString('token', token);
+
+  String get token => _prefs.getString('token');
+
+  set posterVoted(bool voted) => _prefs.setBool('posterVoted', voted);
+
+  bool get posterVoted => _prefs.getBool('posterVoted');
+
+  set selectedPoster(int selectedPoster) =>
+      _prefs.setInt('selectedPoster', selectedPoster);
+
+  int get selectedPoster => _prefs.getInt('selectedPoster');
 }

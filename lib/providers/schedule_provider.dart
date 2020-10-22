@@ -17,19 +17,15 @@ class ScheduleProvider {
         List<ScheduleModel> schedules = List();
 
         for (var item in jsonResponse) {
-          print(item);
           ScheduleModel schedule = ScheduleModel.fromMap(item);
           schedules.add(schedule);
-          print(schedule);
         }
 
         return schedules;
       } else {
         print('Request failed with status: ${response.statusCode}.');
       }
-    } catch (Exception) {
-      print(Exception);
-    }
+    } catch (Exception) {}
 
     return [];
   }

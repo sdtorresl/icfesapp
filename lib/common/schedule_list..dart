@@ -13,26 +13,22 @@ class ScheduleList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const String _baseUrl = "https://dev-eweb.us.seedcloud.co";
-    return Container(
-      decoration: BoxDecoration(color: Color.fromRGBO(243, 243, 243, 1)),
-      padding: EdgeInsets.only(top: 10.0),
-      child: ListView.builder(
-        itemCount: schedules.length,
-        itemBuilder: (context, index) {
-          String _pictureUrl = _baseUrl + schedules[index].picture;
-          return ExpansionCard(
-            startDate:
-                DateFormatter.dateTimeToString(schedules[index].startDate),
-            title: schedules[index].title,
-            subtitle: schedules[index].description,
-            picture: CachedNetworkImage(
-              imageUrl: _pictureUrl,
-              placeholder: (context, url) => CircularProgressIndicator(),
-              errorWidget: (context, url, error) => Icon(Icons.error),
-            ),
-          );
-        },
-      ),
+
+    return ListView.builder(
+      itemCount: schedules.length,
+      itemBuilder: (context, index) {
+        String _pictureUrl = _baseUrl + schedules[index].picture;
+        return ExpansionCard(
+          header: DateFormatter.dateTimeToString(schedules[index].startDate),
+          title: schedules[index].title,
+          subtitle: schedules[index].description,
+          hidden: CachedNetworkImage(
+            imageUrl: _pictureUrl,
+            placeholder: (context, url) => CircularProgressIndicator(),
+            errorWidget: (context, url, error) => Icon(Icons.error),
+          ),
+        );
+      },
     );
   }
 }
