@@ -64,7 +64,9 @@ class _RoomsPageState extends State<RoomsPage> {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: selected ? IcfesApp().primaryLight : IcfesApp().grey,
+          color: selected
+              ? SeminarioInternacional().primaryLight
+              : SeminarioInternacional().grey,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(borderRadius),
             topRight: Radius.circular(borderRadius),

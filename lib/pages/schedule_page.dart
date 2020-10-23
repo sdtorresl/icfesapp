@@ -43,7 +43,7 @@ class _SchedulePageState extends State<SchedulePage> {
                 Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: IcfesApp().grey),
+                      color: SeminarioInternacional().grey),
                   padding: EdgeInsets.symmetric(horizontal: 15),
                   width: MediaQuery.of(context).size.width,
                   child: DropdownButtonHideUnderline(
@@ -56,7 +56,7 @@ class _SchedulePageState extends State<SchedulePage> {
           Expanded(
             child: Container(
               padding: const EdgeInsets.only(left: 25, top: 10, right: 25),
-              color: IcfesApp().grey,
+              color: SeminarioInternacional().grey,
               child: _listSchedule(context),
             ),
           )

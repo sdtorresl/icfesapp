@@ -12,7 +12,7 @@ class PostersPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: IcfesApp().accent,
+          color: SeminarioInternacional().accent,
         ),
         shadowColor: Colors.transparent,
         backgroundColor: Colors.white,
@@ -27,7 +27,7 @@ class PostersPage extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.all(20.0),
-        color: IcfesApp().grey,
+        color: SeminarioInternacional().grey,
         child: Container(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
