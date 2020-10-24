@@ -35,7 +35,7 @@ class RecordedList extends StatelessWidget {
                       .copyWith(color: Colors.white),
                 ),
                 onPressed: () => _openRecord(context, record),
-                color: SeminarioInternacional().accent,
+                color: Icfesapp().accent,
               ),
             ),
             SizedBox(height: 10),

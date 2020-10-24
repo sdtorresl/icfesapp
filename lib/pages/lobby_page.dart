@@ -37,7 +37,7 @@ class _LobbyPageState extends State<LobbyPage> {
 
           Widget description = Container(
             height: 380,
-            color: SeminarioInternacional().primaryDark,
+            color: Icfesapp().primaryDark,
             child: Stack(
               children: <Widget>[
                 Positioned(
@@ -57,7 +57,7 @@ class _LobbyPageState extends State<LobbyPage> {
                   child: Container(
                     height: 20,
                     decoration: BoxDecoration(
-                      color: SeminarioInternacional().grey,
+                      color: Icfesapp().grey,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
                         topRight: Radius.circular(20),
@@ -74,7 +74,7 @@ class _LobbyPageState extends State<LobbyPage> {
               description,
               Container(
                 decoration: BoxDecoration(
-                  color: SeminarioInternacional().grey,
+                  color: Icfesapp().grey,
                 ),
                 padding: EdgeInsets.only(left: 25, right: 25, bottom: 40),
                 child: Column(

@@ -15,8 +15,7 @@ Future<void> showMyDialog(
             child: Text(
               'Aceptar',
               style: Theme.of(context).textTheme.bodyText1.copyWith(
-                  color: SeminarioInternacional().accent,
-                  fontWeight: FontWeight.bold),
+                  color: Icfesapp().accent, fontWeight: FontWeight.bold),
             ),
             onPressed: () {
               Navigator.of(context).pop();

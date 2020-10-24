@@ -49,7 +49,7 @@ class _CountdownState extends State<Countdown> {
           width: 75,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: SeminarioInternacional().primary,
+            color: Icfesapp().primary,
             border: Border.all(color: Color(0x00FF32C5FF), width: 5),
           ),
           child: Center(

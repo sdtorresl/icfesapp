@@ -14,10 +14,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = new UserPreferences();
   await prefs.initPrefs();
-  runApp(SeminarioInternacional());
+  runApp(Icfesapp());
 }
 
-class SeminarioInternacional extends StatelessWidget {
+class Icfesapp extends StatelessWidget {
   final prefs = new UserPreferences();
   Color get accent => Color(0xffe7326e);
   Color get accentLight => Color(0xffff6c9c);

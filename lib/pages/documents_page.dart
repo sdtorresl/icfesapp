@@ -25,7 +25,7 @@ class _DocumentsPageState extends State<DocumentsPage> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: SeminarioInternacional().accent,
+          color: Icfesapp().accent,
         ),
         shadowColor: Colors.transparent,
         backgroundColor: Colors.white,
