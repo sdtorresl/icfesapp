@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:icfesapp/common/action_button.dart';
 import 'package:icfesapp/common/poster_view.dart';
 import 'package:icfesapp/providers/poster_provider.dart';
 import '../main.dart';
@@ -31,9 +32,17 @@ class PostersPage extends StatelessWidget {
         child: Container(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               _posterTitle(context),
               Expanded(child: _listPoster(context)),
+              ActionButton(
+                text: "Votar por el mejor póster",
+                width: MediaQuery.of(context).size.width * 0.9,
+                onPressed: () => {
+                  Navigator.pushNamed(context, 'video-posters-poll'),
+                },
+              )
             ],
           ),
         ),
@@ -42,14 +51,11 @@ class PostersPage extends StatelessWidget {
   }
 
   Widget _posterTitle(context) {
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.95,
-      child: Text(
-        'Video Pósters',
-        textAlign: TextAlign.left,
-        style:
-            Theme.of(context).textTheme.headline1.copyWith(color: Colors.black),
-      ),
+    return Text(
+      'Video Pósters',
+      textAlign: TextAlign.left,
+      style:
+          Theme.of(context).textTheme.headline1.copyWith(color: Colors.black),
     );
   }
 

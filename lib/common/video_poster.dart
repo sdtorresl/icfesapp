@@ -24,6 +24,16 @@ class PosterView extends StatefulWidget {
 class _PosterViewState extends State<PosterView> {
   @override
   Widget build(BuildContext context) {
+    if (widget.video == null || widget.video == "" || widget.video == "false") {
+      return Card(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Text("No se pudo cargar el poster"),
+        ),
+      );
+    }
+    print(widget.video);
+
     YoutubePlayerController _controller = YoutubePlayerController(
       initialVideoId: YoutubePlayer.convertUrlToId(widget.video),
       flags: YoutubePlayerFlags(

@@ -9,6 +9,9 @@ class RoomModel {
     this.startDate,
     this.endDate,
     this.fieldIcon,
+    this.isMeeting,
+    this.meetingRoom,
+    this.meetingHost,
   });
 
   final int id;
@@ -18,6 +21,9 @@ class RoomModel {
   final DateTime startDate;
   final DateTime endDate;
   final String fieldIcon;
+  final bool isMeeting;
+  final String meetingRoom;
+  final String meetingHost;
 
   factory RoomModel.fromJson(String str) => RoomModel.fromMap(json.decode(str));
 
@@ -31,6 +37,9 @@ class RoomModel {
         startDate: DateTime.parse(json["start-date"]),
         endDate: DateTime.parse(json["end-date"]),
         fieldIcon: json["field_icon"],
+        isMeeting: json["video-jitsi"].toString() == "1",
+        meetingHost: json["jitsi-host"],
+        meetingRoom: json["jitsi-room"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -41,6 +50,9 @@ class RoomModel {
         "start-date": startDate.toIso8601String(),
         "end-date": endDate.toIso8601String(),
         "field_icon": fieldIcon,
+        "video-jitsi": isMeeting,
+        "jitsi-host": meetingHost,
+        "jitsi-room": meetingRoom
       };
 
   @override

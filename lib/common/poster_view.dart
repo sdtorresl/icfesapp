@@ -7,6 +7,7 @@ class PosterList extends StatelessWidget {
   final List<VideoPosterModel> posters;
 
   PosterList({@required this.posters});
+
   @override
   Widget build(BuildContext context) {
     return Container(
