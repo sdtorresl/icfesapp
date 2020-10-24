@@ -75,7 +75,7 @@ class _DocumentDownloadState extends State<DocumentDownload> {
                   .headline4
                   .copyWith(color: Colors.white),
             ),
-            color: Icfesapp().accent,
+            color: IcfesApp().accent,
           ),
         ),
       ],

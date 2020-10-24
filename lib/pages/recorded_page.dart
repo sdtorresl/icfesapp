@@ -19,7 +19,7 @@ class _RecordedPageState extends State<RecordedPage> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: Icfesapp().accent,
+          color: IcfesApp().accent,
         ),
         shadowColor: Colors.transparent,
         backgroundColor: Colors.white,

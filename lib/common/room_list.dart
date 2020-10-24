@@ -44,7 +44,7 @@ class RoomList extends StatelessWidget {
                       .copyWith(color: Colors.white),
                 ),
                 onPressed: () => _openRoom(context, room),
-                color: Icfesapp().accent,
+                color: IcfesApp().accent,
               ),
             ),
             SizedBox(height: 10),

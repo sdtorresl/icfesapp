@@ -35,7 +35,7 @@ class _TransmissionPageState extends State<TransmissionPage> {
           return Scaffold(
             appBar: AppBar(
               iconTheme: IconThemeData(
-                color: Icfesapp().accent,
+                color: IcfesApp().accent,
               ),
               shadowColor: Colors.transparent,
               backgroundColor: Colors.white,
@@ -65,7 +65,7 @@ class _TransmissionPageState extends State<TransmissionPage> {
                 ),
                 Container(
                   height: 220,
-                  color: Icfesapp().grey,
+                  color: IcfesApp().grey,
                   margin: EdgeInsets.symmetric(horizontal: 10),
                   constraints: BoxConstraints(maxHeight: 250),
                   child: ClipRRect(
@@ -127,7 +127,7 @@ class _TransmissionPageState extends State<TransmissionPage> {
       child: Container(
         width: width,
         decoration: BoxDecoration(
-          color: selected ? Icfesapp().primaryLight : Icfesapp().grey,
+          color: selected ? IcfesApp().primaryLight : IcfesApp().grey,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(borderRadius),
             topRight: Radius.circular(borderRadius),
