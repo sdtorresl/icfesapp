@@ -28,8 +28,7 @@ class _TransmissionPageState extends State<TransmissionPage> {
         if (snapshot.hasData) {
           TransmissionModel transmission = snapshot.data;
           if (_currentWidget == null) {
-            _currentWidget =
-                chat("https://www6.cbox.ws/box/?boxid=850491&boxtag=RQtfaw");
+            _currentWidget = chat(transmission.chatUrl);
           }
 
           return Scaffold(
@@ -74,8 +73,9 @@ class _TransmissionPageState extends State<TransmissionPage> {
                   ),
                 ),
                 bottomSelector(
-                    chatUrl:
-                        "https://www6.cbox.ws/box/?boxid=850491&boxtag=RQtfaw"),
+                  chatUrl: transmission.chatUrl,
+                  pollUrl: transmission.pollUrl,
+                ),
                 Expanded(child: _currentWidget),
               ],
             ),
@@ -89,10 +89,10 @@ class _TransmissionPageState extends State<TransmissionPage> {
     );
   }
 
-  Widget bottomSelector({String chatUrl}) {
+  Widget bottomSelector({String chatUrl, String pollUrl}) {
     List<Map<String, dynamic>> tabs = [
       {"title": 'Comentarios', "widget": chat(chatUrl)},
-      {"title": "Encuesta", "widget": poll(chatUrl)}
+      {"title": "Encuesta", "widget": poll(pollUrl)}
     ];
 
     double totalWidth = MediaQuery.of(context).size.width;
@@ -146,11 +146,14 @@ class _TransmissionPageState extends State<TransmissionPage> {
     );
   }
 
-  Widget chat(String url) {
-    return CustomWebView(url);
+  Widget chat(String chatUrl) {
+    return new CustomWebView(chatUrl);
   }
 
-  Widget poll(String url) {
-    return Text("Hola");
+  Widget poll(String pollUrl) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      child: CustomWebView(pollUrl),
+    );
   }
 }
