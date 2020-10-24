@@ -5,7 +5,6 @@ import 'package:icfesapp/bloc/provider_bloc.dart';
 import 'package:icfesapp/pages/login_page.dart';
 import 'package:icfesapp/pages/documents_page.dart';
 import 'package:icfesapp/pages/home_page.dart';
-import 'package:icfesapp/pages/jitsi_page.dart';
 import 'package:icfesapp/pages/posters_page.dart';
 import 'package:icfesapp/pages/posters_poll_page.dart';
 import 'package:icfesapp/pages/transmission_page.dart';
