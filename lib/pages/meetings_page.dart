@@ -7,9 +7,6 @@ import 'package:icfesapp/providers/user_provider.dart';
 import 'package:jitsi_meet/feature_flag/feature_flag_enum.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
 import 'package:jitsi_meet/jitsi_meeting_listener.dart';
-import 'package:jitsi_meet/room_name_constraint.dart';
-import 'package:jitsi_meet/room_name_constraint_type.dart';
-
 import '../main.dart';
 
 class MeetingsPage extends StatefulWidget {
