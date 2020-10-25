@@ -29,7 +29,7 @@ class UserPreferences {
 
   set posterVoted(bool voted) => _prefs.setBool('posterVoted', voted);
 
-  bool get posterVoted => _prefs.getBool('posterVoted');
+  bool get posterVoted => false;
 
   set selectedPoster(int selectedPoster) =>
       _prefs.setInt('selectedPoster', selectedPoster);

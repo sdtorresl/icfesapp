@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SocialIcon extends StatelessWidget {
   final Widget icon;
@@ -16,10 +17,16 @@ class SocialIcon extends StatelessWidget {
       child: IconButton(
         icon: this.icon,
         color: Colors.white,
-        onPressed: () {
-          print(this.url);
-        },
+        onPressed: () => _openSocialUrl(),
       ),
     );
+  }
+
+  _openSocialUrl() async {
+    if (await canLaunch(this.url)) {
+      await launch(this.url);
+    } else {
+      throw 'Could not launch ${this.url}';
+    }
   }
 }

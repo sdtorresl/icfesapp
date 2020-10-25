@@ -83,7 +83,7 @@ class RoomList extends StatelessWidget {
     print(room);
     print(room.startDate.compareTo(now));
     if (room.startDate.compareTo(now) < 0) {
-      if (room.endDate.compareTo(now) > 0 || true) {
+      if (room.endDate.compareTo(now) > 0) {
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -107,31 +107,18 @@ class RoomList extends StatelessWidget {
   }
 
   _openMeeting(BuildContext context, RoomModel room) {
-    // TODO: Remove this line
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => MeetingsPage(
-          host: room.meetingHost,
-          room: room.meetingRoom,
-          subject: room.title,
-          description: room.description,
-        ),
-      ),
-    );
-    return;
-
     DateTime now = DateTime.now();
-    print(room);
-    print(room.startDate.compareTo(now));
+
     if (room.startDate.compareTo(now) < 0) {
-      if (room.endDate.compareTo(now) > 0 || true) {
+      if (room.endDate.compareTo(now) > 0) {
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => MeetingsPage(
               host: room.meetingHost,
               room: room.meetingRoom,
+              subject: room.title,
+              description: room.description,
             ),
           ),
         );
