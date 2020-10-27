@@ -47,7 +47,7 @@ class _PostersPollPageState extends State<PostersPollPage> {
         ),
       ),
       body: Container(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(25.0),
         color: IcfesApp().grey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,

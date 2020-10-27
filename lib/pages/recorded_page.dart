@@ -38,18 +38,36 @@ class _RecordedPageState extends State<RecordedPage> {
         children: [
           Container(
             margin: EdgeInsets.only(bottom: 20, top: 20),
-            child: Text(
-              widget.record.title,
-              textAlign: TextAlign.center,
-              style: Theme.of(context)
-                  .textTheme
-                  .headline2
-                  .copyWith(color: Colors.black),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                widget.record.title,
+                textAlign: TextAlign.center,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline2
+                    .copyWith(color: Colors.black),
+              ),
             ),
           ),
           Container(
-            child: VimeoPlayer(id: widget.record.videoCode, autoPlay: true),
+            padding: EdgeInsets.symmetric(vertical: 20),
+            child: VimeoPlayer(
+              id: widget.record.videoCode,
+              autoPlay: true,
+            ),
           ),
+          SizedBox(
+            height: 20,
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Text(
+              widget.record.description,
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.headline3,
+            ),
+          )
         ],
       ),
     );

@@ -65,7 +65,7 @@ class _TransmissionPageState extends State<TransmissionPage> {
                 Container(
                   height: 220,
                   color: IcfesApp().grey,
-                  margin: EdgeInsets.symmetric(horizontal: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   constraints: BoxConstraints(maxHeight: 250),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15.0),
