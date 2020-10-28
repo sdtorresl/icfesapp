@@ -41,10 +41,7 @@ class _HomePageState extends State<HomePage> {
         color: Colors.grey,
         items: [
           FABBottomAppBarItem(iconData: Icons.home, text: 'Recepción'),
-          FABBottomAppBarItem(
-            iconData: Icons.people_outline,
-            text: 'Transmisiones',
-          ),
+          FABBottomAppBarItem(iconData: Icons.people_outline, text: 'Salas'),
           FABBottomAppBarItem(iconData: Icons.today, text: 'Agenda'),
           FABBottomAppBarItem(iconData: Icons.more_horiz, text: 'Más'),
         ],
