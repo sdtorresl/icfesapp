@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert' as json;
 
 class RoomsProvider {
-  final String _url = "https://dev-eweb.us.seedcloud.co/json-salas";
+  final String _url = "https://seminariointernacional.icfes.gov.co/json-salas";
 
   Future<List<RoomModel>> getRooms() async {
     try {

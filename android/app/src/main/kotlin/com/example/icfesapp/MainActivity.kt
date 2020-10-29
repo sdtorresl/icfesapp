@@ -1,4 +1,4 @@
-package com.example.icfesapp
+package com.Innovasiones.icfesapp
 
 import io.flutter.embedding.android.FlutterActivity
 

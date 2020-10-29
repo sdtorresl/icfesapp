@@ -100,6 +100,7 @@ Widget _sections(context, List<DocumentModel> documets) {
 
 Widget _mainTitle(context) {
   return Container(
+    padding: EdgeInsets.all(10),
     child: Text(
       "Documentos",
       style:
