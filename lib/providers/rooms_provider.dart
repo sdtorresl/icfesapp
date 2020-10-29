@@ -9,8 +9,6 @@ class RoomsProvider {
     try {
       var response = await http.get(_url);
 
-      //print({responseCode: response.statusCode})
-
       if (response.statusCode == 200) {
         print(response.body);
         List<dynamic> jsonResponse = json.jsonDecode(response.body);
