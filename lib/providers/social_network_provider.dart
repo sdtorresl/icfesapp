@@ -4,7 +4,8 @@ import 'dart:convert' as json;
 import 'package:icfesapp/models/social_network_model.dart';
 
 class SocialNetworkProvider {
-  final String _url = "https://dev-eweb.us.seedcloud.co/json-redes-sociales";
+  final String _url =
+      "https://seminariointernacional.icfes.gov.co/json-redes-sociales";
 
   Future<SocialNetworkModel> getSocialNetworks() async {
     try {

@@ -15,7 +15,7 @@ class RoomList extends StatelessWidget {
   RoomList({@required this.rooms});
   @override
   Widget build(BuildContext context) {
-    const String _baseUrl = "https://dev-eweb.us.seedcloud.co";
+    const String _baseUrl = "https://seminariointernacional.icfes.gov.co";
 
     List<Widget> roomList = List();
 

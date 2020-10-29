@@ -69,7 +69,7 @@ class _DocumentDownloadState extends State<DocumentDownload> {
           child: RaisedButton(
             onPressed: _launchURL,
             child: Text(
-              'Descargas',
+              'Descargar',
               style: Theme.of(context)
                   .textTheme
                   .headline4

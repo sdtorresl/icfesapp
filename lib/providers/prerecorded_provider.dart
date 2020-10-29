@@ -4,7 +4,7 @@ import 'dart:convert' as json;
 
 class PrerecordedProvider {
   final String _url =
-      "https://dev-eweb.us.seedcloud.co/json-material-pregrabado";
+      "https://seminariointernacional.icfes.gov.co/json-material-pregrabado";
 
   Future<List<PrerecordedModel>> getPrerecorded() async {
     try {

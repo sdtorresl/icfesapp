@@ -51,11 +51,14 @@ class PostersPage extends StatelessWidget {
   }
 
   Widget _posterTitle(context) {
-    return Text(
-      'Video Pósters',
-      textAlign: TextAlign.left,
-      style:
-          Theme.of(context).textTheme.headline1.copyWith(color: Colors.black),
+    return Container(
+      padding: EdgeInsets.all(10),
+      child: Text(
+        'Video Pósters',
+        textAlign: TextAlign.left,
+        style:
+            Theme.of(context).textTheme.headline1.copyWith(color: Colors.black),
+      ),
     );
   }
 

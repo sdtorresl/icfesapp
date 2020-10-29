@@ -5,7 +5,7 @@ import 'package:icfesapp/preferences/user_preferences.dart';
 
 class UserProvider {
   Future<UserModel> login(String email, String code) async {
-    final String _url = "https://dev-eweb.us.seedcloud.co/login";
+    final String _url = "https://seminariointernacional.icfes.gov.co/login";
 
     try {
       String encryptedCode = base64Encode(utf8.encode(code));
@@ -39,7 +39,8 @@ class UserProvider {
   }
 
   Future<UserModel> getUser(String token) async {
-    final String _url = "https://dev-eweb.us.seedcloud.co/usuarios/" + token;
+    final String _url =
+        "https://seminariointernacional.icfes.gov.co/usuarios/" + token;
     final _prefs = UserPreferences();
 
     try {
