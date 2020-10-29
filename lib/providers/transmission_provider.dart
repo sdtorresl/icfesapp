@@ -4,7 +4,8 @@ import 'dart:convert' as json;
 import 'package:icfesapp/models/transmission_model.dart';
 
 class TransmissionProvider {
-  final String _url = "https://dev-eweb.us.seedcloud.co/json-transmision";
+  final String _url =
+      "https://seminariointernacional.icfes.gov.co/json-transmision/2";
 
   Future<TransmissionModel> getTransmission(int id) async {
     String _endpoint = id == null ? _url + '/1' : _url + '/$id';

@@ -3,7 +3,8 @@ import 'dart:convert' as json;
 import 'package:icfesapp/models/schedule_model.dart';
 
 class ScheduleProvider {
-  final String _url = "https://dev-eweb.us.seedcloud.co/json-sesiones";
+  final String _url =
+      "https://seminariointernacional.icfes.gov.co/json-sesiones";
 
   Future<List<ScheduleModel>> getSchedule() async {
     try {

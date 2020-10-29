@@ -3,7 +3,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert' as json;
 
 class EventProvider {
-  final String _url = "https://dev-eweb.us.seedcloud.co/json-evento-seedem";
+  final String _url =
+      "https://seminariointernacional.icfes.gov.co/json-evento-seedem";
 
   Future<EventModel> getEvent() async {
     try {

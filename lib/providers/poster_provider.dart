@@ -5,7 +5,8 @@ import 'package:icfesapp/models/video_poster_model.dart';
 
 class PosterProvider {
   Future<List<VideoPosterModel>> getPosters() async {
-    final String _url = "https://dev-eweb.us.seedcloud.co/json-video-poster";
+    final String _url =
+        "https://seminariointernacional.icfes.gov.co/json-video-poster";
 
     try {
       var response = await http.get(_url);
