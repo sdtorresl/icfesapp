@@ -34,7 +34,8 @@ class PosterProvider {
   }
 
   Future<bool> votePoster(posterId) async {
-    final String _url = "https://dev-eweb.us.seedcloud.co/webform_rest/submit";
+    final String _url =
+        "https://seminariointernacional.icfes.gov.co/webform_rest/submit";
 
     try {
       String username = 'eweb';

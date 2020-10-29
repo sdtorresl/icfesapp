@@ -39,7 +39,8 @@ class UserProvider {
   }
 
   Future<UserModel> getUser(String token) async {
-    final String _url = "https://dev-eweb.us.seedcloud.co/usuarios/" + token;
+    final String _url =
+        "https://seminariointernacional.icfes.gov.co/usuarios/" + token;
     final _prefs = UserPreferences();
 
     try {
