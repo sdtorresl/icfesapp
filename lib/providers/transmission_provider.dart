@@ -5,7 +5,7 @@ import 'package:icfesapp/models/transmission_model.dart';
 
 class TransmissionProvider {
   final String _url =
-      "https://seminariointernacional.icfes.gov.co/json-transmision/2";
+      "https://seminariointernacional.icfes.gov.co/json-transmision/1";
 
   Future<TransmissionModel> getTransmission(int id) async {
     String _endpoint = id == null ? _url + '/1' : _url + '/$id';

@@ -37,17 +37,15 @@ class _RecordedPageState extends State<RecordedPage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
+            padding: EdgeInsets.symmetric(horizontal: 20),
             margin: EdgeInsets.only(bottom: 20, top: 20),
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                widget.record.title,
-                textAlign: TextAlign.center,
-                style: Theme.of(context)
-                    .textTheme
-                    .headline2
-                    .copyWith(color: Colors.black),
-              ),
+            child: Text(
+              widget.record.title,
+              textAlign: TextAlign.center,
+              style: Theme.of(context)
+                  .textTheme
+                  .headline2
+                  .copyWith(color: Colors.black),
             ),
           ),
           Container(
