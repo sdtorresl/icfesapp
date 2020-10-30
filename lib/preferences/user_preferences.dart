@@ -35,4 +35,8 @@ class UserPreferences {
       _prefs.setInt('selectedPoster', selectedPoster);
 
   int get selectedPoster => _prefs.getInt('selectedPoster');
+
+  set isPremium(bool isPremium) => _prefs.setBool('isPremium', isPremium);
+
+  bool get isPremium => _prefs.getBool('isPremium');
 }

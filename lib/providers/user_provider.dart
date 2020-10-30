@@ -4,6 +4,8 @@ import 'package:icfesapp/models/user_model.dart';
 import 'package:icfesapp/preferences/user_preferences.dart';
 
 class UserProvider {
+  final _prefs = UserPreferences();
+
   Future<UserModel> login(String email, String code) async {
     final String _url = "https://seminariointernacional.icfes.gov.co/login";
 
@@ -13,7 +15,8 @@ class UserProvider {
       String password = 'E02i4BMX';
       String basicAuth =
           'Basic ' + base64Encode(utf8.encode('$username:$password'));
-      String body = json.encode({'email': email, 'code': encryptedCode});
+      String body =
+          json.encode({'email': email, 'code': encryptedCode, 'premium': "1"});
 
       var response = await http.post(
         _url,
@@ -27,6 +30,9 @@ class UserProvider {
       switch (response.statusCode) {
         case 200:
           String token = json.decode(response.body)["token"];
+          bool isPremium = json.decode(response.body)["flag"];
+          _prefs.isPremium = isPremium;
+
           UserModel user = await getUser(token);
           return user;
           break;
@@ -41,7 +47,6 @@ class UserProvider {
   Future<UserModel> getUser(String token) async {
     final String _url =
         "https://seminariointernacional.icfes.gov.co/usuarios/" + token;
-    final _prefs = UserPreferences();
 
     try {
       String username = 'eweb';

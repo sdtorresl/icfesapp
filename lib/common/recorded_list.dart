@@ -14,14 +14,24 @@ class RecordedList extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> recordList = List();
     for (var record in recorded) {
+      Color textColor = record.highlighted ? Colors.white : Colors.black;
       recordList.add(ExpansionCard(
         header: DateFormatter.dateTimeToString(record.uploadDate),
         title: record.title,
+        highlight: record.highlighted,
         hidden: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              record.description,
-              textAlign: TextAlign.center,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Text(
+                record.description,
+                textAlign: TextAlign.left,
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle2
+                    .copyWith(color: textColor),
+              ),
             ),
             SizedBox(height: 15),
             SizedBox(

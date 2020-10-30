@@ -10,8 +10,6 @@ class PrerecordedProvider {
     try {
       var response = await http.get(_url);
 
-      //print({responseCode: response.statusCode})
-
       if (response.statusCode == 200) {
         print(response.body);
         List<dynamic> jsonResponse = json.jsonDecode(response.body);
@@ -20,14 +18,17 @@ class PrerecordedProvider {
         for (var item in jsonResponse) {
           PrerecordedModel material = PrerecordedModel.fromMap(item);
           materials.add(material);
-          print(material);
         }
+
+        materials.sort((a, b) => a.order.compareTo(b.order));
 
         return materials;
       } else {
         print('Request failed with status: ${response.statusCode}.');
       }
-    } catch (Exception) {}
+    } catch (Exception) {
+      print(Exception);
+    }
 
     return [];
   }

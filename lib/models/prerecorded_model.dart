@@ -6,12 +6,16 @@ class PrerecordedModel {
     this.description,
     this.uploadDate,
     this.videoCode,
+    this.highlighted,
+    this.order,
   });
 
   String title;
   String description;
   DateTime uploadDate;
   String videoCode;
+  bool highlighted;
+  int order;
 
   factory PrerecordedModel.fromJson(String str) =>
       PrerecordedModel.fromMap(json.decode(str));
@@ -22,14 +26,21 @@ class PrerecordedModel {
       PrerecordedModel(
         title: json["title"],
         description: json["description"],
-        uploadDate: DateTime.parse(json["upload-date"]),
+        uploadDate: DateTime.tryParse(json["upload-date"]),
         videoCode: json["video-code"],
+        order: int.tryParse(json["order"]),
+        highlighted: json["flag"] == "1",
       );
 
   Map<String, dynamic> toMap() => {
         "title": title,
         "description": description,
-        "upload-date": uploadDate,
+        "upload-date": uploadDate.toIso8601String(),
         "video-code": videoCode,
+        "highlighted": highlighted,
+        "order": order,
       };
+
+  @override
+  String toString() => this.toJson();
 }
