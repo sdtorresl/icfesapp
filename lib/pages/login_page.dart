@@ -26,11 +26,11 @@ class LoginPage extends StatelessWidget {
         children: <Widget>[
           SafeArea(
             child: Container(
-              height: 64,
+              height: 70,
             ),
           ),
           Container(
-            width: size.width * 0.85,
+            width: size.width * 0.8,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -38,7 +38,7 @@ class LoginPage extends StatelessWidget {
                   child: _mainImage(context),
                   alignment: Alignment.center,
                 ),
-                SizedBox(height: 40),
+                SizedBox(height: 30),
                 Container(
                   child: _mainTitle(context),
                   alignment: Alignment.center,
@@ -81,8 +81,8 @@ class LoginPage extends StatelessWidget {
 
   Widget _mainImage(context) {
     return Container(
-      height: 75,
-      child: Image.asset("assets/img/Group 103.png"),
+      height: 200,
+      child: Image.asset("assets/img/ICFES app.png"),
     );
   }
 
