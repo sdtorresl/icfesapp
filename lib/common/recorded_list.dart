@@ -15,7 +15,11 @@ class RecordedList extends StatelessWidget {
     List<Widget> recordList = List();
     for (var record in recorded) {
       recordList.add(ExpansionCard(
-        header: DateFormatter.dateTimeToString(record.uploadDate),
+        header: DateFormatter.dateTimeToString(
+          record.uploadDate.subtract(
+            Duration(hours: 5),
+          ),
+        ),
         title: record.title,
         hidden: Column(
           children: [

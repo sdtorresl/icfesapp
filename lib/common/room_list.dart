@@ -50,7 +50,11 @@ class RoomList extends StatelessWidget {
       }
 
       roomList.add(ExpansionCard(
-        header: DateFormatter.dateTimeToString(room.startDate),
+        header: DateFormatter.dateTimeToString(
+          room.startDate.subtract(
+            Duration(hours: 5),
+          ),
+        ),
         title: room.title,
         subtitle: room.description,
         hidden: Column(
