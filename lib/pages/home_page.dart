@@ -63,13 +63,16 @@ class _HomePageState extends State<HomePage> {
         padding: EdgeInsets.all(10),
         child: SafeArea(
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Image.asset("assets/img/ICFES app.png"),
-              SizedBox(
-                width: 20,
+              Image.asset(
+                "assets/img/ICFES app.png",
+                width: screenWidth * 0.6,
               ),
-              Image.asset("assets/img/logo_icfes.png"),
+              Image.asset(
+                "assets/img/logo_icfes.png",
+                width: screenWidth * 0.3,
+              ),
             ],
           ),
         ),
