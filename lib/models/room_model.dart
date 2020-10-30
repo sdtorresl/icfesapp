@@ -34,8 +34,12 @@ class RoomModel {
         title: json["title"],
         description: json["description"],
         picture: json["picture"],
-        startDate: DateTime.parse(json["start-date"]),
-        endDate: DateTime.parse(json["end-date"]),
+        startDate: DateTime.parse(json["start-date"]).subtract(
+          Duration(hours: 5),
+        ),
+        endDate: DateTime.parse(json["end-date"]).subtract(
+          Duration(hours: 5),
+        ),
         fieldIcon: json["field_icon"],
         isMeeting: json["video-jitsi"].toString() == "1",
         meetingHost: json["jitsi-host"],
