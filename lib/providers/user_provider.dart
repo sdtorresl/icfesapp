@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:global_configuration/global_configuration.dart';
 import 'package:http/http.dart' as http;
 import 'package:icfesapp/models/user_model.dart';
 import 'package:icfesapp/preferences/user_preferences.dart';
@@ -7,7 +8,7 @@ class UserProvider {
   final _prefs = UserPreferences();
 
   Future<UserModel> login(String email, String code) async {
-    final String _url = "https://seminariointernacional.icfes.gov.co/login";
+    final String _url = GlobalConfiguration().getValue("api_url") + "/login";
 
     try {
       String encryptedCode = base64Encode(utf8.encode(code));
@@ -46,7 +47,7 @@ class UserProvider {
 
   Future<UserModel> getUser(String token) async {
     final String _url =
-        "https://seminariointernacional.icfes.gov.co/usuarios/" + token;
+        GlobalConfiguration().getValue("api_url") + "/usuarios/" + token;
 
     try {
       String username = 'eweb';

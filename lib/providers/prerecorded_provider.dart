@@ -1,10 +1,11 @@
+import 'package:global_configuration/global_configuration.dart';
 import 'package:icfesapp/models/prerecorded_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as json;
 
 class PrerecordedProvider {
   final String _url =
-      "https://seminariointernacional.icfes.gov.co/json-material-pregrabado";
+      GlobalConfiguration().getValue("api_url") + "/json-material-pregrabado";
 
   Future<List<PrerecordedModel>> getPrerecorded() async {
     try {

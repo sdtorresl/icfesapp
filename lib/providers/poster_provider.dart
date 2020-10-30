@@ -1,12 +1,14 @@
 import 'dart:convert';
 
+import 'package:global_configuration/global_configuration.dart';
 import 'package:http/http.dart' as http;
 import 'package:icfesapp/models/video_poster_model.dart';
 
 class PosterProvider {
+  final String _host = GlobalConfiguration().getValue("api_url");
+
   Future<List<VideoPosterModel>> getPosters() async {
-    final String _url =
-        "https://seminariointernacional.icfes.gov.co/json-video-poster";
+    final String _url = _host + "/json-video-poster";
 
     try {
       var response = await http.get(_url);
@@ -34,8 +36,7 @@ class PosterProvider {
   }
 
   Future<bool> votePoster(posterId) async {
-    final String _url =
-        "https://seminariointernacional.icfes.gov.co/webform_rest/submit";
+    final String _url = _host + "/webform_rest/submit";
 
     try {
       String username = 'eweb';

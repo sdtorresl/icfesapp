@@ -10,11 +10,15 @@ import 'package:icfesapp/pages/posters_poll_page.dart';
 import 'package:icfesapp/pages/transmission_page.dart';
 import 'package:icfesapp/preferences/user_preferences.dart';
 import 'package:icfesapp/pages/onboarding_page.dart';
+import 'package:global_configuration/global_configuration.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await GlobalConfiguration().loadFromPath("assets/config/settings.json");
   final prefs = new UserPreferences();
   await prefs.initPrefs();
+
   runApp(IcfesApp());
 }
 

@@ -1,3 +1,4 @@
+import 'package:global_configuration/global_configuration.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as json;
 
@@ -5,7 +6,7 @@ import 'package:icfesapp/models/social_network_model.dart';
 
 class SocialNetworkProvider {
   final String _url =
-      "https://seminariointernacional.icfes.gov.co/json-redes-sociales";
+      GlobalConfiguration().getValue("api_url") + "/json-redes-sociales";
 
   Future<SocialNetworkModel> getSocialNetworks() async {
     try {

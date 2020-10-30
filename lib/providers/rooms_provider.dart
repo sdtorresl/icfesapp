@@ -1,9 +1,10 @@
+import 'package:global_configuration/global_configuration.dart';
 import 'package:icfesapp/models/room_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as json;
 
 class RoomsProvider {
-  final String _url = "https://seminariointernacional.icfes.gov.co/json-salas";
+  final String _url = GlobalConfiguration().getValue("api_url") + "/json-salas";
 
   Future<List<RoomModel>> getRooms() async {
     try {
