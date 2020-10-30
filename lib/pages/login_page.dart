@@ -82,7 +82,7 @@ class LoginPage extends StatelessWidget {
   Widget _mainImage(context) {
     return Container(
       height: 75,
-      child: Image.asset("assets/img/Group 103.png"),
+      child: Image.asset("assets/img/ICFES app.png"),
     );
   }
 

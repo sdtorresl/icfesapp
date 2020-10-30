@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset("assets/img/Group 101.png"),
+              Image.asset("assets/img/ICFES app.png"),
               SizedBox(
                 width: 20,
               ),
