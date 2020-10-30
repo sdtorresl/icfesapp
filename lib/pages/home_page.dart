@@ -67,11 +67,11 @@ class _HomePageState extends State<HomePage> {
             children: [
               Image.asset(
                 "assets/img/ICFES app.png",
-                width: screenWidth * 0.6,
+                width: screenWidth * 0.55,
               ),
               Image.asset(
                 "assets/img/logo_icfes.png",
-                width: screenWidth * 0.3,
+                width: screenWidth * 0.25,
               ),
             ],
           ),
