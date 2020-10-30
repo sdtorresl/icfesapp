@@ -14,7 +14,6 @@ class TransmissionProvider {
       var response = await http.get(_endpoint);
 
       if (response.statusCode == 200) {
-        print(response.body);
         List<dynamic> jsonResponse = json.jsonDecode(response.body);
         TransmissionModel transmission =
             TransmissionModel.fromMap(jsonResponse[0]);

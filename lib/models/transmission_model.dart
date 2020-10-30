@@ -26,7 +26,7 @@ class TransmissionModel {
       TransmissionModel(
         title: json["title"],
         videoCode: json["video-code"],
-        chatUrl: json["chat-url"],
+        chatUrl: json["chat-url"].toString().replaceAll("amp;", ""),
         pollUrl: json["poll-url"],
       );
 
