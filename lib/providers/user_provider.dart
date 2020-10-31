@@ -11,7 +11,9 @@ class UserProvider {
     final String _url = GlobalConfiguration().getValue("api_url") + "/login";
 
     try {
-      String encryptedCode = base64Encode(utf8.encode(code));
+      String encryptedCode = base64Encode(
+        utf8.encode(code),
+      );
       String username = 'eweb';
       String password = 'E02i4BMX';
       String basicAuth =
@@ -31,7 +33,7 @@ class UserProvider {
       switch (response.statusCode) {
         case 200:
           String token = json.decode(response.body)["token"];
-          bool isPremium = json.decode(response.body)["flag"];
+          bool isPremium = json.decode(response.body)["flag"] == 1;
           _prefs.isPremium = isPremium;
 
           UserModel user = await getUser(token);
