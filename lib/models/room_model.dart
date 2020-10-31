@@ -12,6 +12,7 @@ class RoomModel {
     this.isMeeting,
     this.meetingRoom,
     this.meetingHost,
+    this.isPrivate,
   });
 
   final int id;
@@ -24,6 +25,7 @@ class RoomModel {
   final bool isMeeting;
   final String meetingRoom;
   final String meetingHost;
+  final bool isPrivate;
 
   factory RoomModel.fromJson(String str) => RoomModel.fromMap(json.decode(str));
 
@@ -44,6 +46,7 @@ class RoomModel {
         isMeeting: json["video-jitsi"].toString() == "1",
         meetingHost: json["jitsi-host"],
         meetingRoom: json["jitsi-room"],
+        isPrivate: json["private-room"] == "1",
       );
 
   Map<String, dynamic> toMap() => {
@@ -56,7 +59,8 @@ class RoomModel {
         "field_icon": fieldIcon,
         "video-jitsi": isMeeting,
         "jitsi-host": meetingHost,
-        "jitsi-room": meetingRoom
+        "jitsi-room": meetingRoom,
+        "private-room": isPrivate,
       };
 
   @override

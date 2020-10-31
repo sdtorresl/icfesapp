@@ -7,6 +7,7 @@ import 'package:icfesapp/main.dart';
 import 'package:icfesapp/models/room_model.dart';
 import 'package:icfesapp/pages/meetings_page.dart';
 import 'package:icfesapp/pages/transmission_page.dart';
+import 'package:icfesapp/preferences/user_preferences.dart';
 import 'package:icfesapp/utils/alert_dialog.dart';
 import 'package:icfesapp/utils/date_formatter.dart';
 
@@ -17,6 +18,8 @@ class RoomList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String _baseUrl = GlobalConfiguration().getValue("api_url");
+    final _prefs = UserPreferences();
+    final bool _isPremiumUser = _prefs.isPremium;
 
     List<Widget> roomList = List();
 
@@ -50,10 +53,11 @@ class RoomList extends StatelessWidget {
         );
       }
 
-      roomList.add(ExpansionCard(
+      Widget roomWidget = ExpansionCard(
         header: DateFormatter.dateTimeToString(room.startDate),
         title: room.title,
         subtitle: room.description,
+        highlight: room.isPrivate,
         hidden: Column(
           children: [
             CachedNetworkImage(
@@ -67,7 +71,16 @@ class RoomList extends StatelessWidget {
             SizedBox(height: 10),
           ],
         ),
-      ));
+      );
+
+      // Only add to list if it's premium user
+      if (room.isPrivate && _isPremiumUser) {
+        roomList.add(roomWidget);
+      } else {
+        if (!room.isPrivate) {
+          roomList.add(roomWidget);
+        }
+      }
     }
 
     roomList.add(SizedBox(height: 35));
