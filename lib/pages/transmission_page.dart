@@ -42,7 +42,7 @@ class _TransmissionPageState extends State<TransmissionPage> {
                 padding: EdgeInsets.only(left: 75),
                 child: Image(
                   width: 300,
-                  image: AssetImage('assets/img/dots.png'),
+                  image: AssetImage('assets/img/dots7.png'),
                   repeat: ImageRepeat.repeat,
                 ),
               ),
