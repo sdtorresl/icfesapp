@@ -36,23 +36,16 @@ class _LobbyPageState extends State<LobbyPage> {
           List<SectionModel> sections = event.sections;
 
           Widget description = Container(
-            height: 470,
-            child: Stack(
+            color: IcfesApp().grey,
+            child: Column(
               children: <Widget>[
-                Positioned(
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  child: EventDescription(
-                    title: event.title,
-                    description: event.description,
-                    picture: event.picture,
-                  ),
+                EventDescription(
+                  title: event.title,
+                  description: event.description,
+                  picture: event.picture,
                 ),
-                Positioned(
-                  bottom: 0,
-                  right: 0,
-                  left: 0,
+                Transform.translate(
+                  offset: Offset(0, -19),
                   child: Container(
                     height: 20,
                     decoration: BoxDecoration(
