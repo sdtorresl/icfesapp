@@ -38,8 +38,10 @@ class _ExpansionCardState extends State<ExpansionCard> {
         SizedBox(height: 17),
         Text(
           widget.header,
-          style:
-              Theme.of(context).textTheme.headline5.copyWith(color: textColor),
+          style: Theme.of(context)
+              .textTheme
+              .headline3
+              .copyWith(color: Colors.black45, fontSize: 13),
         ),
         SizedBox(height: 4),
         Text(
