@@ -23,9 +23,10 @@ class _CountdownState extends State<Countdown> {
       child: CountdownTimer(
         endTime: widget.startDate.millisecondsSinceEpoch,
         widgetBuilder: (_, CurrentRemainingTime time) {
-          int remainingDays = time.days != null ? time.days : 0;
-          int remainingHours = time.hours != null ? time.hours : 0;
-          int remainingMins = time.min != null ? time.min : 0;
+          int remainingDays = time != null && time.days != null ? time.days : 0;
+          int remainingHours =
+              time != null && time.days != null ? time.hours : 0;
+          int remainingMins = time != null && time.min != null ? time.min : 0;
 
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
