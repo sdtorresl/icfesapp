@@ -22,7 +22,7 @@ class OptionsPage extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .headline1
-                .copyWith(color: Colors.black),
+                .copyWith(color: Colors.black, fontWeight: FontWeight.w600),
           ),
           SizedBox(height: 20.0),
           OptionsCard(

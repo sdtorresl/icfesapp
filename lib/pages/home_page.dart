@@ -40,10 +40,11 @@ class _HomePageState extends State<HomePage> {
         selectedColor: Theme.of(context).accentColor,
         color: Colors.grey,
         items: [
-          FABBottomAppBarItem(iconData: Icons.home, text: 'Recepción'),
-          FABBottomAppBarItem(iconData: Icons.people_outline, text: 'Salas'),
-          FABBottomAppBarItem(iconData: Icons.today, text: 'Agenda'),
-          FABBottomAppBarItem(iconData: Icons.more_horiz, text: 'Más'),
+          FABBottomAppBarItem(iconData: Icons.home_outlined, text: 'Recepción'),
+          FABBottomAppBarItem(
+              iconData: Icons.people_alt_outlined, text: 'Salas'),
+          FABBottomAppBarItem(iconData: Icons.today_outlined, text: 'Agenda'),
+          FABBottomAppBarItem(iconData: Icons.more_horiz_outlined, text: 'Más'),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
