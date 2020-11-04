@@ -39,7 +39,9 @@ class _DocumentsPageState extends State<DocumentsPage> {
         ),
       ),
       body: Container(
-        decoration: BoxDecoration(color: Color.fromRGBO(243, 243, 243, 1)),
+        decoration: BoxDecoration(
+          color: Color.fromRGBO(243, 243, 243, 1),
+        ),
         padding: EdgeInsets.all(25),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

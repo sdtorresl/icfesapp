@@ -11,7 +11,9 @@ class OptionsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(color: Color.fromRGBO(243, 243, 243, 1)),
+      decoration: BoxDecoration(
+        color: Color.fromRGBO(243, 243, 243, 1),
+      ),
       padding: EdgeInsets.only(right: 25, left: 25),
       child: ListView(
         children: <Widget>[
@@ -22,7 +24,7 @@ class OptionsPage extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .headline1
-                .copyWith(color: Colors.black),
+                .copyWith(color: Colors.black, fontWeight: FontWeight.w600),
           ),
           SizedBox(height: 20.0),
           OptionsCard(

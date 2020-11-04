@@ -56,8 +56,10 @@ class PostersPage extends StatelessWidget {
       child: Text(
         'Video Pósters',
         textAlign: TextAlign.left,
-        style:
-            Theme.of(context).textTheme.headline1.copyWith(color: Colors.black),
+        style: Theme.of(context)
+            .textTheme
+            .headline1
+            .copyWith(color: Colors.black, fontWeight: FontWeight.w600),
       ),
     );
   }

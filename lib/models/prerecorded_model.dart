@@ -26,7 +26,9 @@ class PrerecordedModel {
       PrerecordedModel(
         title: json["title"],
         description: json["description"],
-        uploadDate: DateTime.tryParse(json["upload-date"]),
+        uploadDate: DateTime.tryParse(json["upload-date"]).subtract(
+          Duration(hours: 5),
+        ),
         videoCode: json["video-code"],
         order: int.tryParse(json["order"]),
         highlighted: json["flag"] == "1",
