@@ -74,8 +74,7 @@ class IcfesApp extends StatelessWidget {
             ),
             headline4:
                 TextStyle(fontSize: 18.0, fontFamily: 'MontserratRegular'),
-            headline5:
-                TextStyle(fontSize: 14.0, fontFamily: 'Montserrat Light'),
+            headline5: TextStyle(fontSize: 14.0, fontFamily: 'MontserratLight'),
             bodyText1: TextStyle(
               fontSize: 18.0,
               fontFamily: 'MontserratLight',

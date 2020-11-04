@@ -26,10 +26,11 @@ class RecordedList extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(
                 record.description,
-                textAlign: TextAlign.left,
-                style: Theme.of(context).textTheme.headline3.copyWith(
-                      color: textColor,
-                    ),
+                textAlign: TextAlign.justify,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline4
+                    .copyWith(color: textColor, fontSize: 16),
               ),
             ),
             SizedBox(height: 15),

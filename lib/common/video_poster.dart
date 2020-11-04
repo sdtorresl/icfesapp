@@ -79,10 +79,10 @@ class _PosterViewState extends State<PosterView> {
             child: Text(
               widget.title,
               textAlign: TextAlign.justify,
-              style: Theme.of(context).textTheme.headline3.copyWith(
+              style: Theme.of(context).textTheme.subtitle1.copyWith(
                   color: Colors.black,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 18),
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16),
             ),
           ),
         ],
@@ -96,7 +96,7 @@ class _PosterViewState extends State<PosterView> {
               widget.subtitle,
               textAlign: TextAlign.justify,
               style:
-                  Theme.of(context).textTheme.headline3.copyWith(fontSize: 16),
+                  Theme.of(context).textTheme.headline5.copyWith(fontSize: 16),
             ),
             Padding(
               padding: EdgeInsets.all(10),
@@ -109,7 +109,7 @@ class _PosterViewState extends State<PosterView> {
                 children: <Widget>[
                   Text(
                     'Descargar',
-                    style: Theme.of(context).textTheme.headline3.copyWith(
+                    style: Theme.of(context).textTheme.headline2.copyWith(
                         color: Colors.pink,
                         fontSize: 18,
                         fontWeight: FontWeight.w600),

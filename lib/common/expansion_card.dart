@@ -40,14 +40,14 @@ class _ExpansionCardState extends State<ExpansionCard> {
           widget.header,
           style: Theme.of(context)
               .textTheme
-              .headline3
-              .copyWith(color: Colors.black45, fontSize: 13),
+              .headline4
+              .copyWith(color: Colors.black38, fontSize: 13),
         ),
         SizedBox(height: 4),
         Text(
           widget.title,
           textAlign: TextAlign.left,
-          style: Theme.of(context).textTheme.headline3.copyWith(
+          style: Theme.of(context).textTheme.headline5.copyWith(
               color: textColor, fontWeight: FontWeight.w600, fontSize: 18),
         ),
         SizedBox(height: 4),
@@ -57,7 +57,7 @@ class _ExpansionCardState extends State<ExpansionCard> {
         Text(
           widget.title,
           textAlign: TextAlign.left,
-          style: Theme.of(context).textTheme.headline3.copyWith(
+          style: Theme.of(context).textTheme.headline2.copyWith(
               color: textColor, fontWeight: FontWeight.w600, fontSize: 18),
         ),
         SizedBox(height: 17),
