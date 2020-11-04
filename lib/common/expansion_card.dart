@@ -35,6 +35,7 @@ class _ExpansionCardState extends State<ExpansionCard> {
     List<Widget> headerItems;
     if (widget.header != null) {
       headerItems = <Widget>[
+        SizedBox(height: 17),
         Text(
           widget.header,
           style:
@@ -43,19 +44,23 @@ class _ExpansionCardState extends State<ExpansionCard> {
         SizedBox(height: 4),
         Text(
           widget.title,
-          style: Theme.of(context).textTheme.headline4.copyWith(
-                color: textColor,
-              ),
-        )
+          style: Theme.of(context)
+              .textTheme
+              .headline4
+              .copyWith(color: textColor, fontWeight: FontWeight.w600),
+        ),
+        SizedBox(height: 4),
       ];
     } else {
       headerItems = <Widget>[
         Text(
           widget.title,
-          style: Theme.of(context).textTheme.headline4.copyWith(
-                color: textColor,
-              ),
-        )
+          style: Theme.of(context)
+              .textTheme
+              .headline4
+              .copyWith(color: textColor, fontWeight: FontWeight.w600),
+        ),
+        SizedBox(height: 17),
       ];
     }
 

@@ -73,10 +73,9 @@ class _RoomsPageState extends State<RoomsPage> {
         padding: EdgeInsets.all(15),
         child: Text(
           title,
-          style: Theme.of(context)
-              .textTheme
-              .bodyText1
-              .copyWith(color: selected ? Colors.white : Colors.black),
+          style: Theme.of(context).textTheme.bodyText1.copyWith(
+              color: selected ? Colors.white : Colors.black,
+              fontWeight: FontWeight.w800),
         ),
       ),
     );

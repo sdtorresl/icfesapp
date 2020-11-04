@@ -15,7 +15,7 @@ class EventDescription extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.all(30),
             child: Text(
               title,
               textAlign: TextAlign.center,
@@ -31,7 +31,7 @@ class EventDescription extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.only(top: 10, bottom: 50),
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(50),
             child: Text(
               description,
               textAlign: TextAlign.center,

@@ -28,7 +28,7 @@ class Onboarding extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .headline2
-                  .copyWith(color: Colors.black, fontWeight: FontWeight.w600),
+                  .copyWith(color: Colors.black, fontWeight: FontWeight.w700),
             ),
             SizedBox(height: 18),
             Text(
@@ -37,7 +37,7 @@ class Onboarding extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .headline3
-                  .copyWith(color: Colors.black45, fontSize: 18),
+                  .copyWith(color: Colors.black, fontSize: 18),
             ),
             SizedBox(height: 27),
             Image.asset(this.picture),
