@@ -29,7 +29,6 @@ class _ExpansionCardState extends State<ExpansionCard> {
 
   @override
   Widget build(BuildContext context) {
-    Color textColorHeader = widget.highlight ? Colors.white : Colors.black45;
     Color textColor = widget.highlight ? Colors.white : Colors.black;
     Color iconColor = widget.highlight ? Colors.white : IcfesApp().accent;
 
