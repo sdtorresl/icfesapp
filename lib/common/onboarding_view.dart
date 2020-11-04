@@ -15,29 +15,34 @@ class Onboarding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          SizedBox(height: 50),
-          Text(
-            this.title,
-            textAlign: TextAlign.center,
-            style: Theme.of(context)
-                .textTheme
-                .headline2
-                .copyWith(color: Colors.black),
-          ),
-          Text(
-            this.description,
-            textAlign: TextAlign.center,
-            style: Theme.of(context)
-                .textTheme
-                .headline3
-                .copyWith(color: Colors.black),
-          ),
-          Image.asset(this.picture),
-        ],
+      child: Container(
+        padding: EdgeInsets.all(25),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(height: 125),
+            Text(
+              this.title,
+              textAlign: TextAlign.center,
+              style: Theme.of(context)
+                  .textTheme
+                  .headline2
+                  .copyWith(color: Colors.black, fontWeight: FontWeight.w600),
+            ),
+            SizedBox(height: 18),
+            Text(
+              this.description,
+              textAlign: TextAlign.center,
+              style: Theme.of(context)
+                  .textTheme
+                  .headline3
+                  .copyWith(color: Colors.black45, fontSize: 18),
+            ),
+            SizedBox(height: 27),
+            Image.asset(this.picture),
+          ],
+        ),
       ),
     );
   }
