@@ -94,10 +94,9 @@ class RoomList extends StatelessWidget {
 
   _openRoom(BuildContext context, RoomModel room) {
     DateTime now = DateTime.now();
-    print(room);
-    print(room.startDate.compareTo(now));
+
     if (room.startDate.compareTo(now) < 0) {
-      if (room.endDate.compareTo(now) <= 0) {
+      if (room.endDate.compareTo(now) > 0) {
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -108,7 +107,7 @@ class RoomList extends StatelessWidget {
         showMyDialog(
           context,
           "El evento ya ha finalizado",
-          Text("Esta transmisión ya ha finalizado."),
+          Text("Este evento ya ha finalizado."),
         );
       }
     } else {
@@ -124,7 +123,7 @@ class RoomList extends StatelessWidget {
     DateTime now = DateTime.now();
 
     if (room.startDate.compareTo(now) < 0) {
-      if (room.endDate.compareTo(now) <= 0) {
+      if (room.endDate.compareTo(now) > 0) {
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -140,7 +139,7 @@ class RoomList extends StatelessWidget {
         showMyDialog(
           context,
           "El evento ya ha finalizado",
-          Text("Esta transmisión ya ha finalizado."),
+          Text("Este evento ya ha finalizado."),
         );
       }
     } else {

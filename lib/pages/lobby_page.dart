@@ -38,6 +38,7 @@ class _LobbyPageState extends State<LobbyPage> {
           Widget description = Container(
             color: IcfesApp().grey,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 EventDescription(
                   title: event.title,
