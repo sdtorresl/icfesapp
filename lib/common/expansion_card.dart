@@ -29,6 +29,7 @@ class _ExpansionCardState extends State<ExpansionCard> {
 
   @override
   Widget build(BuildContext context) {
+    Color textColorHeader = widget.highlight ? Colors.white : Colors.black45;
     Color textColor = widget.highlight ? Colors.white : Colors.black;
     Color iconColor = widget.highlight ? Colors.white : IcfesApp().accent;
 
@@ -41,7 +42,7 @@ class _ExpansionCardState extends State<ExpansionCard> {
           style: Theme.of(context)
               .textTheme
               .headline3
-              .copyWith(color: Colors.black45, fontSize: 13),
+              .copyWith(color: textColorHeader, fontSize: 13),
         ),
         SizedBox(height: 4),
         Text(
