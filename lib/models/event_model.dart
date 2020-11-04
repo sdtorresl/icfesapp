@@ -36,12 +36,8 @@ class EventModel {
         title: json["title"],
         description: json["description"],
         picture: json["picture"],
-        startDate: DateTime.parse(json["start-date"]).subtract(
-          Duration(hours: 5),
-        ),
-        endDate: DateTime.parse(json["end-date"]).subtract(
-          Duration(hours: 5),
-        ),
+        startDate: DateTime.parse(json["start-date"]).toLocal(),
+        endDate: DateTime.parse(json["end-date"]).toLocal(),
         sections: List<SectionModel>.from(
             json["sections"].map((x) => SectionModel.fromMap(x))),
         documents: List<DocumentModel>.from(
