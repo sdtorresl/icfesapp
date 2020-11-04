@@ -25,7 +25,7 @@ class _CountdownState extends State<Countdown> {
         widgetBuilder: (_, CurrentRemainingTime time) {
           int remainingDays = time != null && time.days != null ? time.days : 0;
           int remainingHours =
-              time != null && time.days != null ? time.hours : 0;
+              time != null && time.hours != null ? time.hours : 0;
           int remainingMins = time != null && time.min != null ? time.min : 0;
 
           return Row(
