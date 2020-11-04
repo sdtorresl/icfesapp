@@ -44,6 +44,7 @@ class _ExpansionCardState extends State<ExpansionCard> {
         SizedBox(height: 4),
         Text(
           widget.title,
+          textAlign: TextAlign.left,
           style: Theme.of(context)
               .textTheme
               .headline4
@@ -55,6 +56,7 @@ class _ExpansionCardState extends State<ExpansionCard> {
       headerItems = <Widget>[
         Text(
           widget.title,
+          textAlign: TextAlign.left,
           style: Theme.of(context)
               .textTheme
               .headline4
@@ -83,6 +85,7 @@ class _ExpansionCardState extends State<ExpansionCard> {
               padding: EdgeInsets.only(top: 5, bottom: 5),
               child: Text(
                 widget.subtitle,
+                textAlign: TextAlign.justify,
                 style: Theme.of(context)
                     .textTheme
                     .bodyText2
