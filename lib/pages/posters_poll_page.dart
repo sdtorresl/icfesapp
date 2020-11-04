@@ -101,44 +101,46 @@ class _PostersPollPageState extends State<PostersPollPage> {
   }
 
   Widget _posterSelector(List<VideoPosterModel> data) {
-    return ColumnBuilder(
-      itemBuilder: (context, index) {
-        int _currentPoster = int.parse(data[index].id);
+    return SingleChildScrollView(
+      child: ColumnBuilder(
+        itemBuilder: (context, index) {
+          int _currentPoster = int.parse(data[index].id);
 
-        return GestureDetector(
-          onTap: () {
-            setState(() {
-              _selectedPoster = _currentPoster;
-              _prefs.selectedPoster = _selectedPoster;
-            });
-          },
-          child: Row(
-            children: [
-              Icon(
-                _currentPoster == _selectedPoster
-                    ? Icons.radio_button_checked
-                    : Icons.radio_button_unchecked,
-                color: _currentPoster == _selectedPoster
-                    ? IcfesApp().primary
-                    : Colors.black,
-              ),
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(10),
-                  child: Text(
-                    data[index].titulo,
-                    style: Theme.of(context).textTheme.bodyText1.copyWith(
-                        color: _currentPoster == _selectedPoster
-                            ? IcfesApp().primary
-                            : Colors.black),
+          return GestureDetector(
+            onTap: () {
+              setState(() {
+                _selectedPoster = _currentPoster;
+                _prefs.selectedPoster = _selectedPoster;
+              });
+            },
+            child: Row(
+              children: [
+                Icon(
+                  _currentPoster == _selectedPoster
+                      ? Icons.radio_button_checked
+                      : Icons.radio_button_unchecked,
+                  color: _currentPoster == _selectedPoster
+                      ? IcfesApp().primary
+                      : Colors.black,
+                ),
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      data[index].titulo,
+                      style: Theme.of(context).textTheme.bodyText1.copyWith(
+                          color: _currentPoster == _selectedPoster
+                              ? IcfesApp().primary
+                              : Colors.black),
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        );
-      },
-      itemCount: data.length,
+              ],
+            ),
+          );
+        },
+        itemCount: data.length,
+      ),
     );
   }
 
