@@ -78,7 +78,8 @@ class _PosterViewState extends State<PosterView> {
                 const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 10),
             child: Text(
               widget.title,
-              style: Theme.of(context).textTheme.headline2.copyWith(
+              textAlign: TextAlign.justify,
+              style: Theme.of(context).textTheme.headline3.copyWith(
                   color: Colors.black,
                   fontWeight: FontWeight.w600,
                   fontSize: 18),
@@ -94,7 +95,8 @@ class _PosterViewState extends State<PosterView> {
             Text(
               widget.subtitle,
               textAlign: TextAlign.justify,
-              style: Theme.of(context).textTheme.bodyText2,
+              style:
+                  Theme.of(context).textTheme.headline3.copyWith(fontSize: 16),
             ),
             Padding(
               padding: EdgeInsets.all(10),

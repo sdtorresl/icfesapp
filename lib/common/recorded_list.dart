@@ -27,7 +27,7 @@ class RecordedList extends StatelessWidget {
               child: Text(
                 record.description,
                 textAlign: TextAlign.left,
-                style: Theme.of(context).textTheme.subtitle2.copyWith(
+                style: Theme.of(context).textTheme.headline3.copyWith(
                       color: textColor,
                     ),
               ),
