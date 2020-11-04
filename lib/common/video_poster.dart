@@ -79,8 +79,9 @@ class _PosterViewState extends State<PosterView> {
             child: Text(
               widget.title,
               style: Theme.of(context).textTheme.headline2.copyWith(
-                    color: Colors.black,
-                  ),
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18),
             ),
           ),
         ],
@@ -92,10 +93,11 @@ class _PosterViewState extends State<PosterView> {
           children: <Widget>[
             Text(
               widget.subtitle,
+              textAlign: TextAlign.justify,
               style: Theme.of(context).textTheme.bodyText2,
             ),
             Padding(
-              padding: EdgeInsets.all(5),
+              padding: EdgeInsets.all(10),
             ),
             InkWell(
               onTap: () => _downloadAttachment(widget.attachment),
@@ -105,15 +107,18 @@ class _PosterViewState extends State<PosterView> {
                 children: <Widget>[
                   Text(
                     'Descargar',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline3
-                        .copyWith(color: Colors.pink),
+                    style: Theme.of(context).textTheme.headline3.copyWith(
+                        color: Colors.pink,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600),
                   ),
                   Padding(
                     padding: EdgeInsets.all(5),
                   ),
                   FaIcon(FontAwesomeIcons.cloudDownloadAlt, color: Colors.pink),
+                  Padding(
+                    padding: EdgeInsets.all(19),
+                  ),
                 ],
               ),
             ),

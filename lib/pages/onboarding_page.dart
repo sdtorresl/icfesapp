@@ -36,86 +36,91 @@ class _OnboardingPageState extends State<OnboardingPage> {
     final prefs = UserPreferences();
 
     return Scaffold(
-      body: Column(
-        children: [
-          SafeArea(
-            child: Container(
-              margin: EdgeInsets.only(top: 25),
-              alignment: Alignment.bottomRight,
-              height: 30,
-              child: FloatingActionButton(
-                heroTag: 'close-button',
-                elevation: 5.0,
-                child: Icon(
-                  Icons.clear,
-                  color: Colors.white,
+      body: Container(
+        child: Column(
+          children: [
+            SafeArea(
+              child: Container(
+                margin: EdgeInsets.only(top: 40),
+                alignment: Alignment.bottomRight,
+                height: 30,
+                child: FloatingActionButton(
+                  heroTag: 'close-button',
+                  elevation: 5.0,
+                  child: Container(
+                    child: Icon(
+                      Icons.clear,
+                      color: Colors.white,
+                    ),
+                  ),
+                  onPressed: () {
+                    prefs.onboardingViewed = true;
+                    Navigator.of(context).pushNamed('login');
+                  },
                 ),
-                onPressed: () {
-                  prefs.onboardingViewed = true;
-                  Navigator.of(context).pushNamed('login');
-                },
               ),
             ),
-          ),
-          CarouselSlider(
-            items: carouselItems,
-            options: CarouselOptions(
-              autoPlay: false,
-              enlargeCenterPage: false,
-              aspectRatio: 0.9,
-              viewportFraction: 1,
-              onPageChanged: (index, reason) {
-                setState(
-                  () {
-                    _current = index;
-                  },
-                );
-              },
+            CarouselSlider(
+              items: carouselItems,
+              options: CarouselOptions(
+                autoPlay: false,
+                enlargeCenterPage: false,
+                aspectRatio: 0.9,
+                viewportFraction: 1,
+                onPageChanged: (index, reason) {
+                  setState(
+                    () {
+                      _current = index;
+                    },
+                  );
+                },
+              ),
+              carouselController: _controller,
             ),
-            carouselController: _controller,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: carouselItems.map((item) {
-              int index = carouselItems.indexOf(item);
-              return Container(
-                width: 15.0,
-                height: 15.0,
-                margin: EdgeInsets.symmetric(vertical: 0, horizontal: 2.0),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: _current == index
-                      ? Color.fromRGBO(255, 0, 128, 0.9)
-                      : Color.fromRGBO(255, 0, 111, 0.5),
-                ),
-              );
-            }).toList(),
-          ),
-          SizedBox(height: 20),
-          Container(
-            width: 60,
-            margin: EdgeInsets.only(bottom: 10),
-            alignment: Alignment.bottomCenter,
-            child: Row(
-              children: [
-                FloatingActionButton(
-                  elevation: 5.0,
-                  child: Icon(
-                    Icons.navigate_next,
-                    color: Colors.white,
+            SizedBox(height: 75),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: carouselItems.map((item) {
+                int index = carouselItems.indexOf(item);
+                return Container(
+                  width: 15.0,
+                  height: 15.0,
+                  margin: EdgeInsets.symmetric(vertical: 0, horizontal: 2.0),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: _current == index
+                        ? Color.fromRGBO(255, 0, 128, 0.9)
+                        : Color.fromRGBO(255, 0, 111, 0.5),
                   ),
-                  onPressed: _current == carouselItems.length - 1
-                      ? () {
-                          prefs.onboardingViewed = true;
-                          Navigator.of(context).pushNamed('login');
-                        }
-                      : () => _controller.nextPage(),
-                ),
-              ],
+                );
+              }).toList(),
             ),
-          ),
-        ],
+            SizedBox(height: 30),
+            Container(
+              width: 60,
+              margin: EdgeInsets.only(bottom: 10),
+              alignment: Alignment.bottomCenter,
+              child: Row(
+                children: [
+                  FloatingActionButton(
+                    elevation: 5.0,
+                    child: Icon(
+                      Icons.navigate_next,
+                      color: Colors.white,
+                    ),
+                    onPressed: _current == carouselItems.length - 1
+                        ? () {
+                            prefs.onboardingViewed = true;
+                            Navigator.of(context).pushNamed('login');
+                          }
+                        : () => _controller.nextPage(),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

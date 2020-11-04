@@ -31,8 +31,7 @@ class _SchedulePageState extends State<SchedulePage> {
                 Text(
                   'Agenda',
                   style: Theme.of(context).textTheme.headline1.copyWith(
-                        color: Colors.black,
-                      ),
+                      color: Colors.black, fontWeight: FontWeight.w600),
                 ),
                 SizedBox(height: 20.0),
                 Text(

@@ -77,7 +77,8 @@ class _LobbyPageState extends State<LobbyPage> {
                       child: Text(
                         "Empieza nuestro conteo para el evento",
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.headline2.copyWith(
+                            color: Colors.black, fontWeight: FontWeight.w700),
                       ),
                     ),
                     Countdown(startDate: event.startDate),
