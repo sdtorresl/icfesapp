@@ -53,8 +53,8 @@ class _DocumentDownloadState extends State<DocumentDownload> {
             widget.title,
             style: Theme.of(context)
                 .textTheme
-                .headline4
-                .copyWith(color: Colors.black),
+                .headline3
+                .copyWith(color: Colors.black, fontSize: 18),
             textAlign: TextAlign.start,
           ),
         ],

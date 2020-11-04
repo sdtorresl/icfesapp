@@ -45,10 +45,8 @@ class _ExpansionCardState extends State<ExpansionCard> {
         Text(
           widget.title,
           textAlign: TextAlign.left,
-          style: Theme.of(context)
-              .textTheme
-              .headline4
-              .copyWith(color: textColor, fontWeight: FontWeight.w600),
+          style: Theme.of(context).textTheme.headline3.copyWith(
+              color: textColor, fontWeight: FontWeight.w600, fontSize: 18),
         ),
         SizedBox(height: 4),
       ];
@@ -57,10 +55,8 @@ class _ExpansionCardState extends State<ExpansionCard> {
         Text(
           widget.title,
           textAlign: TextAlign.left,
-          style: Theme.of(context)
-              .textTheme
-              .headline4
-              .copyWith(color: textColor, fontWeight: FontWeight.w600),
+          style: Theme.of(context).textTheme.headline3.copyWith(
+              color: textColor, fontWeight: FontWeight.w600, fontSize: 18),
         ),
         SizedBox(height: 17),
       ];
@@ -88,8 +84,8 @@ class _ExpansionCardState extends State<ExpansionCard> {
                 textAlign: TextAlign.justify,
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText2
-                    .copyWith(color: textColor),
+                    .headline3
+                    .copyWith(color: textColor, fontSize: 15),
               ),
             )
           : null,
