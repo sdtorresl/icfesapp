@@ -11,7 +11,9 @@ class OptionsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(color: Color.fromRGBO(243, 243, 243, 1)),
+      decoration: BoxDecoration(
+        color: Color.fromRGBO(243, 243, 243, 1),
+      ),
       padding: EdgeInsets.only(right: 25, left: 25),
       child: ListView(
         children: <Widget>[

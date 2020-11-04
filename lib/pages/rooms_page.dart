@@ -32,6 +32,7 @@ class _RoomsPageState extends State<RoomsPage> {
     return Column(
       children: <Widget>[
         Container(
+          decoration: BoxDecoration(color: Color.fromRGBO(243, 243, 243, 1)),
           margin: EdgeInsets.only(top: 15),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -85,7 +86,7 @@ class _RoomsPageState extends State<RoomsPage> {
     final roomsProvider = RoomsProvider();
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20),
-      color: Colors.transparent,
+      color: Color.fromRGBO(243, 243, 243, 1),
       child: FutureBuilder(
         future: roomsProvider.getRooms(),
         builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
@@ -108,7 +109,7 @@ class _RoomsPageState extends State<RoomsPage> {
     final prerecordedProvider = PrerecordedProvider();
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20),
-      color: Colors.transparent,
+      color: Color.fromRGBO(243, 243, 243, 1),
       child: FutureBuilder(
         future: prerecordedProvider.getPrerecorded(),
         builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
