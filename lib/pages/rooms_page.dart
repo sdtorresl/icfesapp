@@ -23,7 +23,8 @@ class _RoomsPageState extends State<RoomsPage> {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> tabs = [
       {"title": 'En vivo', "widget": roomList(context)},
-      {"title": "Sala Colombia e Histórico", "widget": recordedList(context)}
+      {"title": 'Transmisión', "widget": recordedList(context)},
+      {"title": "Sala Colombia", "widget": historicList(context)}
     ];
     if (_currentWidget == null) {
       _currentWidget = roomList(context);
@@ -65,7 +66,7 @@ class _RoomsPageState extends State<RoomsPage> {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: selected ? IcfesApp().primaryLight : IcfesApp().grey,
+          color: selected ? IcfesApp().grey : IcfesApp().primaryLight,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(borderRadius),
             topRight: Radius.circular(borderRadius),
@@ -75,7 +76,7 @@ class _RoomsPageState extends State<RoomsPage> {
         child: Text(
           title,
           style: Theme.of(context).textTheme.bodyText1.copyWith(
-              color: selected ? Colors.white : Colors.black,
+              color: selected ? Colors.black : Colors.white,
               fontWeight: FontWeight.w800),
         ),
       ),
@@ -112,6 +113,31 @@ class _RoomsPageState extends State<RoomsPage> {
       color: Color.fromRGBO(243, 243, 243, 1),
       child: FutureBuilder(
         future: prerecordedProvider.getPrerecorded(),
+        builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+          if (snapshot.hasData) {
+            return RecordedList(
+              recorded: snapshot.data,
+            );
+          } else {
+            return Container(
+              height: 400,
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
+        },
+      ),
+    );
+  }
+
+  Widget historicList(context) {
+    final prerecordedProvider = PrerecordedProvider();
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      color: Color.fromRGBO(243, 243, 243, 1),
+      child: FutureBuilder(
+        future: prerecordedProvider.getHistoric(),
         builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
           if (snapshot.hasData) {
             return RecordedList(

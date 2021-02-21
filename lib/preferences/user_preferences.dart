@@ -38,5 +38,5 @@ class UserPreferences {
 
   set isPremium(bool isPremium) => _prefs.setBool('isPremium', isPremium);
 
-  bool get isPremium => _prefs.getBool('isPremium');
+  bool get isPremium => _prefs.getBool('isPremium') ?? false;
 }

@@ -15,6 +15,7 @@ class RoomList extends StatelessWidget {
   final List<RoomModel> rooms;
 
   RoomList({@required this.rooms});
+
   @override
   Widget build(BuildContext context) {
     final String _baseUrl = GlobalConfiguration().getValue("api_url");
