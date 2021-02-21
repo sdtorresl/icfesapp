@@ -117,7 +117,6 @@ class IcfesApp extends StatelessWidget {
   }
 
   String _initialRoute() {
-    return 'home';
     if (prefs.onboardingViewed == true) {
       if (prefs.token != null) {
         return 'home';
