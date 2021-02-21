@@ -14,7 +14,7 @@ class PrerecordedProvider {
       if (response.statusCode == 200) {
         print(response.body);
         List<dynamic> jsonResponse = json.jsonDecode(response.body);
-        List<PrerecordedModel> materials = List();
+        List<PrerecordedModel> materials = [];
 
         for (var item in jsonResponse) {
           PrerecordedModel material = PrerecordedModel.fromMap(item);

@@ -21,7 +21,7 @@ class RoomList extends StatelessWidget {
     final _prefs = UserPreferences();
     final bool _isPremiumUser = _prefs.isPremium;
 
-    List<Widget> roomList = List();
+    List<Widget> roomList = [];
 
     for (var room in rooms) {
       String _pictureUrl = _baseUrl + room.picture;

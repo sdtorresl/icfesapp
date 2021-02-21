@@ -12,7 +12,7 @@ class RecordedList extends StatelessWidget {
   RecordedList({@required this.recorded});
   @override
   Widget build(BuildContext context) {
-    List<Widget> recordList = List();
+    List<Widget> recordList = [];
     for (var record in recorded) {
       Color textColor = record.highlighted ? Colors.white : Colors.black87;
       recordList.add(ExpansionCard(

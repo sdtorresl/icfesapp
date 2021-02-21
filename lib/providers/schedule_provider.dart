@@ -16,7 +16,7 @@ class ScheduleProvider {
       if (response.statusCode == 200) {
         print(response.body);
         List<dynamic> jsonResponse = json.jsonDecode(response.body);
-        List<ScheduleModel> schedules = List();
+        List<ScheduleModel> schedules = [];
 
         for (var item in jsonResponse) {
           ScheduleModel schedule = ScheduleModel.fromMap(item);

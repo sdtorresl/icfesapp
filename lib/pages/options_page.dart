@@ -60,7 +60,7 @@ class OptionsPage extends StatelessWidget {
         if (snapshot.hasData) {
           SocialNetworkModel socialNetModel = snapshot.data;
 
-          List<Widget> socialNetworks = List();
+          List<Widget> socialNetworks = [];
           if (socialNetModel.facebook != null) {
             socialNetworks.add(SocialIcon(
                 icon: FaIcon(FontAwesomeIcons.facebook),

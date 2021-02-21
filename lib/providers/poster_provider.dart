@@ -16,7 +16,7 @@ class PosterProvider {
       if (response.statusCode == 200) {
         List<dynamic> jsonResponse = json.decode(response.body);
 
-        List<VideoPosterModel> posters = List();
+        List<VideoPosterModel> posters = [];
         print(jsonResponse[0]["posters"]);
 
         for (var item in jsonResponse[0]["posters"]) {

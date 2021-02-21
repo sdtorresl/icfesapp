@@ -15,7 +15,7 @@ class RoomsProvider {
       if (response.statusCode == 200) {
         print(response.body);
         List<dynamic> jsonResponse = json.jsonDecode(response.body);
-        List<RoomModel> rooms = List();
+        List<RoomModel> rooms = [];
 
         for (var item in jsonResponse) {
           RoomModel room = RoomModel.fromMap(item);
