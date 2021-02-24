@@ -1,5 +1,5 @@
 name: icfesapp
-description: A new Flutter project.
+description: An application for ICFES events
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -15,7 +15,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.8+10
+version: 1.0.9+11
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -48,10 +48,9 @@ flutter_icons:
   android: true
   image_path_ios: "assets/img/appstore.png"
   image_path_android: "assets/img/playstore.png"
-  
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
+  # For information on the generic Dart part of this file, see the
+  # following page: https://dart.dev/tools/pub/pubspec
   flutter_swiper: ^1.1.6
 
 # The following section is specific to Flutter.
@@ -63,8 +62,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-      - assets/img/
-      - assets/config/
+    - assets/img/
+    - assets/config/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -85,7 +84,7 @@ flutter:
     - family: MontserratMedium
       fonts:
         - asset: assets/fonts/Montserrat/Montserrat-Medium.ttf
-    
+
     - family: MontserratLight
       fonts:
         - asset: assets/fonts/Montserrat/Montserrat-Light.ttf
@@ -93,7 +92,7 @@ flutter:
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins/Poppins-Regular.ttf
-    
+
     - family: PoppinsMedium
       fonts:
         - asset: assets/fonts/Poppins/Poppins-Medium.ttf
