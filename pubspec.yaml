@@ -32,12 +32,13 @@ dependencies:
   vimeoplayer: ^0.1.2
   carousel_slider: ^2.3.1
   url_launcher: ^5.7.2
-  shared_preferences: ^0.5.2
+  shared_preferences: ^0.5.3+1
   jitsi_meet: ^0.4.2
   rxdart: ^0.24.1
   youtube_player_flutter: ^7.0.0+7
-  moor_ffi: ^0.8.0
   global_configuration: ^1.6.0
+  intl: ^0.17.0
+  ffi: ^1.0.0
 
 dev_dependencies:
   flutter_test:
