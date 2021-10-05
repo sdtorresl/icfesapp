@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
     double barHeight = currentOrientation == Orientation.portrait ? 100 : 50;
 
     return PreferredSize(
-      preferredSize: Size(screenWidth, 170.00),
+      preferredSize: Size(screenWidth, 200.00),
       child: Container(
         width: screenWidth,
         padding: EdgeInsets.all(35.0),
