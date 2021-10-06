@@ -33,15 +33,15 @@ class OptionsPage extends StatelessWidget {
             url: 'http://',
             onTap: () => Navigator.of(context).pushNamed('documents'),
           ),
-          OptionsCard(
-            title: 'Video pósters',
-            icon: Icons.tv,
-            url: 'http://',
-            onTap: () {
-              print('push');
-              Navigator.of(context).pushNamed('video-posters');
-            },
-          ),
+          // OptionsCard(
+          //   title: 'Video pósters',
+          //   icon: Icons.tv,
+          //   url: 'http://',
+          //   onTap: () {
+          //     print('push');
+          //     Navigator.of(context).pushNamed('video-posters');
+          //   },
+          // ),
           _socialNetwork(context),
           SizedBox(
             height: 35,
