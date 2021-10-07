@@ -57,7 +57,9 @@ class RecordedList extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.only(top: 10.0),
-      child: ListView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: recordList,
       ),
     );

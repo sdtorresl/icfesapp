@@ -14,6 +14,8 @@ class _RoomsPageState extends State<RoomsPage> {
   @override
   void initState() {
     super.initState();
+
+    _currentWidget = roomSelector(context);
   }
 
   int _selectedTab = 0;
@@ -21,138 +23,287 @@ class _RoomsPageState extends State<RoomsPage> {
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, dynamic>> tabs = [
-      {"title": 'En vivo', "widget": roomList(context)},
-      {"title": 'Transmisión', "widget": recordedList(context)},
-      {"title": "Sala Colombia", "widget": historicList(context)}
-    ];
-    if (_currentWidget == null) {
-      _currentWidget = roomList(context);
-    }
-
-    return Column(
-      children: <Widget>[
-        Container(
-          decoration: BoxDecoration(color: Color.fromRGBO(243, 243, 243, 1)),
-          margin: EdgeInsets.only(top: 15),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: tabs.map((tab) {
-              int currentIndex = tabs.indexOf(tab);
-              bool selected = currentIndex == _selectedTab;
-
-              Function onTabFunction = () {
-                setState(() {
-                  _selectedTab = currentIndex;
-                  _currentWidget = tab['widget'];
-                });
-              };
-
-              return _tab(tab["title"], onTabFunction, selected);
-            }).toList(),
-          ),
-        ),
-        Expanded(
-          child: _currentWidget,
-        ),
-      ],
+    return AnimatedSwitcher(
+      child: _currentWidget,
+      duration: Duration(seconds: 1),
     );
   }
 
-  Widget _tab(String title, Function onTap, selected) {
-    double borderRadius = 10;
-
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          color: selected ? IcfesApp().grey : IcfesApp().primaryLight,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(borderRadius),
-            topRight: Radius.circular(borderRadius),
+  Widget roomSelector(context) {
+    return Scaffold(
+      body: Center(
+        child: ListView(children: [
+          SizedBox(
+            child: Container(
+              margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              child: Text(
+                'Selecciona la Sala',
+                style: TextStyle(
+                    fontSize: 22.0,
+                    fontFamily: 'PoppinsMedium',
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600),
+              ),
+            ),
+            height: 50,
           ),
-        ),
-        padding: EdgeInsets.all(15),
-        child: Text(
-          title,
-          style: Theme.of(context).textTheme.bodyText1.copyWith(
-              color: selected ? Colors.black : Colors.white,
-              fontWeight: FontWeight.w800),
-        ),
+          Card(
+            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            color: IcfesApp().primary,
+            child: ListTile(
+              contentPadding:
+                  EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+              title: Text(
+                "En vivo",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'PoppinsMedium',
+                ),
+              ),
+              subtitle: Text("Lorem ipsum dolor sit amet, consectetur ",
+                  style: TextStyle(fontFamily: 'Montserrat')),
+              trailing: Icon(
+                IconData(0xe900, fontFamily: 'VideoCall'),
+                color: Colors.white,
+                size: 50,
+              ),
+              onTap: () {
+                setState(() => {_currentWidget = roomList(context)});
+              },
+            ),
+          ),
+          Card(
+            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            color: Colors.deepPurpleAccent,
+            child: ListTile(
+              contentPadding:
+                  EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+              title: Text(
+                "Transmisión",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'PoppinsMedium',
+                ),
+              ),
+              subtitle: Text("Lorem ipsum dolor sit amet, consectetur",
+                  style: TextStyle(fontFamily: 'Montserrat')),
+              trailing: Icon(
+                IconData(0xe900, fontFamily: 'VideoCall'),
+                color: Colors.white,
+                size: 50,
+              ),
+              enabled: true,
+              onTap: () {
+                setState(() => {_currentWidget = recordedList(context)});
+              },
+            ),
+          ),
+          Card(
+            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            color: IcfesApp().primaryLight,
+            child: ListTile(
+              contentPadding:
+                  EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+              title: Text(
+                "Sala Colombia",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'PoppinsMedium',
+                ),
+              ),
+              subtitle: Text(
+                "Lorem ipsum dolor sit amet, consectetur ",
+                style: TextStyle(fontFamily: 'Montserrat'),
+              ),
+              trailing: Icon(
+                IconData(0xe900, fontFamily: 'VideoCall'),
+                color: Colors.white,
+                size: 50,
+              ),
+              onTap: () {
+                setState(() => {_currentWidget = historicList(context)});
+              },
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          )
+        ]),
       ),
+    );
+  }
+
+  Widget roomList2(context) {
+    return Container(
+      height: 200,
+      width: 200,
+      decoration: BoxDecoration(color: Colors.green),
     );
   }
 
   Widget roomList(context) {
     final roomsProvider = RoomsProvider();
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20),
-      color: Color.fromRGBO(243, 243, 243, 1),
-      child: FutureBuilder(
-        future: roomsProvider.getRooms(),
-        builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
-          if (snapshot.hasData) {
-            return RoomList(rooms: snapshot.data);
-          } else {
-            return Container(
-              height: 400,
-              child: Center(
-                child: CircularProgressIndicator(),
+    return ListView(children: <Widget>[
+      Container(
+        color: Color.fromRGBO(243, 243, 243, 1),
+        padding: EdgeInsets.symmetric(horizontal: 25),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: 20),
+              GestureDetector(
+                onTap: () {
+                  setState(() => {_currentWidget = roomSelector(context)});
+                },
+                child: Icon(
+                  Icons.arrow_back_ios,
+                  color: IcfesApp().accent,
+                  size: 40,
+                ),
               ),
-            );
-          }
-        },
+              SizedBox(height: 30),
+              Text(
+                "En vivo",
+                style: TextStyle(
+                    fontSize: 22.0,
+                    fontFamily: 'PoppinsMedium',
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600),
+              ),
+            ]),
       ),
-    );
+      Container(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        color: Color.fromRGBO(243, 243, 243, 1),
+        child: FutureBuilder(
+          future: roomsProvider.getRooms(),
+          builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+            if (snapshot.hasData) {
+              return RoomList(rooms: snapshot.data);
+            } else {
+              return Container(
+                height: 400,
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            }
+          },
+        ),
+      ),
+    ]);
   }
 
   Widget recordedList(context) {
     final prerecordedProvider = PrerecordedProvider();
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20),
-      color: Color.fromRGBO(243, 243, 243, 1),
-      child: FutureBuilder(
-        future: prerecordedProvider.getPrerecorded(),
-        builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
-          if (snapshot.hasData) {
-            return RecordedList(
-              recorded: snapshot.data,
-            );
-          } else {
-            return Container(
-              height: 400,
-              child: Center(
-                child: CircularProgressIndicator(),
+    return ListView(children: <Widget>[
+      Container(
+        color: Color.fromRGBO(243, 243, 243, 1),
+        padding: EdgeInsets.symmetric(horizontal: 25),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: 20),
+              GestureDetector(
+                onTap: () {
+                  setState(() => {_currentWidget = roomSelector(context)});
+                },
+                child: Icon(
+                  Icons.arrow_back_ios,
+                  color: IcfesApp().accent,
+                  size: 40,
+                ),
               ),
-            );
-          }
-        },
+              SizedBox(height: 30),
+              Text(
+                "Transmisión",
+                style: TextStyle(
+                    fontSize: 22.0,
+                    fontFamily: 'PoppinsMedium',
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600),
+              ),
+            ]),
       ),
-    );
+      Container(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        color: Color.fromRGBO(243, 243, 243, 1),
+        child: FutureBuilder(
+          future: prerecordedProvider.getPrerecorded(),
+          builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+            if (snapshot.hasData) {
+              return RecordedList(
+                recorded: snapshot.data,
+              );
+            } else {
+              return Container(
+                height: 400,
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            }
+          },
+        ),
+      ),
+    ]);
   }
 
   Widget historicList(context) {
     final prerecordedProvider = PrerecordedProvider();
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20),
-      color: Color.fromRGBO(243, 243, 243, 1),
-      child: FutureBuilder(
-        future: prerecordedProvider.getHistoric(),
-        builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
-          if (snapshot.hasData) {
-            return RecordedList(
-              recorded: snapshot.data,
-            );
-          } else {
-            return Container(
-              height: 400,
-              child: Center(
-                child: CircularProgressIndicator(),
+    return ListView(children: <Widget>[
+      Container(
+        padding: EdgeInsets.symmetric(horizontal: 25),
+        color: Color.fromRGBO(243, 243, 243, 1),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: 20),
+              GestureDetector(
+                onTap: () {
+                  setState(() => {_currentWidget = roomSelector(context)});
+                },
+                child: Icon(
+                  Icons.arrow_back_ios,
+                  color: IcfesApp().accent,
+                  size: 40,
+                ),
               ),
-            );
-          }
-        },
+              SizedBox(height: 30),
+              Text(
+                "Sala Colombia",
+                style: TextStyle(
+                    fontSize: 22.0,
+                    fontFamily: 'PoppinsMedium',
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600),
+              ),
+            ]),
       ),
-    );
+      Container(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        color: Color.fromRGBO(243, 243, 243, 1),
+        child: FutureBuilder(
+          future: prerecordedProvider.getHistoric(),
+          builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+            if (snapshot.hasData) {
+              return RecordedList(
+                recorded: snapshot.data,
+              );
+            } else {
+              return Container(
+                height: 400,
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            }
+          },
+        ),
+      ),
+    ]);
   }
 }
