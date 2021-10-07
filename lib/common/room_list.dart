@@ -5,7 +5,6 @@ import 'package:icfesapp/common/expansion_card.dart';
 import 'package:icfesapp/main.dart';
 
 import 'package:icfesapp/models/room_model.dart';
-import 'package:icfesapp/pages/meetings_page.dart';
 import 'package:icfesapp/pages/transmission_page.dart';
 import 'package:icfesapp/preferences/user_preferences.dart';
 import 'package:icfesapp/utils/alert_dialog.dart';
@@ -37,7 +36,7 @@ class RoomList extends StatelessWidget {
                 .headline4
                 .copyWith(color: Colors.white),
           ),
-          onPressed: () => _openMeeting(context, room),
+          onPressed: () => {},
           color: IcfesApp().accent,
         );
       } else {
@@ -102,38 +101,6 @@ class RoomList extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => TransmissionPage(id: room.id),
-          ),
-        );
-      } else {
-        showMyDialog(
-          context,
-          "El evento ya ha finalizado",
-          Text("Este evento ya ha finalizado."),
-        );
-      }
-    } else {
-      showMyDialog(
-        context,
-        "El evento no ha empezado",
-        Text("Este evento aun no ha comenzado, intenta de nuevo más tarde."),
-      );
-    }
-  }
-
-  _openMeeting(BuildContext context, RoomModel room) {
-    DateTime now = DateTime.now();
-
-    if (room.startDate.compareTo(now) < 0) {
-      if (room.endDate.compareTo(now) > 0) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => MeetingsPage(
-              host: room.meetingHost,
-              room: room.meetingRoom,
-              subject: room.title,
-              description: room.description,
-            ),
           ),
         );
       } else {
