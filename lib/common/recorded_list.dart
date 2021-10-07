@@ -58,6 +58,8 @@ class RecordedList extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(top: 10.0),
       child: ListView(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
         children: recordList,
       ),
     );
