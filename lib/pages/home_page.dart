@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:icfesapp/common/expandable_fab.dart';
 import 'package:icfesapp/common/fab_bottom_app_bar.dart';
 import 'package:icfesapp/pages/schedule_page.dart';
 import 'package:icfesapp/pages/lobby_page.dart';
@@ -47,8 +48,33 @@ class _HomePageState extends State<HomePage> {
           FABBottomAppBarItem(iconData: Icons.more_horiz_outlined, text: 'Más'),
         ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: _transmisionButton(context),
+      //floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: ExpandableFab(distance: 100, children: [
+        Column(
+          children: [
+            Text(
+              "Sala 2",
+              style: Theme.of(context).textTheme.bodyText2,
+            ),
+            ActionButton(
+              onPressed: () => {},
+              icon: const Icon(Icons.videocam),
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            Text(
+              "Sala 1",
+              style: Theme.of(context).textTheme.bodyText2,
+            ),
+            ActionButton(
+              onPressed: () => {},
+              icon: const Icon(Icons.videocam),
+            ),
+          ],
+        ),
+      ]),
     );
   }
 

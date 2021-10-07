@@ -2,38 +2,22 @@ PODS:
   - Flutter (1.0.0)
   - flutter_inappwebview (0.0.1):
     - Flutter
+    - flutter_inappwebview/Core (= 0.0.1)
+    - OrderedSet (~> 5.0)
+  - flutter_inappwebview/Core (0.0.1):
+    - Flutter
+    - OrderedSet (~> 5.0)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
-  - jitsi_meet (0.0.1):
-    - Flutter
-    - JitsiMeetSDK (= 2.10.2)
-  - JitsiMeetSDK (2.10.2)
+  - OrderedSet (5.0.0)
   - path_provider (0.0.1):
     - Flutter
   - shared_preferences (0.0.1):
     - Flutter
-  - sqflite (0.0.1):
+  - sqflite (0.0.2):
     - Flutter
-    - FMDB (~> 2.7.2)
-  - sqlite3 (3.32.3):
-    - sqlite3/common (= 3.32.3)
-  - sqlite3/common (3.32.3)
-  - sqlite3/fts5 (3.32.3):
-    - sqlite3/common
-  - sqlite3/json1 (3.32.3):
-    - sqlite3/common
-  - sqlite3/perf-threadsafe (3.32.3):
-    - sqlite3/common
-  - sqlite3/rtree (3.32.3):
-    - sqlite3/common
-  - sqlite3_flutter_libs (0.0.1):
-    - Flutter
-    - sqlite3 (~> 3.32.3)
-    - sqlite3/fts5
-    - sqlite3/json1
-    - sqlite3/perf-threadsafe
-    - sqlite3/rtree
+    - FMDB (>= 2.7.5)
   - url_launcher (0.0.1):
     - Flutter
   - video_player (0.0.1):
@@ -44,11 +28,9 @@ PODS:
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_inappwebview (from `.symlinks/plugins/flutter_inappwebview/ios`)
-  - jitsi_meet (from `.symlinks/plugins/jitsi_meet/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
-  - sqlite3_flutter_libs (from `.symlinks/plugins/sqlite3_flutter_libs/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
   - video_player (from `.symlinks/plugins/video_player/ios`)
   - webview_flutter (from `.symlinks/plugins/webview_flutter/ios`)
@@ -56,24 +38,19 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - FMDB
-    - JitsiMeetSDK
-    - sqlite3
+    - OrderedSet
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
   flutter_inappwebview:
     :path: ".symlinks/plugins/flutter_inappwebview/ios"
-  jitsi_meet:
-    :path: ".symlinks/plugins/jitsi_meet/ios"
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
   shared_preferences:
     :path: ".symlinks/plugins/shared_preferences/ios"
   sqflite:
     :path: ".symlinks/plugins/sqflite/ios"
-  sqlite3_flutter_libs:
-    :path: ".symlinks/plugins/sqlite3_flutter_libs/ios"
   url_launcher:
     :path: ".symlinks/plugins/url_launcher/ios"
   video_player:
@@ -82,20 +59,17 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/webview_flutter/ios"
 
 SPEC CHECKSUMS:
-  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
-  flutter_inappwebview: 69dfbac46157b336ffbec19ca6dfd4638c7bf189
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  flutter_inappwebview: bfd58618f49dc62f2676de690fc6dcda1d6c3721
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  jitsi_meet: ec739208b5a4397e99c951ed3bb56d51b890fec0
-  JitsiMeetSDK: d7612d73befd3f7f51f989458a816bbd05d0bc8e
+  OrderedSet: aaeb196f7fef5a9edf55d89760da9176ad40b93c
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
-  sqflite: 4001a31ff81d210346b500c55b17f4d6c7589dd0
-  sqlite3: 8f7d2078ae27778699a622a94b853285793422a2
-  sqlite3_flutter_libs: 5651f8ff48e3b44d910863c4ea5916085b1b245f
+  sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
   video_player: 9cc823b1d9da7e8427ee591e8438bfbcde500e6e
-  webview_flutter: d2b4d6c66968ad042ad94cbb791f5b72b4678a96
+  webview_flutter: 3603125dfd3bcbc9d8d418c3f80aeecf331c068b
 
 PODFILE CHECKSUM: 7368163408c647b7eb699d0d788ba6718e18fb8d
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.1

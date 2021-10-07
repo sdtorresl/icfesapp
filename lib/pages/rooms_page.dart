@@ -18,7 +18,6 @@ class _RoomsPageState extends State<RoomsPage> {
     _currentWidget = roomSelector(context);
   }
 
-  int _selectedTab = 0;
   Widget _currentWidget;
 
   @override
@@ -26,6 +25,22 @@ class _RoomsPageState extends State<RoomsPage> {
     return AnimatedSwitcher(
       child: _currentWidget,
       duration: Duration(seconds: 1),
+      transitionBuilder: (child, animation) {
+        const begin = Offset(0.0, 1.0);
+        const end = Offset.zero;
+        const beginOpacity = Opacity(opacity: 0);
+        const endOpacity = Opacity(opacity: 1);
+
+        const curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
     );
   }
 
@@ -79,7 +94,7 @@ class _RoomsPageState extends State<RoomsPage> {
               contentPadding:
                   EdgeInsets.symmetric(vertical: 20, horizontal: 30),
               title: Text(
-                "Transmisión",
+                "Gelería de experiencias",
                 style: TextStyle(
                   color: Colors.white,
                   fontFamily: 'PoppinsMedium',
@@ -130,14 +145,6 @@ class _RoomsPageState extends State<RoomsPage> {
           )
         ]),
       ),
-    );
-  }
-
-  Widget roomList2(context) {
-    return Container(
-      height: 200,
-      width: 200,
-      decoration: BoxDecoration(color: Colors.green),
     );
   }
 
@@ -206,24 +213,28 @@ class _RoomsPageState extends State<RoomsPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               SizedBox(height: 20),
-              GestureDetector(
-                onTap: () {
-                  setState(() => {_currentWidget = roomSelector(context)});
-                },
-                child: Icon(
-                  Icons.arrow_back_ios,
-                  color: IcfesApp().accent,
-                  size: 40,
-                ),
-              ),
-              SizedBox(height: 30),
-              Text(
-                "Transmisión",
-                style: TextStyle(
-                    fontSize: 22.0,
-                    fontFamily: 'PoppinsMedium',
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600),
+              Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      setState(() => {_currentWidget = roomSelector(context)});
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      color: IcfesApp().accent,
+                      size: 40,
+                    ),
+                  ),
+                  Text(
+                    "Galería de experiencias",
+                    style: TextStyle(
+                      fontSize: 22.0,
+                      fontFamily: 'PoppinsMedium',
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
               ),
             ]),
       ),
