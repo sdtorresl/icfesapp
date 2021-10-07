@@ -58,15 +58,14 @@ class _HomePageState extends State<HomePage> {
     double barHeight = currentOrientation == Orientation.portrait ? 100 : 50;
 
     return PreferredSize(
-      preferredSize: Size(screenWidth, 200.00),
+      preferredSize: Size(screenWidth, barHeight),
       child: Container(
         width: screenWidth,
-        padding: EdgeInsets.all(35.0),
+        padding: EdgeInsets.only(left: 5.0, top: 5, right: 0),
         child: SafeArea(
           child: Image.asset(
             "assets/img/icfes_app.png",
-            width: screenWidth * 0.25,
-            fit: BoxFit.fill,
+            width: screenWidth,
           ),
         ),
       ),
