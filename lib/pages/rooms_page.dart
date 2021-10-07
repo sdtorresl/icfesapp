@@ -143,173 +143,167 @@ class _RoomsPageState extends State<RoomsPage> {
 
   Widget roomList(context) {
     final roomsProvider = RoomsProvider();
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 25),
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(height: 20),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() => {_currentWidget = roomSelector(context)});
-                    },
-                    child: Icon(
-                      Icons.arrow_back_ios,
-                      color: IcfesApp().accent,
-                      size: 40,
-                    ),
-                  ),
-                  SizedBox(height: 30),
-                  Text(
-                    "En vivo",
-                    style: TextStyle(
-                        fontSize: 22.0,
-                        fontFamily: 'PoppinsMedium',
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ]),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            color: Color.fromRGBO(243, 243, 243, 1),
-            child: FutureBuilder(
-              future: roomsProvider.getRooms(),
-              builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
-                if (snapshot.hasData) {
-                  return RoomList(rooms: snapshot.data);
-                } else {
-                  return Container(
-                    height: 400,
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  );
-                }
-              },
-            ),
-          ),
-        ]);
+    return ListView(children: <Widget>[
+      Container(
+        color: Color.fromRGBO(243, 243, 243, 1),
+        padding: EdgeInsets.symmetric(horizontal: 25),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: 20),
+              GestureDetector(
+                onTap: () {
+                  setState(() => {_currentWidget = roomSelector(context)});
+                },
+                child: Icon(
+                  Icons.arrow_back_ios,
+                  color: IcfesApp().accent,
+                  size: 40,
+                ),
+              ),
+              SizedBox(height: 30),
+              Text(
+                "En vivo",
+                style: TextStyle(
+                    fontSize: 22.0,
+                    fontFamily: 'PoppinsMedium',
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600),
+              ),
+            ]),
+      ),
+      Container(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        color: Color.fromRGBO(243, 243, 243, 1),
+        child: FutureBuilder(
+          future: roomsProvider.getRooms(),
+          builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+            if (snapshot.hasData) {
+              return RoomList(rooms: snapshot.data);
+            } else {
+              return Container(
+                height: 400,
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            }
+          },
+        ),
+      ),
+    ]);
   }
 
   Widget recordedList(context) {
     final prerecordedProvider = PrerecordedProvider();
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 25),
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(height: 20),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() => {_currentWidget = roomSelector(context)});
-                    },
-                    child: Icon(
-                      Icons.arrow_back_ios,
-                      color: IcfesApp().accent,
-                      size: 40,
-                    ),
-                  ),
-                  SizedBox(height: 30),
-                  Text(
-                    "Transmisión",
-                    style: TextStyle(
-                        fontSize: 22.0,
-                        fontFamily: 'PoppinsMedium',
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ]),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            color: Color.fromRGBO(243, 243, 243, 1),
-            child: FutureBuilder(
-              future: prerecordedProvider.getPrerecorded(),
-              builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
-                if (snapshot.hasData) {
-                  return RecordedList(
-                    recorded: snapshot.data,
-                  );
-                } else {
-                  return Container(
-                    height: 400,
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  );
-                }
-              },
-            ),
-          ),
-        ]);
+    return ListView(children: <Widget>[
+      Container(
+        color: Color.fromRGBO(243, 243, 243, 1),
+        padding: EdgeInsets.symmetric(horizontal: 25),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: 20),
+              GestureDetector(
+                onTap: () {
+                  setState(() => {_currentWidget = roomSelector(context)});
+                },
+                child: Icon(
+                  Icons.arrow_back_ios,
+                  color: IcfesApp().accent,
+                  size: 40,
+                ),
+              ),
+              SizedBox(height: 30),
+              Text(
+                "Transmisión",
+                style: TextStyle(
+                    fontSize: 22.0,
+                    fontFamily: 'PoppinsMedium',
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600),
+              ),
+            ]),
+      ),
+      Container(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        color: Color.fromRGBO(243, 243, 243, 1),
+        child: FutureBuilder(
+          future: prerecordedProvider.getPrerecorded(),
+          builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+            if (snapshot.hasData) {
+              return RecordedList(
+                recorded: snapshot.data,
+              );
+            } else {
+              return Container(
+                height: 400,
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            }
+          },
+        ),
+      ),
+    ]);
   }
 
   Widget historicList(context) {
     final prerecordedProvider = PrerecordedProvider();
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 25),
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(height: 20),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() => {_currentWidget = roomSelector(context)});
-                    },
-                    child: Icon(
-                      Icons.arrow_back_ios,
-                      color: IcfesApp().accent,
-                      size: 40,
-                    ),
-                  ),
-                  SizedBox(height: 30),
-                  Text(
-                    "Sala Colombia",
-                    style: TextStyle(
-                        fontSize: 22.0,
-                        fontFamily: 'PoppinsMedium',
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ]),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            color: Color.fromRGBO(243, 243, 243, 1),
-            child: FutureBuilder(
-              future: prerecordedProvider.getHistoric(),
-              builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
-                if (snapshot.hasData) {
-                  return RecordedList(
-                    recorded: snapshot.data,
-                  );
-                } else {
-                  return Container(
-                    height: 400,
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  );
-                }
-              },
-            ),
-          ),
-        ]);
+    return ListView(children: <Widget>[
+      Container(
+        padding: EdgeInsets.symmetric(horizontal: 25),
+        color: Color.fromRGBO(243, 243, 243, 1),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: 20),
+              GestureDetector(
+                onTap: () {
+                  setState(() => {_currentWidget = roomSelector(context)});
+                },
+                child: Icon(
+                  Icons.arrow_back_ios,
+                  color: IcfesApp().accent,
+                  size: 40,
+                ),
+              ),
+              SizedBox(height: 30),
+              Text(
+                "Sala Colombia",
+                style: TextStyle(
+                    fontSize: 22.0,
+                    fontFamily: 'PoppinsMedium',
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600),
+              ),
+            ]),
+      ),
+      Container(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        color: Color.fromRGBO(243, 243, 243, 1),
+        child: FutureBuilder(
+          future: prerecordedProvider.getHistoric(),
+          builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+            if (snapshot.hasData) {
+              return RecordedList(
+                recorded: snapshot.data,
+              );
+            } else {
+              return Container(
+                height: 400,
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            }
+          },
+        ),
+      ),
+    ]);
   }
 }

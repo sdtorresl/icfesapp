@@ -87,10 +87,10 @@ class RoomList extends StatelessWidget {
     roomList.add(SizedBox(height: 35));
     return Container(
       padding: EdgeInsets.only(top: 10.0),
-      child: Expanded(
-        child: ListView(
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+      child: Flexible(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: roomList,
         ),
       ),
