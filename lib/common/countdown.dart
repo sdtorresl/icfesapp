@@ -18,12 +18,11 @@ class _CountdownState extends State<Countdown> {
     Size screenSize = MediaQuery.of(context).size;
 
     return Container(
-        width: screenSize.width * 0.7,
-        margin: EdgeInsets.only(bottom: 20),
-        child: Spacer()
-        /*  CountdownTimer(
+      width: screenSize.width * 0.7,
+      margin: EdgeInsets.only(bottom: 20),
+      child: CountdownTimer(
         endTime: widget.startDate.millisecondsSinceEpoch,
-        widgetBuilder: (_, CurrentRemainingTime time) {
+        widgetBuilder: (_, time) {
           int remainingDays = time != null && time.days != null ? time.days : 0;
           int remainingHours =
               time != null && time.hours != null ? time.hours : 0;
@@ -38,8 +37,8 @@ class _CountdownState extends State<Countdown> {
             ],
           );
         },
-      ), */
-        );
+      ),
+    );
   }
 
   Widget _counterItem(value, title) {
