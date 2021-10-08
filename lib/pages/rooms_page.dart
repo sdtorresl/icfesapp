@@ -76,7 +76,7 @@ class _RoomsPageState extends State<RoomsPage> {
               subtitle: Text("Lorem ipsum dolor sit amet, consectetur ",
                   style: TextStyle(fontFamily: 'Montserrat')),
               trailing: Icon(
-                IconData(0xe900, fontFamily: 'VideoCall'),
+                Icons.video_call,
                 color: Colors.white,
                 size: 50,
               ),
@@ -101,40 +101,13 @@ class _RoomsPageState extends State<RoomsPage> {
               subtitle: Text("Lorem ipsum dolor sit amet, consectetur",
                   style: TextStyle(fontFamily: 'Montserrat')),
               trailing: Icon(
-                IconData(0xe900, fontFamily: 'VideoCall'),
+                Icons.photo_album,
                 color: Colors.white,
                 size: 50,
               ),
               enabled: true,
               onTap: () {
                 setState(() => {_currentWidget = recordedList(context)});
-              },
-            ),
-          ),
-          Card(
-            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            color: IcfesApp().primaryLight,
-            child: ListTile(
-              contentPadding:
-                  EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-              title: Text(
-                "Sala Colombia",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: 'PoppinsMedium',
-                ),
-              ),
-              subtitle: Text(
-                "Lorem ipsum dolor sit amet, consectetur ",
-                style: TextStyle(fontFamily: 'Montserrat'),
-              ),
-              trailing: Icon(
-                IconData(0xe900, fontFamily: 'VideoCall'),
-                color: Colors.white,
-                size: 50,
-              ),
-              onTap: () {
-                setState(() => {_currentWidget = historicList(context)});
               },
             ),
           ),
