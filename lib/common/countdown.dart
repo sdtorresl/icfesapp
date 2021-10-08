@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_countdown_timer/current_remaining_time.dart';
 import 'package:icfesapp/main.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 
@@ -18,10 +19,9 @@ class _CountdownState extends State<Countdown> {
     Size screenSize = MediaQuery.of(context).size;
 
     return Container(
-        width: screenSize.width * 0.7,
-        margin: EdgeInsets.only(bottom: 20),
-        child: Spacer()
-        /*  CountdownTimer(
+      width: screenSize.width * 0.7,
+      margin: EdgeInsets.only(bottom: 20),
+      child: CountdownTimer(
         endTime: widget.startDate.millisecondsSinceEpoch,
         widgetBuilder: (_, CurrentRemainingTime time) {
           int remainingDays = time != null && time.days != null ? time.days : 0;
@@ -38,8 +38,8 @@ class _CountdownState extends State<Countdown> {
             ],
           );
         },
-      ), */
-        );
+      ),
+    );
   }
 
   Widget _counterItem(value, title) {
