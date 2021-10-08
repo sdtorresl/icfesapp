@@ -54,25 +54,37 @@ class _HomePageState extends State<HomePage> {
         children: [
           Column(
             children: [
-              Text(
-                "Transmisión 1",
-                style: Theme.of(context).textTheme.bodyText2,
-              ),
               ActionButton(
                 onPressed: () => {Navigator.pushNamed(context, 'transmission')},
                 icon: const Icon(Icons.videocam),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                "Sala saber",
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1
+                    .copyWith(fontSize: 15),
               ),
             ],
           ),
           Column(
             children: [
-              Text(
-                "Transmisión 2",
-                style: Theme.of(context).textTheme.bodyText2,
-              ),
               ActionButton(
                 onPressed: () => {Navigator.pushNamed(context, 'transmission')},
                 icon: const Icon(Icons.videocam),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                "Sala investigar",
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1
+                    .copyWith(fontSize: 15),
               ),
             ],
           ),

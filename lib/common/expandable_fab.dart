@@ -64,11 +64,38 @@ class _ExpandableFabState extends State<ExpandableFab>
         alignment: Alignment.bottomRight,
         clipBehavior: Clip.none,
         children: [
+          _background(),
           _buildTapToCloseFab(),
           ..._buildExpandingActionButtons(),
           _buildTapToOpenFab(),
         ],
       ),
+    );
+  }
+
+  Widget _background() {
+    return AnimatedBuilder(
+      animation: this._controller,
+      builder: (context, child) {
+        double maxDimension = this._controller.value * widget.distance * 2.5;
+        return Positioned(
+          right: -20,
+          bottom: -15,
+          child: FadeTransition(
+            opacity: this._controller,
+            child: Container(
+              height: maxDimension,
+              width: maxDimension,
+              decoration: BoxDecoration(
+                color: Color.fromRGBO(50, 50, 50, 0.8),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(widget.distance * 2.5),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 
