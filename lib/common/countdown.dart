@@ -23,7 +23,7 @@ class _CountdownState extends State<Countdown> {
       margin: EdgeInsets.only(bottom: 20),
       child: CountdownTimer(
         endTime: widget.startDate.millisecondsSinceEpoch,
-        widgetBuilder: (_, CurrentRemainingTime time) {
+        widgetBuilder: (_, time) {
           int remainingDays = time != null && time.days != null ? time.days : 0;
           int remainingHours =
               time != null && time.hours != null ? time.hours : 0;
