@@ -28,8 +28,6 @@ class _RoomsPageState extends State<RoomsPage> {
       transitionBuilder: (child, animation) {
         const begin = Offset(0.0, 1.0);
         const end = Offset.zero;
-        const beginOpacity = Opacity(opacity: 0);
-        const endOpacity = Opacity(opacity: 1);
 
         const curve = Curves.ease;
 

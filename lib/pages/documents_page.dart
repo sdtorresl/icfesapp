@@ -104,7 +104,7 @@ Widget _mainTitle(context) {
   return Container(
     padding: EdgeInsets.all(10),
     child: Text(
-      "Documentos",
+      "Biblioteca",
       style:
           Theme.of(context).textTheme.headline1.copyWith(color: Colors.black),
     ),

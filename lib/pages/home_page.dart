@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
           Column(
             children: [
               Text(
-                "Sala 1",
+                "Transmisión 1",
                 style: Theme.of(context).textTheme.bodyText2,
               ),
               ActionButton(
@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
           Column(
             children: [
               Text(
-                "Sala 2",
+                "Transmisión 2",
                 style: Theme.of(context).textTheme.bodyText2,
               ),
               ActionButton(
@@ -100,20 +100,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-}
-
-Widget _transmisionButton(context) {
-  return Container(
-    margin: EdgeInsets.only(bottom: 10),
-    child: FloatingActionButton(
-      elevation: 5.0,
-      child: Icon(
-        Icons.video_call,
-        color: Colors.white,
-      ),
-      onPressed: () {
-        Navigator.pushNamed(context, 'transmission');
-      },
-    ),
-  );
 }
