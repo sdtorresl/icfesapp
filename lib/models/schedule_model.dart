@@ -13,6 +13,7 @@ class ScheduleModel {
     this.endDate,
     this.icon,
     this.room,
+    this.categoria,
   });
 
   String title;
@@ -22,6 +23,7 @@ class ScheduleModel {
   DateTime endDate;
   String icon;
   String room;
+  String categoria;
 
   factory ScheduleModel.fromJson(String str) =>
       ScheduleModel.fromMap(json.decode(str));
@@ -29,14 +31,14 @@ class ScheduleModel {
   String toJson() => json.encode(toMap());
 
   factory ScheduleModel.fromMap(Map<String, dynamic> json) => ScheduleModel(
-        title: json["title"],
-        description: json["description"],
-        picture: json["picture"],
-        startDate: DateTime.parse(json["start-date"]).toLocal(),
-        endDate: DateTime.parse(json["end-date"]).toLocal(),
-        icon: json["icon"],
-        room: json["room"],
-      );
+      title: json["title"],
+      description: json["description"],
+      picture: json["picture"],
+      startDate: DateTime.parse(json["start-date"]).toLocal(),
+      endDate: DateTime.parse(json["end-date"]).toLocal(),
+      icon: json["icon"],
+      room: json["room"],
+      categoria: json["categoria"]);
 
   Map<String, dynamic> toMap() => {
         "title": title,
@@ -46,6 +48,7 @@ class ScheduleModel {
         "end-date": endDate.toIso8601String(),
         "icon": icon,
         "room": room,
+        "categoria": categoria,
       };
 
   @override
