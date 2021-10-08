@@ -4,14 +4,12 @@ import 'dart:convert' as json;
 import 'package:icfesapp/models/schedule_model.dart';
 
 class ScheduleProvider {
-  final String _url =
-      GlobalConfiguration().getValue("api_url") + "/json-sesiones";
+  final String _url = GlobalConfiguration().getValue("api_url");
 
   Future<List<ScheduleModel>> getSchedule() async {
     try {
-      var response = await http.get(_url);
-
-      //print({responseCode: response.statusCode})
+      String scheduleUrl = _url + "/json-sesiones";
+      var response = await http.get(scheduleUrl);
 
       if (response.statusCode == 200) {
         print(response.body);
@@ -30,5 +28,25 @@ class ScheduleProvider {
     } catch (Exception) {}
 
     return [];
+  }
+
+  Future<String> getPdf() async {
+    try {
+      String scheduleUrl = _url + "/json-link-pdf";
+      var response = await http.get(scheduleUrl);
+
+      if (response.statusCode == 200) {
+        List<dynamic> jsonResponse = json.jsonDecode(response.body);
+        String pdf = jsonResponse[0]["file"];
+        pdf = pdf.isEmpty ? "" : _url + pdf;
+        return pdf;
+      } else {
+        print('Request failed with status: ${response.statusCode}.');
+      }
+    } catch (Exception) {
+      print(Exception);
+    }
+
+    return "";
   }
 }

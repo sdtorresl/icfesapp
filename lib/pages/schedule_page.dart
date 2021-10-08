@@ -6,6 +6,7 @@ import 'package:icfesapp/models/room_model.dart';
 import 'package:icfesapp/models/schedule_model.dart';
 import 'package:icfesapp/providers/rooms_provider.dart';
 import 'package:icfesapp/providers/schedule_provider.dart';
+import 'package:icfesapp/utils/general.dart';
 
 class SchedulePage extends StatefulWidget {
   const SchedulePage({Key key}) : super(key: key);
@@ -16,6 +17,7 @@ class SchedulePage extends StatefulWidget {
 
 class _SchedulePageState extends State<SchedulePage> {
   int _selectedRoom;
+  final ScheduleProvider scheduleProvider = ScheduleProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +30,37 @@ class _SchedulePageState extends State<SchedulePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Agenda',
-                  style: Theme.of(context).textTheme.headline1.copyWith(
-                      color: Colors.black, fontWeight: FontWeight.w600),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Agenda',
+                      style: Theme.of(context).textTheme.headline1.copyWith(
+                          color: Colors.black, fontWeight: FontWeight.w600),
+                    ),
+                    FutureBuilder(
+                      future: this.scheduleProvider.getPdf(),
+                      builder: (BuildContext context,
+                          AsyncSnapshot<String> snapshot) {
+                        if (snapshot.hasData) {
+                          return InkWell(
+                            onTap: () => launchURL(snapshot.data),
+                            borderRadius: BorderRadius.circular(50),
+                            child: Container(
+                              padding: EdgeInsets.all(10),
+                              child: Icon(
+                                Icons.file_download,
+                                color: Theme.of(context).primaryColor,
+                                size: 30,
+                              ),
+                            ),
+                          );
+                        } else {
+                          return SizedBox();
+                        }
+                      },
+                    ),
+                  ],
                 ),
                 SizedBox(height: 20.0),
                 Text(

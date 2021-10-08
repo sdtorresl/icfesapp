@@ -49,45 +49,48 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       //floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: ExpandableFab(distance: 100, children: [
-        Column(
-          children: [
-            Text(
-              "Sala 2",
-              style: Theme.of(context).textTheme.bodyText2,
-            ),
-            ActionButton(
-              onPressed: () => {},
-              icon: const Icon(Icons.videocam),
-            ),
-          ],
-        ),
-        Column(
-          children: [
-            Text(
-              "Sala 1",
-              style: Theme.of(context).textTheme.bodyText2,
-            ),
-            ActionButton(
-              onPressed: () => {},
-              icon: const Icon(Icons.videocam),
-            ),
-          ],
-        ),
-      ]),
+      floatingActionButton: ExpandableFab(
+        distance: 100,
+        children: [
+          Column(
+            children: [
+              Text(
+                "Sala 1",
+                style: Theme.of(context).textTheme.bodyText2,
+              ),
+              ActionButton(
+                onPressed: () => {Navigator.pushNamed(context, 'transmission')},
+                icon: const Icon(Icons.videocam),
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              Text(
+                "Sala 2",
+                style: Theme.of(context).textTheme.bodyText2,
+              ),
+              ActionButton(
+                onPressed: () => {Navigator.pushNamed(context, 'transmission')},
+                icon: const Icon(Icons.videocam),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
   Widget _topBar(context) {
     double screenWidth = MediaQuery.of(context).size.width;
     Orientation currentOrientation = MediaQuery.of(context).orientation;
-    double barHeight = currentOrientation == Orientation.portrait ? 100 : 50;
+    double barHeight = currentOrientation == Orientation.portrait ? 120 : 70;
 
     return PreferredSize(
       preferredSize: Size(screenWidth, barHeight),
       child: Container(
         width: screenWidth,
-        padding: EdgeInsets.only(left: 5.0, top: 5, right: 0),
+        padding: EdgeInsets.all(5),
         child: SafeArea(
           child: Image.asset(
             "assets/img/icfes_app.png",

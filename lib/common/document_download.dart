@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:icfesapp/main.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:icfesapp/utils/general.dart';
 
 class DocumentDownload extends StatefulWidget {
   final String title;
@@ -66,8 +66,8 @@ class _DocumentDownloadState extends State<DocumentDownload> {
         SizedBox(
           width: MediaQuery.of(context).size.width,
           height: 50,
-          child: RaisedButton(
-            onPressed: _launchURL,
+          child: ElevatedButton(
+            onPressed: () => launchURL(widget.url),
             child: Text(
               'Descargar',
               style: Theme.of(context)
@@ -75,7 +75,9 @@ class _DocumentDownloadState extends State<DocumentDownload> {
                   .headline4
                   .copyWith(color: Colors.white),
             ),
-            color: IcfesApp().accent,
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.resolveWith(
+                    (states) => getButtonColor(states, context))),
           ),
         ),
       ],
@@ -102,14 +104,5 @@ class _DocumentDownloadState extends State<DocumentDownload> {
         child: expansionTile,
       ),
     );
-  }
-
-  _launchURL() async {
-    const url = '';
-    if (await canLaunch(widget.url)) {
-      await launch(widget.url);
-    } else {
-      throw 'Could not launch $url';
-    }
   }
 }
