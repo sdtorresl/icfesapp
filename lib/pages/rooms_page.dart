@@ -94,7 +94,7 @@ class _RoomsPageState extends State<RoomsPage> {
               contentPadding:
                   EdgeInsets.symmetric(vertical: 20, horizontal: 30),
               title: Text(
-                "Gelería de experiencias",
+                "Galería de experiencias",
                 style: TextStyle(
                   color: Colors.white,
                   fontFamily: 'PoppinsMedium',

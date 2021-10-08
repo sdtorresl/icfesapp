@@ -30,8 +30,7 @@ class EventDescription extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(top: 10, bottom: 50),
-            padding: EdgeInsets.all(50),
+            margin: EdgeInsets.all(50),
             child: Text(
               description,
               textAlign: TextAlign.center,
