@@ -38,7 +38,7 @@ class RecordedList extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               child: RaisedButton(
                 child: Text(
-                  "Ver material",
+                  "Ver",
                   style: Theme.of(context)
                       .textTheme
                       .headline4
