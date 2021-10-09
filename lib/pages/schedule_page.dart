@@ -99,10 +99,10 @@ class _SchedulePageState extends State<SchedulePage> {
     final categoriesProvider = CategoriesProvider();
     return FutureBuilder(
       future: categoriesProvider.getCategory(),
-      builder:
-          (BuildContext context, AsyncSnapshot<List<CategoryModel>> snapshot) {
+      builder: (BuildContext context,
+          AsyncSnapshot<List<ScheduleCategoryModel>> snapshot) {
         if (snapshot.hasData) {
-          List<CategoryModel> categories = snapshot.data;
+          List<ScheduleCategoryModel> categories = snapshot.data;
           return DropdownButton(
             isExpanded: true,
             underline: Container(
@@ -120,12 +120,12 @@ class _SchedulePageState extends State<SchedulePage> {
               );
             },
             onTap: () {},
-            items:
-                categories.map<DropdownMenuItem<int>>((CategoryModel category) {
+            items: categories
+                .map<DropdownMenuItem<int>>((ScheduleCategoryModel category) {
               return DropdownMenuItem<int>(
                 value: category.id,
                 child: Text(
-                  category.nombre,
+                  category.name,
                   style: Theme.of(context)
                       .textTheme
                       .bodyText1
@@ -155,7 +155,7 @@ class _SchedulePageState extends State<SchedulePage> {
           if (_selectedCategory != null) {
             schedules = snapshot.data
                 .where((element) =>
-                    (element.categoria == _selectedCategory.toString()))
+                    (element.category == _selectedCategory.toString()))
                 .toList();
           } else {
             schedules = snapshot.data;

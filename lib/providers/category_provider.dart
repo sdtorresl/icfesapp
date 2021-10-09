@@ -7,17 +7,17 @@ class CategoriesProvider {
   final String _url =
       GlobalConfiguration().getValue("api_url") + "/json-sesiones-categorias";
 
-  Future<List<CategoryModel>> getCategory() async {
+  Future<List<ScheduleCategoryModel>> getCategory() async {
     try {
       var response = await http.get(_url);
 
       if (response.statusCode == 200) {
         print(response.body);
         List<dynamic> jsonResponse = json.jsonDecode(response.body);
-        List<CategoryModel> categories = [];
+        List<ScheduleCategoryModel> categories = [];
 
         for (var item in jsonResponse) {
-          CategoryModel category = CategoryModel.fromMap(item);
+          ScheduleCategoryModel category = ScheduleCategoryModel.fromMap(item);
           categories.add(category);
         }
 

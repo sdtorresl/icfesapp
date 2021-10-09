@@ -1,22 +1,23 @@
 import 'dart:convert';
 
-class CategoryModel {
-  CategoryModel({
+class ScheduleCategoryModel {
+  ScheduleCategoryModel({
     this.id,
-    this.nombre,
+    this.name,
   });
 
   int id;
-  String nombre;
+  String name;
 
-  factory CategoryModel.fromJson(String str) =>
-      CategoryModel.fromMap(json.decode(str));
+  factory ScheduleCategoryModel.fromJson(String str) =>
+      ScheduleCategoryModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory CategoryModel.fromMap(Map<String, dynamic> json) => CategoryModel(
+  factory ScheduleCategoryModel.fromMap(Map<String, dynamic> json) =>
+      ScheduleCategoryModel(
         id: int.parse(json["id"]),
-        nombre: json["nombre"],
+        name: json["nombre"],
       );
 
   Map<String, dynamic> toMap() => {"id": id};
