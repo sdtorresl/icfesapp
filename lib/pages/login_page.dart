@@ -5,7 +5,19 @@ import 'package:icfesapp/models/user_model.dart';
 import 'package:icfesapp/providers/user_provider.dart';
 import 'package:icfesapp/utils/alert_dialog.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  bool _isPasswordHidden = true;
+  void _toggleVisibility() {
+    setState(() {
+      _isPasswordHidden = !_isPasswordHidden;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -122,15 +134,20 @@ class LoginPage extends StatelessWidget {
       stream: bloc.passwordStream,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return TextField(
-          obscureText: true,
+          obscureText: _isPasswordHidden,
           decoration: InputDecoration(
-            hintText: "Ingresa el código que recibiste",
-            errorText: snapshot.error,
-            errorStyle: Theme.of(context)
-                .textTheme
-                .headline4
-                .copyWith(color: Colors.red),
-          ),
+              hintText: "Ingresa el código que recibiste",
+              errorText: snapshot.error,
+              errorStyle: Theme.of(context)
+                  .textTheme
+                  .headline4
+                  .copyWith(color: Colors.red),
+              suffixIcon: IconButton(
+                icon: Icon(_isPasswordHidden
+                    ? Icons.visibility
+                    : Icons.visibility_off),
+                onPressed: _toggleVisibility,
+              )),
           onChanged: bloc.changePassword,
         );
       },
