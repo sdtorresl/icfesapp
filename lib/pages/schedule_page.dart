@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:icfesapp/common/schedule_list..dart';
 import 'package:icfesapp/main.dart';
-import 'package:icfesapp/models/room_model.dart';
+//import 'package:icfesapp/models/room_model.dart';
+import 'package:icfesapp/models/category_model.dart';
 import 'package:icfesapp/models/schedule_model.dart';
-import 'package:icfesapp/providers/rooms_provider.dart';
+//import 'package:icfesapp/providers/rooms_provider.dart';
+import 'package:icfesapp/providers/category_provider.dart';
 import 'package:icfesapp/providers/schedule_provider.dart';
 import 'package:icfesapp/utils/general.dart';
 
@@ -16,7 +18,7 @@ class SchedulePage extends StatefulWidget {
 }
 
 class _SchedulePageState extends State<SchedulePage> {
-  int _selectedRoom;
+  int _selectedCategory;
   final ScheduleProvider scheduleProvider = ScheduleProvider();
 
   @override
@@ -94,34 +96,36 @@ class _SchedulePageState extends State<SchedulePage> {
   }
 
   Widget _roomsDropdown() {
-    final roomsProvider = RoomsProvider();
+    final categoriesProvider = CategoriesProvider();
     return FutureBuilder(
-      future: roomsProvider.getRooms(),
-      builder: (BuildContext context, AsyncSnapshot<List<RoomModel>> snapshot) {
+      future: categoriesProvider.getCategory(),
+      builder: (BuildContext context,
+          AsyncSnapshot<List<ScheduleCategoryModel>> snapshot) {
         if (snapshot.hasData) {
-          List<RoomModel> rooms = snapshot.data;
+          List<ScheduleCategoryModel> categories = snapshot.data;
           return DropdownButton(
             isExpanded: true,
             underline: Container(
               height: 2,
               color: Colors.black,
             ),
-            value: _selectedRoom,
+            value: _selectedCategory,
             autofocus: false,
             onChanged: (newValue) {
               setState(
                 () {
-                  _selectedRoom = newValue;
-                  print(_selectedRoom);
+                  _selectedCategory = newValue;
+                  print(_selectedCategory);
                 },
               );
             },
             onTap: () {},
-            items: rooms.map<DropdownMenuItem<int>>((RoomModel room) {
+            items: categories
+                .map<DropdownMenuItem<int>>((ScheduleCategoryModel category) {
               return DropdownMenuItem<int>(
-                value: room.id,
+                value: category.id,
                 child: Text(
-                  room.title,
+                  category.name,
                   style: Theme.of(context)
                       .textTheme
                       .bodyText1
@@ -148,9 +152,10 @@ class _SchedulePageState extends State<SchedulePage> {
           (BuildContext context, AsyncSnapshot<List<ScheduleModel>> snapshot) {
         if (snapshot.hasData) {
           List<ScheduleModel> schedules;
-          if (_selectedRoom != null) {
+          if (_selectedCategory != null) {
             schedules = snapshot.data
-                .where((element) => (element.room == _selectedRoom.toString()))
+                .where((element) =>
+                    (element.category == _selectedCategory.toString()))
                 .toList();
           } else {
             schedules = snapshot.data;
