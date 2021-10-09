@@ -15,9 +15,9 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   int _selectedIndex = 0;
-
+  TabController _tabController;
   static const List<Widget> _widgetOptions = <Widget>[
     LobbyPage(),
     RoomsPage(),
@@ -26,8 +26,26 @@ class _HomePageState extends State<HomePage> {
   ];
 
   void _onItemTapped(int index) {
+    _tabController.animateTo(index);
     setState(() {
       _selectedIndex = index;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedIndex = 0;
+    _tabController = TabController(vsync: this, length: _widgetOptions.length);
+    _tabController.addListener(() {
+      setState(() {
+        if (_tabController.indexIsChanging ||
+            (_tabController.animation.value == _tabController.index)) {
+          setState(() {
+            _selectedIndex = _tabController.index;
+          });
+        }
+      });
     });
   }
 
@@ -35,7 +53,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _topBar(context),
-      body: _widgetOptions.elementAt(_selectedIndex),
+      body: TabBarView(
+        controller: _tabController,
+        children: _widgetOptions,
+      ),
+      //_widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: FABBottomAppBar(
         onTabSelected: _onItemTapped,
         selectedColor: Theme.of(context).accentColor,
