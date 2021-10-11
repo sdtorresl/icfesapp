@@ -24,13 +24,30 @@ class RecordedList extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Text(
-                record.description,
-                textAlign: TextAlign.justify,
-                style: Theme.of(context)
-                    .textTheme
-                    .headline4
-                    .copyWith(color: textColor, fontSize: 16),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    record.category,
+                    textAlign: TextAlign.left,
+                    style: Theme.of(context).textTheme.headline4.copyWith(
+                        color: textColor,
+                        fontSize: 14,
+                        fontStyle: FontStyle.italic),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    record.description,
+                    textAlign: TextAlign.justify,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline4
+                        .copyWith(color: textColor, fontSize: 16),
+                  ),
+                ],
               ),
             ),
             SizedBox(height: 15),

@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:icfesapp/common/expandable_fab.dart';
 import 'package:icfesapp/common/fab_bottom_app_bar.dart';
+import 'package:icfesapp/models/room_model.dart';
 import 'package:icfesapp/pages/schedule_page.dart';
 import 'package:icfesapp/pages/lobby_page.dart';
 import 'package:icfesapp/pages/rooms_page.dart';
+import 'package:icfesapp/pages/transmission_page.dart';
+import 'package:icfesapp/providers/rooms_provider.dart';
 import 'options_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,6 +21,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   int _selectedIndex = 0;
   TabController _tabController;
+  final roomsProvider = RoomsProvider();
+
   static const List<Widget> _widgetOptions = <Widget>[
     LobbyPage(),
     RoomsPage(),
@@ -71,46 +76,51 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ],
       ),
       //floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: ExpandableFab(
-        distance: 100,
-        children: [
-          Column(
-            children: [
-              ActionButton(
-                onPressed: () => {Navigator.pushNamed(context, 'transmission')},
-                icon: const Icon(Icons.videocam),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Text(
-                "Sala saber",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1
-                    .copyWith(fontSize: 15),
-              ),
-            ],
-          ),
-          Column(
-            children: [
-              ActionButton(
-                onPressed: () => {Navigator.pushNamed(context, 'transmission')},
-                icon: const Icon(Icons.videocam),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Text(
-                "Sala investigar",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1
-                    .copyWith(fontSize: 15),
-              ),
-            ],
-          ),
-        ],
+      floatingActionButton: FutureBuilder(
+        future: roomsProvider.getRooms(),
+        builder:
+            (BuildContext context, AsyncSnapshot<List<RoomModel>> snapshot) {
+          if (snapshot.hasData) {
+            List<Widget> rooms = [];
+
+            for (var room in snapshot.data) {
+              rooms.add(
+                Column(
+                  children: [
+                    ActionButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => TransmissionPage(id: room.id),
+                          ),
+                        );
+                      },
+                      icon: const Icon(Icons.videocam),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      room.title,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1
+                          .copyWith(fontSize: 15),
+                    ),
+                  ],
+                ),
+              );
+            }
+
+            return ExpandableFab(
+              distance: 100,
+              children: rooms,
+            );
+          } else {
+            return SizedBox();
+          }
+        },
       ),
     );
   }

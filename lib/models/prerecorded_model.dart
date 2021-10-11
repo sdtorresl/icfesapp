@@ -8,12 +8,14 @@ class PrerecordedModel {
     this.videoCode,
     this.highlighted,
     this.order,
+    this.category,
   });
 
   String title;
   String description;
   DateTime uploadDate;
   String videoCode;
+  String category;
   bool highlighted;
   int order;
 
@@ -32,6 +34,7 @@ class PrerecordedModel {
         videoCode: json["video-code"],
         order: int.tryParse(json["order"]),
         highlighted: json["flag"] == "1",
+        category: json["categoria"] ?? "",
       );
 
   Map<String, dynamic> toMap() => {
@@ -41,6 +44,7 @@ class PrerecordedModel {
         "video-code": videoCode,
         "highlighted": highlighted,
         "order": order,
+        "category": category,
       };
 
   @override

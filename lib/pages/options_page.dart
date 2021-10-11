@@ -28,7 +28,7 @@ class OptionsPage extends StatelessWidget {
           ),
           SizedBox(height: 20.0),
           OptionsCard(
-            title: 'Documentos de interés para el usuario',
+            title: 'Biblioteca',
             icon: Icons.picture_as_pdf,
             url: 'http://',
             onTap: () => Navigator.of(context).pushNamed('documents'),

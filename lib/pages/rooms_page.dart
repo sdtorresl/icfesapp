@@ -73,7 +73,7 @@ class _RoomsPageState extends State<RoomsPage> {
                   fontFamily: 'PoppinsMedium',
                 ),
               ),
-              subtitle: Text("Lorem ipsum dolor sit amet, consectetur ",
+              subtitle: Text("Conéctate con el #saber y la #investigación!",
                   style: TextStyle(fontFamily: 'Montserrat')),
               trailing: Icon(
                 Icons.video_call,
@@ -98,7 +98,7 @@ class _RoomsPageState extends State<RoomsPage> {
                   fontFamily: 'PoppinsMedium',
                 ),
               ),
-              subtitle: Text("Lorem ipsum dolor sit amet, consectetur",
+              subtitle: Text("¡Encuentra aquí Experiencias que motivan!",
                   style: TextStyle(fontFamily: 'Montserrat')),
               trailing: Icon(
                 Icons.photo_album,
@@ -121,15 +121,13 @@ class _RoomsPageState extends State<RoomsPage> {
 
   Widget roomList(context) {
     final roomsProvider = RoomsProvider();
-    return ListView(children: <Widget>[
-      Container(
-        color: Color.fromRGBO(243, 243, 243, 1),
-        padding: EdgeInsets.symmetric(horizontal: 25),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              SizedBox(height: 20),
+    return Container(
+      color: Color.fromRGBO(243, 243, 243, 1),
+      child: ListView(children: <Widget>[
+        Container(
+          padding: EdgeInsets.only(top: 20, right: 25, left: 25),
+          child: Row(
+            children: [
               GestureDetector(
                 onTap: () {
                   setState(() => {_currentWidget = roomSelector(context)});
@@ -140,97 +138,94 @@ class _RoomsPageState extends State<RoomsPage> {
                   size: 40,
                 ),
               ),
-              SizedBox(height: 30),
               Text(
                 "En vivo",
                 style: TextStyle(
-                    fontSize: 22.0,
-                    fontFamily: 'PoppinsMedium',
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600),
-              ),
-            ]),
-      ),
-      Container(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        color: Color.fromRGBO(243, 243, 243, 1),
-        child: FutureBuilder(
-          future: roomsProvider.getRooms(),
-          builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
-            if (snapshot.hasData) {
-              return RoomList(rooms: snapshot.data);
-            } else {
-              return Container(
-                height: 400,
-                child: Center(
-                  child: CircularProgressIndicator(),
+                  fontSize: 22.0,
+                  fontFamily: 'PoppinsMedium',
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600,
                 ),
-              );
-            }
-          },
+              ),
+            ],
+          ),
         ),
-      ),
-    ]);
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: FutureBuilder(
+            future: roomsProvider.getRooms(),
+            builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+              if (snapshot.hasData) {
+                return RoomList(rooms: snapshot.data);
+              } else {
+                return Container(
+                  height: 400,
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              }
+            },
+          ),
+        ),
+      ]),
+    );
   }
 
   Widget recordedList(context) {
     final prerecordedProvider = PrerecordedProvider();
-    return ListView(children: <Widget>[
-      Container(
-        color: Color.fromRGBO(243, 243, 243, 1),
-        padding: EdgeInsets.symmetric(horizontal: 25),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              SizedBox(height: 20),
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      setState(() => {_currentWidget = roomSelector(context)});
-                    },
-                    child: Icon(
-                      Icons.arrow_back_ios,
-                      color: IcfesApp().accent,
-                      size: 40,
-                    ),
-                  ),
-                  Text(
-                    "Galería de experiencias",
-                    style: TextStyle(
-                      fontSize: 22.0,
-                      fontFamily: 'PoppinsMedium',
-                      color: Colors.black,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ],
-              ),
-            ]),
-      ),
-      Container(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        color: Color.fromRGBO(243, 243, 243, 1),
-        child: FutureBuilder(
-          future: prerecordedProvider.getPrerecorded(),
-          builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
-            if (snapshot.hasData) {
-              return RecordedList(
-                recorded: snapshot.data,
-              );
-            } else {
-              return Container(
-                height: 400,
-                child: Center(
-                  child: CircularProgressIndicator(),
+    return Container(
+      color: Color.fromRGBO(243, 243, 243, 1),
+      child: ListView(children: <Widget>[
+        Container(
+          padding: EdgeInsets.only(top: 20, right: 25, left: 25),
+          child: Row(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  setState(() => {_currentWidget = roomSelector(context)});
+                },
+                child: Icon(
+                  Icons.arrow_back_ios,
+                  color: IcfesApp().accent,
+                  size: 40,
                 ),
-              );
-            }
-          },
+              ),
+              Text(
+                "Galería de experiencias",
+                style: TextStyle(
+                  fontSize: 22.0,
+                  fontFamily: 'PoppinsMedium',
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-    ]);
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          color: Color.fromRGBO(243, 243, 243, 1),
+          child: FutureBuilder(
+            future: prerecordedProvider.getPrerecorded(),
+            builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+              if (snapshot.hasData) {
+                return RecordedList(
+                  recorded: snapshot.data,
+                );
+              } else {
+                return Container(
+                  height: 400,
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              }
+            },
+          ),
+        ),
+      ]),
+    );
   }
 
   Widget historicList(context) {
