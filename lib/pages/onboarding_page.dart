@@ -14,18 +14,18 @@ class _OnboardingPageState extends State<OnboardingPage> {
   int _current = 0;
   final List<Widget> carouselItems = [
     Onboarding(
-      title: 'Consulta todo sobre el evento',
-      description: 'Disfruta de la nueva plataforma que te ayudara a crecer',
+      title: 'Aquí tendrás acceso al #SeminarioIcfes',
+      description: 'Disfruta de este espacio que hemos creado para ti',
       picture: 'assets/img/Bitmap.png',
     ),
     Onboarding(
-      title: 'Tu espacio virtual',
-      description: 'Conectate y observa el evento a través de tu celular',
+      title: 'Un evento completo al alcance de tu mano',
+      description: 'Conéctate a través de tu celular',
       picture: 'assets/img/Bitmap2.png',
     ),
     Onboarding(
-      title: 'Comparte en redes',
-      description: 'Participa y comparte en redes sociales',
+      title: 'Conferencias y conversaciones sobre educación',
+      description: '¡Participa y comparte en redes sociales!',
       picture: 'assets/img/Bitmap3.png',
     ),
   ];
