@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:icfesapp/common/countdown.dart';
 import 'package:icfesapp/common/event_description.dart';
-import 'package:icfesapp/common/expansion_card.dart';
+import 'package:icfesapp/common/schedule_expansion_card.dart';
 import 'package:icfesapp/main.dart';
 import 'package:icfesapp/models/event_model.dart';
 import 'package:icfesapp/models/section_model.dart';
@@ -106,7 +106,7 @@ class _LobbyPageState extends State<LobbyPage> {
       itemCount: sections.length,
       itemBuilder: (context, index) {
         SectionModel section = sections[index];
-        return ExpansionCard(
+        return ScheduleExpansionCard(
           title: section.title,
           subtitle: section.description,
           hidden: CachedNetworkImage(

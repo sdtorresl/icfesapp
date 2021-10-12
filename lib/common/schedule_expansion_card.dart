@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icfesapp/main.dart';
 
-class ExpansionCard extends StatefulWidget {
+class ScheduleExpansionCard extends StatefulWidget {
   final String header;
   final String title;
   final String subtitle;
@@ -9,7 +9,7 @@ class ExpansionCard extends StatefulWidget {
   final Function() onChanged;
   final bool highlight;
 
-  const ExpansionCard({
+  const ScheduleExpansionCard({
     Key key,
     this.header,
     this.subtitle,
@@ -21,10 +21,10 @@ class ExpansionCard extends StatefulWidget {
         super(key: key);
 
   @override
-  _ExpansionCardState createState() => _ExpansionCardState();
+  _ScheduleExpansionCardState createState() => _ScheduleExpansionCardState();
 }
 
-class _ExpansionCardState extends State<ExpansionCard> {
+class _ScheduleExpansionCardState extends State<ScheduleExpansionCard> {
   bool _expanded = false;
 
   @override

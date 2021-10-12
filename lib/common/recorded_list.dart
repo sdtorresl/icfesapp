@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:icfesapp/common/expansion_card.dart';
+import 'package:icfesapp/common/schedule_expansion_card.dart';
 import 'package:icfesapp/models/prerecorded_model.dart';
 import 'package:icfesapp/pages/recorded_page.dart';
 import 'package:icfesapp/utils/date_formatter.dart';
@@ -15,7 +15,7 @@ class RecordedList extends StatelessWidget {
     List<Widget> recordList = [];
     for (var record in recorded) {
       Color textColor = record.highlighted ? Colors.white : Colors.black87;
-      recordList.add(ExpansionCard(
+      recordList.add(ScheduleExpansionCard(
         header: DateFormatter.dateTimeToString(record.uploadDate),
         title: record.title,
         highlight: record.highlighted,

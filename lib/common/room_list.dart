@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
-import 'package:icfesapp/common/expansion_card.dart';
+import 'package:icfesapp/common/schedule_expansion_card.dart';
 import 'package:icfesapp/main.dart';
 
 import 'package:icfesapp/models/room_model.dart';
@@ -53,7 +53,7 @@ class RoomList extends StatelessWidget {
         );
       }
 
-      Widget roomWidget = ExpansionCard(
+      Widget roomWidget = ScheduleExpansionCard(
         header: DateFormatter.dateTimeToString(room.startDate),
         title: room.title,
         subtitle: room.description,

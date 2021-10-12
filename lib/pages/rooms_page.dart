@@ -67,13 +67,13 @@ class _RoomsPageState extends State<RoomsPage> {
               contentPadding:
                   EdgeInsets.symmetric(vertical: 20, horizontal: 30),
               title: Text(
-                "En vivo",
+                "En vivo ahora mismo",
                 style: TextStyle(
                   color: Colors.white,
                   fontFamily: 'PoppinsMedium',
                 ),
               ),
-              subtitle: Text("Conéctate con el #saber y la #investigación!",
+              subtitle: Text("¡Conéctate con el #saber y la #investigación!",
                   style: TextStyle(fontFamily: 'Montserrat')),
               trailing: Icon(
                 Icons.video_call,
@@ -139,7 +139,7 @@ class _RoomsPageState extends State<RoomsPage> {
                 ),
               ),
               Text(
-                "En vivo",
+                "En vivo ahora mismo",
                 style: TextStyle(
                   fontSize: 22.0,
                   fontFamily: 'PoppinsMedium',
