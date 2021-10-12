@@ -22,6 +22,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   int _selectedIndex = 0;
   TabController _tabController;
   final roomsProvider = RoomsProvider();
+  AnimationController _animation;
 
   static const List<Widget> _widgetOptions = <Widget>[
     LobbyPage(),
@@ -52,6 +53,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         }
       });
     });
+    _animation = AnimationController(
+      lowerBound: 0,
+      upperBound: 1,
+      duration: Duration(milliseconds: 2000),
+      vsync: this,
+    )..forward();
+  }
+
+  @override
+  void dispose() {
+    _animation.dispose();
+    super.dispose();
   }
 
   @override
@@ -113,9 +126,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               );
             }
 
-            return ExpandableFab(
-              distance: 100,
-              children: rooms,
+            return ScaleTransition(
+              scale: _animation,
+              child: ExpandableFab(
+                distance: 100,
+                children: rooms,
+              ),
             );
           } else {
             return SizedBox();
