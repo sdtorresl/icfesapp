@@ -24,7 +24,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
       picture: 'assets/img/Bitmap2.png',
     ),
     Onboarding(
-      title: 'Conferencias y conversaciones sobre educación',
+      title: 'Conferencias y conversatorios sobre educación',
       description: '¡Participa y comparte en redes sociales!',
       picture: 'assets/img/Bitmap3.png',
     ),
